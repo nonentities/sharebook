@@ -22,7 +22,7 @@
 <id column="userId" property="id"/>
 		<result column="userName" property="userName" />
 		<result column="studentId" property="studentId" />
-		<result column="wechatNumber" property="wechatNumber" />
+		<result column="wechatNumber" pfroperty="wechatNumber" />
 		<result column="dirmitoryNumber" property="dirmitoryNumber" />
 </association>
 </resultMap>
@@ -80,8 +80,8 @@ select*from `order`,book,user where(order.id=#{id} and order.bId=book.bId and us
  		<trim prefix="set" suffixOverrides=",">
   <if test="orderTime !=null  "> orderTime=#{orderTime},</if>
   <if test="orderStatus !=null  ">orderStatus=#{orderStatus},</if>
-  <if test="book.bId !=null ">bId=#{book.bId},</if>
-  <if test="user.id !=null  ">userId=#{user.id},</if>
+  <if test="book!=null and book.bId !=null ">bId=#{book.bId},</if>
+  <if test="user!=null and user.id !=null  ">userId=#{user.id},</if>
   <if test="distrbutionId !=null ">distrbutionId=#{distrbutionId},</if>
   <if test="orderBool !=null  ">orderBool=#{orderBool},</if>
   <if test="bookAccount!=null and bookAccount!='' ">bookAccount=#{bookAccount},</if>
