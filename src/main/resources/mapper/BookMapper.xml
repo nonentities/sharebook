@@ -7,7 +7,7 @@
 <resultMap type="com.swpu.sharebook.entity.Book" id="book">
 <result column="bId" property="bId"/>
 <result column="bName" property="bName"/>
-<result column="bookPbulish" property="bPbulish"/>
+<result column="bookPbulish" property="bPublish"/>
 <result column="bookIntroduction" property="introduction"/>
 <result column="writer" property="writer"/>
 <result column="bookOtherImportantPath" property="bookOtherImportantPath"/>
@@ -16,7 +16,7 @@
 <!-- <resultMap type="com.bookShare.startBookShare.entity.Book" id="bookList">
 <result column="bId" property="bId"/>
 <result column="bName" property="bName"/>
-<result column="bookPbulish" property="bPbulish"/>
+<result column="bookPbulish" property="bPublish"/>
 <result column="bookIntroduction" property="introduction"/>
 <result column="writer" property="writer"/>
 <result column="bookOtherImportantPath" property="bookOtherImportantPath"/>
@@ -60,7 +60,7 @@
 INSERT INTO book ( bName, bookPbulish, bookIntroduction, writer, bookOtherImportantPath,bookAccount)
 VALUES
 	(
-#{bName},#{bPbulish},#{introduction},#{writer},#{bookOtherImportantPath},#{bookAccount})
+#{bName},#{bPublish},#{introduction},#{writer},#{bookOtherImportantPath},#{bookAccount})
 </insert>
 <!-- 
 更新book操作 
@@ -70,7 +70,7 @@ VALUES
  UPDATE book
  <trim prefix="set" suffixOverrides=",">
   <if test="bName!=null and bName !='' ">bName=#{bName},</if>
-  <if test="bPbulish!=null and bPbulish !='' ">bookPbulish=#{bPbulish},</if>
+  <if test="bPublish!=null and bPublish !='' ">bookPbulish=#{bPublish},</if>
   <if test="introduction!=null and introduction !='' ">bookIntroduction=#{introduction},</if>
   <if test="bookOtherImportantPath!=null and bookOtherImportantPath !='' ">bookOtherImportantPath=#{bookOtherImportantPath},</if>
   <if test="bookAccount!=null and bookAccount!='' ">bookAccount=#{bookAccount}</if>
@@ -97,8 +97,8 @@ VALUES
 		<when test="bName !='' and bName != null">
 		bName=#{bName}
 		</when>
-		<when test="bPbulish !='' and bPbulish != null ">
-		 and bookPbulish=#{bPbulish}
+		<when test="bPublish !='' and bPublish != null ">
+		 and bookPbulish=#{bPublish}
 		</when>
 		<when test="introduction !='' and introduction !=null">
 		and bookIntroduction=#{introduction}
@@ -123,9 +123,9 @@ select *from book
 		 <bind name="bName" value="'%' + bName + '%'" />
 		bName like #{bName}
 		</when>
-		<when test="bPbulish !='' and bPbulish !=null ">
-		<bind name="bPbulish" value="'%' + bPbulish + '%'" />
-		 and bookPbulish like #{bPbulish}
+		<when test="bPublish !='' and bPublish !=null ">
+		<bind name="bPublish" value="'%' + bPublish + '%'" />
+		 and bookPbulish like #{bPublish}
 		</when>
 		<when test="introduction !='' and introduction !=null">
 		<bind name="introduction" value="'%' + introduction + '%'" />

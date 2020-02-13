@@ -18,7 +18,7 @@ public class Book implements Serializable {
     @NotBlank(message = "书籍名称不能为空或者为空格")
     private String bName;
     @NotBlank(message = "书籍出版社必须不能为空或者空格")
-    private String bPbulish;
+    private String bPublish;
     @NotBlank(message = "必须包含一些书籍简介")
     private String introduction;
     @NotBlank(message = "书籍作者不能为空或者空格")

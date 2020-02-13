@@ -39,13 +39,15 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	@Transactional
-	public ResponseResult addOrder(Order order, boolean flag) {
-		User user=new User();
+	public ResponseResult addOrder(Order order) {
 		if (Tools.isNull(order.getBook().getBId())) {
 			return ResponseResult.ERROR(201, "书籍不能为空");
 		}
 		if (order.getBookAccount() == null || order.getBookAccount() == 0) {
 			return ResponseResult.ERROR(204, "请输入你需要选择的书籍数量");
+		}
+		if (Tools.isNull(order.getOrderBool())) {
+			order.setOrderBool(1);
 		}
 		// 用户输入的书籍数量
 		int account = order.getBookAccount();
@@ -73,109 +75,12 @@ public class OrderServiceImpl implements OrderService {
 		if (judgeGrades(bookAccount, account, null) != 1 && judgeGrades(bookAccount, account, null) != 2) {
 			return ResponseResult.ERROR(207, "书籍库存不足");
 		}
-
-		// 判断积分是否足够；
-		// 获取用户积分
+		//创建一个user对象
+		User user=new User();
 		user.setId(UserUtil.getUserId());
-		//通过用户id获取用户积分
-		user.setIntegration(userMapper.getIntegration(user.getId()));
-		Integer integration = user.getIntegration();
-		// 获取目前的是配送还是自取；
-		// 獲取用戶沒有被審核的訂單
-		Order orderFlag = new Order();
-		orderFlag.setUser(user);
-		// 订单状态为正常
-		// 不要设置标志为true 否则会查出所有结果集合
-		// orderFlag.setOrderStatus(true);
-		// 獲取用戶的積分
-		List<Order> list = orderMapper.getListAboutOrder(orderFlag);
-		int judgeGrades = judgeGrades(integration, account, list);
-		BorringStatus borringStatus = new BorringStatus();
-		borringStatus.setBId(order.getBook().getBId());
-		borringStatus.setUserId(user.getId());
-		borringStatus.setBorrwingStatus(flag);
-		// 先查看当前是否由该订单
-		List<BorringStatus> lists = userOrderstatusMapper.selectBorringStatus(borringStatus);
-		if (lists != null && lists.size() != 0) {
-			return ResponseResult.ERROR(216, "订单已经生成了，请不要重复提交哦");
-		}
-		borringStatus.setLoanHour(LocalDateTime.now());
-		if (Tools.isNull(order.getDistrbutionId())) {
-			// 配送部分为空的话
-			// 如果为空的话默认为1:
-			if (judgeGrades == 0) {
-				if (flag) {
-					return ResponseResult.ERROR(205, "积分不足请获取积分无法预定书籍了");
-				} else {
-					return ResponseResult.ERROR(205, "积分不足无法借阅书籍");
-				}
-
-			} else {
-				// 创建一个用户书籍状态表
-
-				// 默认为1即没有配送员配送
-				order.setDistrbutionId(1);
-				order.setOrderStatus(true);
-				// 用户积分直接减掉
-				integration = integration - account;
-				bookAccount = bookAccount - account;
-				// 将数据导入到book对象中
-				// 更新用户积分;
-				// 新建一个用户;
-				User userFlag=new User();
-				userFlag.setIntegration(integration);
-				// 這裏需要報用戶角色也設置進去不然會出現問題
-				userFlag.setRole(user.getRole());
-				userFlag.setId(user.getId());
-				// 更新用户积分
-				userMapper.update(userFlag);
-				user.setIntegration(integration);
-			}
-		}
-		// 首先判断是否为借阅和与预定都写为false
-		borringStatus.setSendStatus(false);
-		// 有配送员的情况
-		if (!Tools.isNull(order.getDistrbutionId()) && order.getDistrbutionId() != 1) {
-			if (judgeGrades == 2) {
-				// 目前的状态是没有确认收货的情况
-				// order.setOrderStatus(false);
-				// 书籍还是要减少account
-				bookAccount = bookAccount - account;
-				// 将数据导入到book对象中
-				// borringStatus借阅状态即被借用
-				// borringStatus.setBorrwingStatus(true);
-				// 正在配送ture表示正在配送
-				if (flag) {
-					// 只有是借阅的人员才能由配送服务
-					borringStatus.setSendStatus(true);
-				}
-			} else {
-				return ResponseResult.ERROR(202, "你好您的积分不足，请通过其他方式获取积分");
-			}
-		}
-		if (Tools.isNull(order.getOrderBool())) {
-			order.setOrderBool(1);
-		}
-		// 更新用户积分;
-		book.setBId(order.getBook().getBId());
-		// 更新数据即可
-		book.setBookAccount(bookAccount);
-		bookMapper.updateBook(book);
-		order.setOrderTime(new Date());
 		order.setUser(user);
-		Integer flagOrder = orderMapper.addOrder(order);
-		// 生成书籍用户订单信息
-		userOrderstatusMapper.addStatus(borringStatus);
-		if (flagOrder == 1) {
-		//将订单信息更新
-			user=userMapper.getUserById(order.getUser().getId());
-			book=bookMapper.getBookById(order.getBook().getBId());
-			order.setUser(user);
-			order.setBook(book);
-			return ResponseResult.SUCCESS("借阅成功", order);
-		} else {
-			return ResponseResult.ERROR(203, "网络错误");
-		}
+		orderMapper.addOrder(order);
+		return ResponseResult.SUCCESSM("成功加入购物车");
 	}
 	/**
 	 * 
@@ -211,21 +116,15 @@ public class OrderServiceImpl implements OrderService {
 	@Transactional
 	@Override
 	public ResponseResult auditOrder(Order order) {
-		/*if (order == null) {
-			return ResponseResult.ERROR(211, "您不能选择一个空订单进行审核哦");
-		}
-		// 订单不为空
-		// 获取订单id
-		Integer oId = order.getId();
-		if (Tools.isNull(oId) || oId == 0) {
-			return ResponseResult.ERROR(212, "订单号不能为空或者不合法");
-		}
 		// 查询对应的订单
 		// 查询对应的订单
 		// 查询当前订单：*/
 		order = orderMapper.getOrderById(order.getId());
 		if (order == null) {
 			return ResponseResult.ERROR(213, "你没有你输入的订单哦");
+		}
+		if(!order.isPay()){
+			return ResponseResult.ERROR(221,"目前该订单没有支付的哦");
 		}
 		if (!order.isOrderStatus()) {
 			return ResponseResult.ERROR(214, "您配送的订单被用户取消了");
@@ -467,5 +366,144 @@ public class OrderServiceImpl implements OrderService {
 			 userMapper.update(tempUser);
 		 }
 		return ResponseResult.SUCCESSM("还书成功");
+	}
+	public ResponseResult payOrder(Order order,boolean flag){
+		if(order.getId()==null){
+			return ResponseResult.ERROR(216,"订单id不能为空");
+		}
+		order=orderMapper.getOrderById(order.getId());
+		if(order==null){
+			return ResponseResult.ERROR(217,"不存在您所输入的订单");
+		}
+		if(order.isPay()){
+			return ResponseResult.ERROR(218,"目前订单已经被支付了，不需要再支付了哦");
+		}
+		int account = order.getBookAccount();
+		// 创建一个空的book对象来保存书籍的数量
+		Book book = new Book();
+		/**
+		 * 下面是通过书籍的id找到书籍目前的数量
+		 */
+		Map<String, Object> map = new HashMap<>();
+		// 返回的而结果集
+		map.put("result", "bookAccount");
+		// 插入的列名
+		map.put("column", "bId");
+		// 列对应的值
+		map.put("value", order.getBook().getBId());
+		// 目前所剩下的书籍的数量
+		Integer bookAccount = bookMapper.getBookReturnInt(map);
+		// 判断书籍是否足够
+		if (Tools.isNull((bookAccount))) {
+			return ResponseResult.ERROR(203, "没有你选定的书籍");
+		}
+		if (bookAccount == 0) {
+			return ResponseResult.ERROR(214, "书籍已经被借完啦");
+		}
+		if (judgeGrades(bookAccount, account, null) != 1 && judgeGrades(bookAccount, account, null) != 2) {
+			return ResponseResult.ERROR(207, "书籍库存不足");
+		}
+		// 判断积分是否足够；
+		// 获取用户积分
+		User user=new User();
+		user.setId(UserUtil.getUserId());
+		//通过用户id获取用户积分
+		user.setIntegration(userMapper.getIntegration(user.getId()));
+		Integer integration = user.getIntegration();
+		// 获取目前的是配送还是自取；
+		// 獲取用戶沒有被審核的訂單
+		Order orderFlag = new Order();
+		orderFlag.setUser(user);
+		// 订单状态为正常
+		// 不要设置标志为true 否则会查出所有结果集合
+		// orderFlag.setOrderStatus(true);
+		// 獲取用戶的積分
+		List<Order> list = orderMapper.getListAboutOrder(orderFlag);
+		int judgeGrades = judgeGrades(integration, account, list);
+		BorringStatus borringStatus = new BorringStatus();
+		borringStatus.setBId(order.getBook().getBId());
+		borringStatus.setUserId(user.getId());
+		borringStatus.setBorrwingStatus(flag);
+		// 先查看当前是否由该订单
+		List<BorringStatus> lists = userOrderstatusMapper.selectBorringStatus(borringStatus);
+		if (lists != null && lists.size() != 0) {
+			return ResponseResult.ERROR(216, "订单已经生成了，请不要重复提交哦");
+		}
+		borringStatus.setLoanHour(LocalDateTime.now());
+		if (Tools.isNull(order.getDistrbutionId())) {
+			// 配送部分为空的话
+			// 如果为空的话默认为1:
+			if (judgeGrades == 0) {
+				if (flag) {
+					return ResponseResult.ERROR(205, "积分不足请获取积分无法预定书籍了");
+				} else {
+					return ResponseResult.ERROR(205, "积分不足无法借阅书籍");
+				}
+
+			} else {
+				// 创建一个用户书籍状态表
+
+				// 默认为1即没有配送员配送
+				order.setDistrbutionId(1);
+				order.setOrderStatus(true);
+				// 用户积分直接减掉
+				integration = integration - account;
+				bookAccount = bookAccount - account;
+				// 将数据导入到book对象中
+				// 更新用户积分;
+				// 新建一个用户;
+				User userFlag=new User();
+				userFlag.setIntegration(integration);
+				// 這裏需要報用戶角色也設置進去不然會出現問題
+				userFlag.setRole(user.getRole());
+				userFlag.setId(user.getId());
+				// 更新用户积分
+				userMapper.update(userFlag);
+				user.setIntegration(integration);
+			}
+		}
+		// 首先判断是否为借阅和与预定都写为false
+		borringStatus.setSendStatus(false);
+		// 有配送员的情况
+		if (!Tools.isNull(order.getDistrbutionId()) && order.getDistrbutionId() != 1) {
+			if (judgeGrades == 2) {
+				// 目前的状态是没有确认收货的情况
+				// order.setOrderStatus(false);
+				// 书籍还是要减少account
+				bookAccount = bookAccount - account;
+				// 将数据导入到book对象中
+				// borringStatus借阅状态即被借用
+				// borringStatus.setBorrwingStatus(true);
+				// 正在配送ture表示正在配送
+				if (flag) {
+					// 只有是借阅的人员才能由配送服务
+					borringStatus.setSendStatus(true);
+				}
+			} else {
+				return ResponseResult.ERROR(202, "你好您的积分不足，请通过其他方式获取积分");
+			}
+		}
+		// 更新用户积分;
+		book.setBId(order.getBook().getBId());
+		// 更新数据即可
+		book.setBookAccount(bookAccount);
+		bookMapper.updateBook(book);
+		order.setOrderTime(new Date());
+		order.setUser(user);
+		order.setPay(true);
+		Integer flagOrder = orderMapper.updateOrder(order);
+		// 生成书籍用户订单信息
+		userOrderstatusMapper.addStatus(borringStatus);
+		if (flagOrder == 1) {
+			//将订单信息更新
+			user=userMapper.getUserById(order.getUser().getId());
+			book=bookMapper.getBookById(order.getBook().getBId());
+			order.setUser(user);
+			order.setBook(book);
+			return ResponseResult.SUCCESS("借阅成功", order);
+		} else {
+			return ResponseResult.ERROR(203, "网络错误");
+		}
+
 	}
 }

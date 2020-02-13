@@ -7,6 +7,7 @@ import lombok.Data;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
@@ -41,6 +42,10 @@ public class User implements Serializable{
 
 	@TableField("salt")
 	private String salt;
-
+	@TableField("headPortrait")
+	@Pattern(regexp = "(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]",message = "头像位置不合法")
+	private String headPortrait;
+	@TableField("deliveManGrade")
+	private Integer deliveManGrade;
 }
 

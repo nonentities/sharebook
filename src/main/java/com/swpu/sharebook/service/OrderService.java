@@ -23,7 +23,7 @@ public interface OrderService {
  *自取的话直接生成订单：
  *配送需求用户确认到货；（一天内无条件到货）
  */
-	public ResponseResult addOrder(Order order, boolean flag);
+	public ResponseResult addOrder(Order order);
 	/**
 	 * 配送审核订单
 	 * 首先审核订单只能是由配送员及其以上人员确认
@@ -68,4 +68,10 @@ public interface OrderService {
 	 * @return
 	 */
 	public ResponseResult returnBook(Order order);
+	/**
+	 * 用户购买功能
+	 * @1修改用户isPay，修改用户订单时间，更新用户积分
+	 */
+	public ResponseResult payOrder(Order order,boolean flag);
+
 }

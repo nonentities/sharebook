@@ -230,7 +230,7 @@ public class BookServiceImpl implements BookService {
 		// 将作者置空
 		book.setWriter(null);
 		// 第四步通过出版社查询
-		book.setBPbulish(key);
+		book.setBPublish(key);
 		list = bookMapper.getBookByKey(book);
 		if (list != null) {
 			lists.add(list);

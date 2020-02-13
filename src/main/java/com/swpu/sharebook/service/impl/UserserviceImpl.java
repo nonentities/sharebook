@@ -32,13 +32,10 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 				//.eq("password", md5User.getPassword())
                 .eq("password",password)
 		);
-
 		if(null != dbUser){
 			String token = JWTUtil.generatorToken(String.valueOf(dbUser.getId()), EXPIRE_TIME);
 			return ResponseResult.SUCCESS("登陆成功返回了token数据",token);
 		}
-
-
 		return  ResponseResult.ERROR(102, "用户名或者密码错误找不到该用户");
 	}
 

@@ -17,13 +17,13 @@ public class OrderControl {
 
 	// 借阅书籍
 	@GetMapping("addOrder")
-	public ResponseResult addOrder(@RequestParam("bId") Integer bId,@RequestParam("bookAccount") Integer bookAccount, boolean flag) {
+	public ResponseResult addOrder(@RequestParam("bId") Integer bId,@RequestParam("bookAccount") Integer bookAccount) {
 		Order order=new Order();
 		Book book=new Book();
 		book.setBId(bId);
 		order.setBook(book);
 		order.setBookAccount(bookAccount);
-		return orderService.addOrder(order, flag);
+		return orderService.addOrder(order);
 	}
 	// 订单确认：
 	@GetMapping("auditOrder")
@@ -52,5 +52,9 @@ public class OrderControl {
 	@GetMapping("returnBook")
 	public ResponseResult returnBook(Order order) {
 		return orderService.returnBook(order);
+	}
+	@PostMapping("payOrder")
+	public ResponseResult payOrder(Order order,boolean flag){
+		return orderService.payOrder(order,flag);
 	}
 }

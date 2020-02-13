@@ -14,7 +14,7 @@
 		<association property="book" javaType="com.swpu.sharebook.entity.Book" column="bId">
 		<id property="bId" column="bId"/>
 		<result column="bName" property="bName"/>
-<result column="bookPbulish" property="bPbulish"/>
+<result column="bookPbulish" property="bPublish"/>
 <result column="bookIntroduction" property="introduction"/>
 <result column="writer" property="writer"/>
 <result column="bookOtherImportantPath" property="bookOtherImportantPath"/>

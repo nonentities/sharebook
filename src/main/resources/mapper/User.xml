@@ -11,6 +11,8 @@
 		<result column="password" property="password" />
 		<result column="dirmitoryNumber" property="dirmitoryNumber" />
 		<result column="integration" property="integration" />
+		<result column="headPortrait" property="headPortrait"/>
+		<result column="deliveManGrade" property="deliveManGrade"/>
 		<!-- 外键链接多表查询 使用assocation标签 -->
 		<association property="role" column="r_id "
 			javaType="com.swpu.sharebook.entity.Role">
@@ -57,6 +59,12 @@
                 <if test="integration!=null ">
                 	integration=#{integration}
                 </if>
+                <if test="deliveManGrade !=null and deliveManGrade!=0">
+					deliveManGrade=#{deliveManGrade}
+				</if>
+				<if test="headPortrait !=null and headPortrait!='' ">
+					headPortrait=#{headPortrait}
+				</if>
           </set>
 		 where(id=#{id})
 	</update>
@@ -88,7 +96,7 @@ user,role
 WHERE
 	roleId = 4 and roleId=role.r_id
 ORDER BY
-	integration DESC
+	deliveManGrade DESC
 	</select>
 	
 <!-- 批量获取用户 -->

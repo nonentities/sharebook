@@ -23,6 +23,7 @@ public class BookBaseControl {
 private BookService bookService;
 @GetMapping("selectBook")
 public ResponseResult selectBook(Book book) {
+
 	return bookService.selectBook(book);
 }
 public ResponseResult getBook(Book book) {

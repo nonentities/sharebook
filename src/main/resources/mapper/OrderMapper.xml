@@ -10,10 +10,11 @@
 <result column="distrbutionId" property="distrbutionId"/>
 <result column="orderBool" property="orderBool"/>
 <result column="bookAccount" property="bookAccount"/>
+<result column="isPay" property="isPay"/>
 <association property="book" column="bId" javaType="com.swpu.sharebook.entity.Book">
 <id column="bId" property="bId"/>
 <result column="bName" property="bName"/>
-<result column="bookPbulish" property="bPbulish"/>
+<result column="bookPbulish" property="bPublish"/>
 <result column="bookIntroduction" property="introduction"/>
 <result column="writer" property="writer"/>
 <result column="bookOtherImportantPath" property="bookOtherImportantPath"/>
@@ -22,7 +23,7 @@
 <id column="userId" property="id"/>
 		<result column="userName" property="userName" />
 		<result column="studentId" property="studentId" />
-		<result column="wechatNumber" pfroperty="wechatNumber" />
+		<result column="wechatNumber" property="wechatNumber" />
 		<result column="dirmitoryNumber" property="dirmitoryNumber" />
 </association>
 </resultMap>
@@ -85,6 +86,7 @@ select*from `order`,book,user where(order.id=#{id} and order.bId=book.bId and us
   <if test="distrbutionId !=null ">distrbutionId=#{distrbutionId},</if>
   <if test="orderBool !=null  ">orderBool=#{orderBool},</if>
   <if test="bookAccount!=null and bookAccount!='' ">bookAccount=#{bookAccount},</if>
+  <if test="isPay!=null">isPay=#{isPay}</if>
  </trim> where(order.id=#{id})
  </update>
  <select id="getListAoubtUserOrder" parameterType="com.swpu.sharebook.entity.Order" resultMap="order">
