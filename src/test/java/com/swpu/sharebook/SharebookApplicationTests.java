@@ -11,13 +11,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SharebookApplicationTests {
 
-    @Autowired
-    UserMapper userMapper;
+   // @Autowired
+   // UserMapper userMapper;
 
-    @Test
+   // @Test
     void contextLoads() {
-        User user = userMapper.selectById(25);
-        System.out.println(user);
+    //    User user = userMapper.selectById(25);
+    //    System.out.println(user);
 
 //        User admin = UserUtil.getMd5User("admin", "123");
 //        user.setPassword(admin.getPassword());
