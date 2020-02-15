@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<mapper namespace="com.swpu.sharebook.mapper.OrderMapper">
+<resultMap type="com.swpu.sharebook.entity.Order" id="order">
+<id column="id" property="id"/>
+<result column="orderTime" property="orderTime"/>
+<result column="orderStatus" property="orderStatus"/>
+<!-- <result column="bId" property="bId"/> -->
+<!-- <result column="userId" property="userId"/> -->
+<result column="distrbutionId" property="distrbutionId"/>
+<result column="orderBool" property="orderBool"/>
+<result column="bookAccount" property="bookAccount"/>
+<result column="isPay" property="isPay"/>
+<association property="book" column="bId" javaType="com.swpu.sharebook.entity.Book">
+<id column="bId" property="bId"/>
+<result column="bName" property="bName"/>
+<result column="bookPbulish" property="bPublish"/>
+<result column="bookIntroduction" property="introduction"/>
+<result column="writer" property="writer"/>
+<result column="bookOtherImportantPath" property="bookOtherImportantPath"/>
+</association>
+<association property="user" column="userId" javaType="com.swpu.sharebook.entity.User">
+<id column="userId" property="id"/>
+		<result column="userName" property="userName" />
+		<result column="studentId" property="studentId" />
+		<result column="wechatNumber" property="wechatNumber" />
+		<result column="dirmitoryNumber" property="dirmitoryNumber" />
+</association>
+</resultMap>
+<!-- 插入订单的语句 -->
+<insert id="addOrder" parameterType="com.swpu.sharebook.entity.Order"  useGeneratedKeys="true" keyProperty="id">
+INSERT INTO `order` (orderTime, orderStatus, bId, userId, distrbutionId, orderBool,bookAccount)
+VALUES
+	(#{orderTime},#{orderStatus},#{book.bId},#{user.id},#{distrbutionId},#{orderBool},#{bookAccount})
+</insert>
+<!-- 
+獲取用戶的所有信息
+ -->
+ <select id="getListAboutOrder" parameterType="com.swpu.sharebook.entity.Order" resultMap="order">
+ 	select*from `order`,book,user
+ 		<where> 
+ 			<choose>
+ 			<when test="id !=null">
+ 				order.id=#{id} 
+ 			</when>
+ 			<!-- 注意时间不要写为不等于字符串否则会出错的 -->
+ 			<when test="orderTime !=null ">
+ 				 and orderTime=#{orderTime}
+ 			</when>
+ 			<!--  <when test="orderStatus !=null ">
+ 			     and orderStatus=#{orderStatus}
+ 			</when>  -->
+ 			<!-- <when test="book.bId !=null  ">
+ 				and bId=#{book.bId}
+ 			</when> -->
+ 			<when test="user!=null and user.id !=null ">
+ 				and userId=#{user.id}
+ 			</when>
+ 			<when test="distrbutionId !=null ">
+ 				and distrbutionId=#{distrbutionId}
+ 			</when>
+ 		<!-- 
+ 			<when test="orderBool !=null  ">
+ 			 	and orderBool=#{orderBool}
+ 			</when> 
+ 			-->
+ 		<!--	<when test="bookAccount!=null ">
+ 				and bookAccount=#{bookAccount}
+ 			</when>-->
+ 			</choose>
+ 			and  order.bId=book.bId and userId=user.id
+ 		</where>
+ </select>
+ <!-- 通过id查询订单 -->
+ <select id="getOrderById" parameterType="java.lang.Integer" resultMap="order">
+select*from `order`,book,user where(order.id=#{id} and order.bId=book.bId and userId=user.id)
+ </select>
+ <!-- 更新数据库的中order信息的状态和时间 -->
+ <update id="updateOrder"  parameterType="com.swpu.sharebook.entity.Order">
+ 		update `order`
+ 		<trim prefix="set" suffixOverrides=",">
+  <if test="orderTime !=null  "> orderTime=#{orderTime},</if>
+  <if test="orderStatus !=null  ">orderStatus=#{orderStatus},</if>
+  <if test="book!=null and book.bId !=null ">bId=#{book.bId},</if>
+  <if test="user!=null and user.id !=null  ">userId=#{user.id},</if>
+  <if test="distrbutionId !=null ">distrbutionId=#{distrbutionId},</if>
+  <if test="orderBool !=null  ">orderBool=#{orderBool},</if>
+  <if test="bookAccount!=null and bookAccount!='' ">bookAccount=#{bookAccount},</if>
+  <if test="isPay!=null">isPay=#{isPay}</if>
+ </trim> where(order.id=#{id})
+ </update>
+ <select id="getListAoubtUserOrder" parameterType="com.swpu.sharebook.entity.Order" resultMap="order">
+ select *from `order`,user,book where(userId=#{user.id} and orderStatus=#{orderStatus} and order.bId=book.bId and userId=user.id)
+ </select>
+</mapper>

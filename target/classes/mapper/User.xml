@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.swpu.sharebook.mapper.UserMapper">
+	<resultMap type="com.swpu.sharebook.entity.User"
+		id="UserResult">
+		<result column="id" property="id" />
+		<result column="userName" property="userName" />
+		<result column="studentId" property="studentId" />
+		<result column="wechatNumber" property="wechatNumber" />
+		<result column="password" property="password" />
+		<result column="dirmitoryNumber" property="dirmitoryNumber" />
+		<result column="integration" property="integration" />
+		<result column="headPortrait" property="headPortrait"/>
+		<result column="deliveManGrade" property="deliveManGrade"/>
+		<!-- 外键链接多表查询 使用assocation标签 -->
+		<association property="role" column="r_id "
+			javaType="com.swpu.sharebook.entity.Role">
+			<id column="roleId" property="rId" />
+			<result column="roleName" property="roleName" />
+		</association>
+	</resultMap>
+	<sql id="select*">
+		select *from
+	</sql>
+	<select id="getUserById" parameterType="java.lang.Integer"
+		resultMap="UserResult">
+		<include refid="select*"></include>
+		user,role where user.id=#{id} and roleId=role.r_id
+	</select>
+	<insert id="regester">
+		INSERT INTO user ( userName, studentId, wechatNumber, password,
+		dirmitoryNumber )
+		VALUES
+		(
+		#{userName},#{studentId},#{wechatNumber},#{password},#{dirmitoryNumber})
+	</insert>
+	<update id="update">
+		UPDATE user
+		<set>
+                <if test="userName!=null and userName!='' ">
+                    userName=#{userName},
+                </if>
+             <if test="studentId!=null and studentId!='' ">
+                    studentId=#{studentId},
+                </if>
+               <if test="wechatNumber!=null and wechatNumber!='' ">
+                    wechatNumber=#{wechatNumber},
+                </if> 
+                <if test="password !=null and password!='' ">
+                	password=#{password},
+                </if>
+                <if test="dirmitoryNumber!=null and dirmitoryNumber!='' ">
+                dirmitoryNumber=#{dirmitoryNumber},
+                </if>
+               <if test="role !=null and (role.rId) !=null">
+                	roleId=#{role.rId},
+                </if> 
+                <if test="integration!=null ">
+                	integration=#{integration}
+                </if>
+                <if test="deliveManGrade !=null and deliveManGrade!=0">
+					deliveManGrade=#{deliveManGrade}
+				</if>
+				<if test="headPortrait !=null and headPortrait!='' ">
+					headPortrait=#{headPortrait}
+				</if>
+          </set>
+		 where(id=#{id})
+	</update>
+	<!-- 通过用户名和密码查询用户 -->
+	<select id="getUserByNameAndPssword"
+		parameterType="java.util.Map" resultMap="UserResult">
+		select *from user,role where(userName=#{userName} and password=#{password}
+		and roleId=role.role.r_id)
+	</select>
+	<!-- 第二种方式有问题 -->
+	<!-- <select id="getUserByNameAndPassword2"resultMap="UserResult" parameterType="java.lang.String"> 
+		select *from user,role where(userName=#{userName} and password=#{password} 
+		and roleId=role.id) </select> -->
+	<!-- 修改用户积分问题 -->
+	<update id="updateIntegration" parameterType="java.lang.Integer">
+		update user set integration=#{integration} where(id=#{id});
+	</update>
+	<!-- 通过用户id来获取用户积分 -->
+	<select id="getIntegration" parameterType="java.lang.Integer"
+		resultType="java.lang.Integer">
+		select integration from user where(id=#{id});
+	</select>
+	<!-- 获取配送员的所有用户值通过积分按照从大到小的顺序 -->
+	<select id="sendUsers" resultMap="UserResult">
+	SELECT
+	* 
+FROM
+user,role
+WHERE
+	roleId = 4 and roleId=role.r_id
+ORDER BY
+	deliveManGrade DESC
+	</select>
+	
+<!-- 批量获取用户 -->
+<select id="getBenchUsers" resultMap="UserResult" parameterType="java.lang.Integer">
+	select *from user,role where user.id in  <foreach collection="list" item="userId" open="(" close=")" separator=",">
+   #{userId} and roleId=role.r_id
+   </foreach>
+</select>
+</mapper>
