@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.swpu.sharebook.mapper.BookSourcesMapper">
+	<insert id="addBookSources" parameterType="com.swpu.sharebook.entity.BookSource" useGeneratedKeys="true" keyProperty="id">
+		insert into booksource (sourceTime,userId,bId,bookAccount) values(#{sourceTime},#{userId},#{book.bId},#{bookAccount});
+	</insert>
+	<resultMap type="com.swpu.sharebook.entity.BookSource" id="bookSources">
+		<result column="id" property="id"/>
+		<result column="sourceTime" property="sourceTime"/>
+		<result column="userId" property="userId"/>
+<!-- 		<result column="bId" property="bId"/> -->
+		<result column="boolPass" property="boolPass"/>
+		<result column="bookAccount" property="bookAccount"/>
+		<association property="book" javaType="com.swpu.sharebook.entity.Book" column="bId">
+		<id property="bId" column="bId"/>
+		<result column="bName" property="bName"/>
+<result column="bookPbulish" property="bPublish"/>
+<result column="bookIntroduction" property="introduction"/>
+<result column="writer" property="writer"/>
+<result column="bookOtherImportantPath" property="bookOtherImportantPath"/>
+		</association>
+	</resultMap>
+	<!-- 查找所有未被审核的信息 -->
+	<select id="getBookSource" resultMap="bookSources" parameterType="java.lang.Integer">
+		select *from booksource ,book where(boolPass=#{boolPass} and booksource.bId=book.bId)
+	</select>
+	<!-- 查看指定id的表 -->
+	<select id="getABookSource" parameterType="java.lang.Integer" resultMap="bookSources">
+		select *from booksource,book where(id=#{sourcesId} and booksource.bId=book.bId)
+	</select>
+	<!-- 更新用户信息 -->
+	<!--
+		传入对象
+	 -->
+	<update id="auditUpdateBookSource" parameterType="com.swpu.sharebook.entity.BookSource">
+	 UPDATE booksource
+ <trim prefix="set" suffixOverrides=",">
+  <if test="sourceTime!=null">sourceTime=#{sourceTime},</if>
+  <if test="userId!=null and userId!='' ">userId=#{userId},</if>
+  <if test="(book.bId)!=null and (book.bId)!='' ">bId=#{book.bId},</if>
+  <if test="boolPass!=null and boolPass!='' ">boolPass=#{boolPass},</if>
+  <if test="bookAccount!=null ">bookAccount=#{bookAccouont},</if>
+ </trim>
+ where(id=#{id})
+	</update>
+</mapper>

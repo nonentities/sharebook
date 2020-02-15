@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<mapper namespace="com.swpu.sharebook.mapper.BookMapper">
+<!-- 
+	获取所有的书籍信息 ，包含书籍来源，书籍来源的用户id
+-->
+<resultMap type="com.swpu.sharebook.entity.Book" id="book">
+<result column="bId" property="bId"/>
+<result column="bName" property="bName"/>
+<result column="bookPbulish" property="bPublish"/>
+<result column="bookIntroduction" property="introduction"/>
+<result column="writer" property="writer"/>
+<result column="bookOtherImportantPath" property="bookOtherImportantPath"/>
+<result column="bookAccount" property="bookAccount"/>
+</resultMap>
+<!-- <resultMap type="com.bookShare.startBookShare.entity.Book" id="bookList">
+<result column="bId" property="bId"/>
+<result column="bName" property="bName"/>
+<result column="bookPbulish" property="bPublish"/>
+<result column="bookIntroduction" property="introduction"/>
+<result column="writer" property="writer"/>
+<result column="bookOtherImportantPath" property="bookOtherImportantPath"/>
+<result column="bookAccount" property="bookAccount"/> -->
+<!--
+ 外键链接多表查询
+ 使用assocation标签
+ -->
+<!-- <association property="bookSource" column="id" javaType="com.bookShare.startBookShare.entity.BookSource">
+<id column="id" property="id"/>
+<result column="sourceTime" property="sourceTime"/>
+<result column="userId" property="userId"/>
+</association>
+</resultMap> 
+-->
+<!-- 定制sql语句 -->
+	<sql id="selectAll">select *from book </sql>
+	<sql id="selectAllByOnlyAParam"><include refid="selectAll"></include>  
+		where ${column}=#{value} 
+	</sql>
+<!-- 通过用户名获取用户书籍原来的方式
+<select id="getBookByName" parameterType="java.lang.String" resultMap="book">
+	<include refid="selectAll"></include> where( bName=#{bName} and <include refid="connectBookAndBookSource"></include>)
+</select>
+ -->
+<!--
+ 现在的方式
+ 以后主要是字符串的数据都可以直接传入对应的字段名Map<String,String>
+ 第一个key是column,value ：字段名
+ 第二个Key是value，value对应的是需要查询的参数
+ -->
+ <select id="getBookByName" parameterType="java.lang.String" resultMap="book">
+	<include refid="selectAllByOnlyAParam"></include>
+</select>
+<!-- 通过作者获取用户书籍 -->
+<select id="getBookByWriterName" parameterType="java.lang.String" resultMap="book">
+<include refid="selectAllByOnlyAParam"></include>
+</select>
+<!-- 插入书籍到数据库 --> 
+<insert id="addBook" parameterType="com.swpu.sharebook.entity.Book" useGeneratedKeys="true" keyProperty="bId">
+INSERT INTO book ( bName, bookPbulish, bookIntroduction, writer, bookOtherImportantPath,bookAccount)
+VALUES
+	(
+#{bName},#{bPublish},#{introduction},#{writer},#{bookOtherImportantPath},#{bookAccount})
+</insert>
+<!-- 
+更新book操作 
+使用动态sql标记，可以直接定义为通用的方法，效率偏低
+-->
+<update id="updateBook"  parameterType="com.swpu.sharebook.entity.Book">
+ UPDATE book
+ <trim prefix="set" suffixOverrides=",">
+  <if test="bName!=null and bName !='' ">bName=#{bName},</if>
+  <if test="bPublish!=null and bPublish !='' ">bookPbulish=#{bPublish},</if>
+  <if test="introduction!=null and introduction !='' ">bookIntroduction=#{introduction},</if>
+  <if test="bookOtherImportantPath!=null and bookOtherImportantPath !='' ">bookOtherImportantPath=#{bookOtherImportantPath},</if>
+  <if test="bookAccount!=null and bookAccount!='' ">bookAccount=#{bookAccount}</if>
+ </trim>
+ WHERE bId=#{bId} 
+<!--  update book set bookAccount=#{bookAccount} where(bId=#{bId}) -->
+</update>
+<!-- 通过书名查找书籍z中的任意整形 -->
+<select id="getBookByNameReturnInt" parameterType="java.lang.String" resultType="java.lang.Integer">
+	select bId from book where ${column}=#{value};
+</select>
+<!-- 通过书籍id返回book中的任意整形 -->
+<select id="getBookReturnInt" parameterType="java.lang.Object" resultType="java.lang.Integer">
+	select ${result} from book where ${column}=#{value}
+</select>
+<select id="getBookById" parameterType="java.lang.Integer" resultMap="book">
+	select * from book where(bId=#{bId})
+</select>
+<!-- 查询书籍的方法能够匹配任意书籍 -->
+<select id="selectBook" parameterType="com.swpu.sharebook.entity.Book" resultMap="book">
+	select *from book
+	<where>
+	<choose>
+		<when test="bName !='' and bName != null">
+		bName=#{bName}
+		</when>
+		<when test="bPublish !='' and bPublish != null ">
+		 and bookPbulish=#{bPublish}
+		</when>
+		<when test="introduction !='' and introduction !=null">
+		and bookIntroduction=#{introduction}
+		</when>
+		<when test="writer !='' and writer !=null">
+		and writer=#{writer}
+		</when>
+		<when test="bookOtherImportantPath !='' and bookOtherImportantPath !=null">
+		and bookOtherImportantPath=#{bookOtherImportantPath}
+		</when>
+		<otherwise>
+		</otherwise>
+	</choose>
+	</where>
+</select>
+<!-- 通过关键字搜索 -->
+<select id="getBookByKey" parameterType="com.swpu.sharebook.entity.Book" resultMap="book">
+select *from book 
+<where>
+	<choose>
+		<when test="bName !='' and bName != null">
+		 <bind name="bName" value="'%' + bName + '%'" />
+		bName like #{bName}
+		</when>
+		<when test="bPublish !='' and bPublish !=null ">
+		<bind name="bPublish" value="'%' + bPublish + '%'" />
+		 and bookPbulish like #{bPublish}
+		</when>
+		<when test="introduction !='' and introduction !=null">
+		<bind name="introduction" value="'%' + introduction + '%'" />
+		and bookIntroduction like #{introduction}
+		</when>
+		<when test="writer !='' and writer !=null">
+		 <bind name="writer" value="'%' + writer + '%'" />
+		and writer like #{writer}
+		</when>
+		<when test="bookOtherImportantPath !='' and bookOtherImportantPath !=null">
+		and bookOtherImportantPath=#{bookOtherImportantPath}
+		</when>
+		<otherwise>
+		</otherwise>
+	</choose>
+	</where>
+</select>
+<!-- 批量查询书籍 -->
+<select id="getBookBeanch" resultMap="book" parameterType="java.lang.Integer" >
+select *from book where bId in
+   <foreach collection="list" item="bId" open="(" close=")" separator=",">
+   #{bId}
+   </foreach>
+</select>
+</mapper>

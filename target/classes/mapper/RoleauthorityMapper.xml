@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swpu.sharebook.mapper.RoleauthorityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.swpu.sharebook.entity.Roleauthority">
+        <id column="roleId" property="roleId" />
+        <result column="authorityId" property="authorityId" />
+        <result column="createTime" property="createTime" />
+        <result column="cancelTime" property="cancelTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        roleId, authorityId, createTime, cancelTime
+    </sql>
+
+</mapper>
