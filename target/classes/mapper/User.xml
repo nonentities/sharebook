@@ -72,7 +72,7 @@
 	<select id="getUserByNameAndPssword"
 		parameterType="java.util.Map" resultMap="UserResult">
 		select *from user,role where(userName=#{userName} and password=#{password}
-		and roleId=role.role.r_id)
+		and roleId=role.r_id)
 	</select>
 	<!-- 第二种方式有问题 -->
 	<!-- <select id="getUserByNameAndPassword2"resultMap="UserResult" parameterType="java.lang.String"> 

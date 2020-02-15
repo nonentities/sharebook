@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="068ae6b4-30ea-4738-a683-2ee4d6d12b20" name="Default Changelist" comment="我把刚才需要更新的都改了">
+    <list default="true" id="068ae6b4-30ea-4738-a683-2ee4d6d12b20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/shiro/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/shiro/config/ShiroConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/config/ShiroConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/config/ShiroConfig.class" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +34,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -39,14 +44,10 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_TAGS">
-      <GitPushTagMode>
-        <option name="argument" value="--tags" />
-        <option name="title" value="All" />
-      </GitPushTagMode>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-80" />
@@ -54,9 +55,8 @@
     <option name="width" value="1750" />
     <option name="height" value="980" />
   </component>
-  <component name="ProjectId" id="1XqMF1jK9jnHYJSP3NaL7MnbVuu" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
@@ -64,7 +64,6 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -79,19 +78,17 @@
       <recent name="F:\mmqGHtmlAndTxt\MMQbookShare\src\main\resources\mapper" />
     </key>
   </component>
-  <component name="RestServicesNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="Found 22 services " type="fcff1e1b:RestServiceStructure$RootNode" />
-        </path>
-        <path>
-          <item name="Found 22 services " type="fcff1e1b:RestServiceStructure$RootNode" />
-          <item name="shareBook" type="c588b436:RestServiceStructure$ProjectNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="SharebookApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
@@ -113,18 +110,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -138,7 +123,6 @@
       <workItem from="1581414889300" duration="218000" />
       <workItem from="1581415138564" duration="500000" />
       <workItem from="1581584918873" duration="6323000" />
-      <workItem from="1581769068649" duration="249000" />
     </task>
     <task id="LOCAL-00001" summary="修改了代码做测试">
       <created>1581415371127</created>
@@ -186,24 +170,6 @@
     <MESSAGE value="我修改了借阅书籍模块" />
     <MESSAGE value="我把刚才需要更新的都改了" />
     <option name="LAST_COMMIT_MESSAGE" value="我把刚才需要更新的都改了" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="572" y="215" key="CommitChangelistDialog2" timestamp="1581769193912">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="572" y="215" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581769193912" />
-    <state x="754" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581769167125">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="754" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1581769167125" />
-    <state x="684" y="322" key="git4idea.merge.GitPullDialog" timestamp="1581769305842">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="684" y="322" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581769305842" />
-    <state x="610" y="364" key="git4idea.ui.GitUnstashDialog" timestamp="1581769186527">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="610" y="364" key="git4idea.ui.GitUnstashDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581769186527" />
   </component>
   <component name="masterDetails">
     <states>

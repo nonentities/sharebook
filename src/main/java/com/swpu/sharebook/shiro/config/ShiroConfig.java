@@ -98,12 +98,14 @@ public class ShiroConfig {
         shiroFilter.setFilters(filters);
 
         Map<String, String> filterChain = new LinkedHashMap<>();
+        /*filterChain.put("/usersControl/register", "anon");
         filterChain.put("/usersControl/register", "anon");
         filterChain.put("/usersControl/getVerifyCodeBySession", "anon");
         filterChain.put("/bookBaseControllectBook", "anon");
         filterChain.put("/bookBaseControl/getBookByKey", "anon");
         filterChain.put("/**", "jwtFilter");
 
+*/      filterChain.put("/**", "anon");
         shiroFilter.setFilterChainDefinitionMap(filterChain);
 
         shiroFilter.setSecurityManager(securityManager);
