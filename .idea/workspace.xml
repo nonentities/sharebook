@@ -193,6 +193,12 @@
     <MESSAGE value="文件上传" />
     <option name="LAST_COMMIT_MESSAGE" value="文件上传" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="754" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581945319938">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="754" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1581945319938" />
+  </component>
   <component name="masterDetails">
     <states>
       <state key="ArtifactsStructureConfigurable.UI">

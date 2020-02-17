@@ -16,7 +16,7 @@ import java.util.Set;
 
 @RestController
 @CrossOrigin("*")
-public class AvatarController {
+public class FileController {
 
 
     @PostMapping("/upload")
