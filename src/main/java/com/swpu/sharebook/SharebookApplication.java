@@ -13,6 +13,6 @@ import org.springframework.context.annotation.ComponentScan;
 public class SharebookApplication {
     public static void main(String[] args) {
         SpringApplication.run(SharebookApplication.class, args);
-
+System.out.println("mmmq");
     }
 }
