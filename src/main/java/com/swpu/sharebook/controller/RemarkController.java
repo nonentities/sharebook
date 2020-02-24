@@ -4,6 +4,8 @@ import com.swpu.sharebook.entity.RemarkToBook;
 import com.swpu.sharebook.entity.RemarkToDeveliver;
 import com.swpu.sharebook.service.RemarkService;
 import com.swpu.sharebook.util.returnvalue.ResponseResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,21 +23,29 @@ public class RemarkController {
  */
 @Resource
 private RemarkService remarkService;
-public ResponseResult addToBookRemark(@Valid RemarkToBook remarkToBook){
+@PostMapping("addToBookRemarkToBook")
+public ResponseResult addToBookRemark( RemarkToBook remarkToBook){
 
     return remarkService.addToBookRemark(remarkToBook);
 }
-public ResponseResult addToDeveliverRemark(@Valid RemarkToDeveliver remarkToDeveliver){
+@PostMapping("addToDeveliverRemark")
+public ResponseResult addToDeveliverRemark(RemarkToDeveliver remarkToDeveliver){
     return remarkService.addToDeveliverRemark(remarkToDeveliver);
 }
-    public ResponseResult selectBookRemark(){
-    return null;
-}
-    /**
+/**
      * 查询书籍的评价信息
      * @return
      */
-    public ResponseResult selectDeveliverRemark(){
-    return null;
+//    public ResponseResult selectBookRemark(Integer bId){
+//
+//     return remarkService.selectBookRemark(bId);
+//}
+
+/**
+ * 获取书籍评价详情
+ */
+@GetMapping("selectRemarkToBook")
+public ResponseResult selectRemarkToBook(Integer bId){
+    return remarkService.selectRemarkToBook(bId);
 }
 }

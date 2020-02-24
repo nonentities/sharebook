@@ -39,7 +39,6 @@ public class BorringStatus implements Serializable {
     /**
      * 用户借阅状态
      */
-    @TableField("borrwingStatus")
     private Boolean borrwingStatus;
 
     /**

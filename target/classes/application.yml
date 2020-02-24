@@ -1,18 +1,18 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3308/booksharesystem?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/booksharesystem?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=true
     username: root
-    password: root
+    password: manmeng
   redis:
     host: 120.78.214.227
     port: 6379
     password: manmeng
 druid:
   driver-class: com.mysql.jdbc.Driver
-  url: jdbc:mysql://127.0.0.1:3308/booksharesystem?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+  url: jdbc:mysql://127.0.0.1:3306/booksharesystem?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=true
   user: root
-  password: root
+  password: manmeng
   initial-size: 20
   min-idle: 20
   max-active: 200

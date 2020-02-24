@@ -11,12 +11,15 @@
 <result column="orderBool" property="orderBool"/>
 <result column="bookAccount" property="bookAccount"/>
 <result column="isPay" property="isPay"/>
+	<result column="returnTime" property="returnDate"/>
+	<result column="sendStatus" property="sendStatus"/>
 <association property="book" column="bId" javaType="com.swpu.sharebook.entity.Book">
 <id column="bId" property="bId"/>
 <result column="bName" property="bName"/>
 <result column="bookPbulish" property="bPublish"/>
 <result column="bookIntroduction" property="introduction"/>
 <result column="writer" property="writer"/>
+	<result column="bookPrice" property="bookPrice"/>
 <result column="bookOtherImportantPath" property="bookOtherImportantPath"/>
 </association>
 <association property="user" column="userId" javaType="com.swpu.sharebook.entity.User">
@@ -27,6 +30,22 @@
 		<result column="dirmitoryNumber" property="dirmitoryNumber" />
 </association>
 </resultMap>
+	<resultMap id="onlyOrder" type="com.swpu.sharebook.entity.Order">
+		<id column="id" property="id"/>
+		<result column="orderTime" property="orderTime"/>
+		<result column="orderStatus" property="orderStatus"/>
+		<result column="distrbutionId" property="distrbutionId"/>
+		<result column="orderBool" property="orderBool"/>
+		<result column="bookAccount" property="bookAccount"/>
+		<result column="isPay" property="isPay"/>
+		<association property="book" column="bId" javaType="com.swpu.sharebook.entity.Book">
+			<id column="bId" property="bId"/>
+			<result column="bookPrice" property="bookPrice"/>
+		</association>
+		<association property="user" column="userId" javaType="com.swpu.sharebook.entity.User">
+			<id column="userId" property="id"/>
+		</association>
+	</resultMap>
 <!-- 插入订单的语句 -->
 <insert id="addOrder" parameterType="com.swpu.sharebook.entity.Order"  useGeneratedKeys="true" keyProperty="id">
 INSERT INTO `order` (orderTime, orderStatus, bId, userId, distrbutionId, orderBool,bookAccount)
@@ -37,7 +56,32 @@ VALUES
 獲取用戶的所有信息
  -->
  <select id="getListAboutOrder" parameterType="com.swpu.sharebook.entity.Order" resultMap="order">
- 	select*from `order`,book,user
+	 SELECT
+	 `order`.id,
+	 orderTime,
+	 orderStatus,
+	 ORDER.bId,
+	 ORDER.userId,
+	 distrbutionId,
+	 orderBool,
+	 ORDER.bookAccount,
+	 isPay,
+	 returnTime,
+	 sendStatus,
+	 book.bId,
+	 bName,
+	 bookPbulish,
+	 bookIntroduction,
+	 bookPrice,
+	 USER.id,
+	 studentId,
+	 wechatNumber,
+	 dirmitoryNumber
+	 FROM
+	 `order`,
+	 book,
+	 borringstatus,
+	 USER
  		<where> 
  			<choose>
  			<when test="id !=null">
@@ -54,7 +98,7 @@ VALUES
  				and bId=#{book.bId}
  			</when> -->
  			<when test="user!=null and user.id !=null ">
- 				and userId=#{user.id}
+ 				and order.userId=#{user.id}
  			</when>
  			<when test="distrbutionId !=null ">
  				and distrbutionId=#{distrbutionId}
@@ -68,12 +112,48 @@ VALUES
  				and bookAccount=#{bookAccount}
  			</when>-->
  			</choose>
- 			and  order.bId=book.bId and userId=user.id
+			AND `order`.bId = book.bId
+			AND ORDER.userId = USER.id
+			AND ORDER.userId = borringstatus.userId
+			AND ORDER.bId = borringstatus.bId
  		</where>
  </select>
  <!-- 通过id查询订单 -->
  <select id="getOrderById" parameterType="java.lang.Integer" resultMap="order">
-select*from `order`,book,user where(order.id=#{id} and order.bId=book.bId and userId=user.id)
+SELECT
+	`order`.id,
+	orderTime,
+	orderStatus,
+	ORDER.bId,
+	ORDER.userId,
+	distrbutionId,
+	orderBool,
+	ORDER.bookAccount,
+	isPay,
+	returnTime,
+	sendStatus,
+	book.bId,
+	bName,
+	bookPbulish,
+	bookIntroduction,
+	bookPrice,
+	USER.id,
+	studentId,
+	wechatNumber,
+	dirmitoryNumber
+FROM
+	`order`,
+	book,
+	borringstatus,
+USER
+WHERE
+	(
+	`order`.id = #{id}
+	AND `order`.bId = book.bId
+	AND ORDER.userId = USER.id
+	AND ORDER.userId = borringstatus.userId
+	AND ORDER.bId = borringstatus.bId
+	)
  </select>
  <!-- 更新数据库的中order信息的状态和时间 -->
  <update id="updateOrder"  parameterType="com.swpu.sharebook.entity.Order">
@@ -90,6 +170,92 @@ select*from `order`,book,user where(order.id=#{id} and order.bId=book.bId and us
  </trim> where(order.id=#{id})
  </update>
  <select id="getListAoubtUserOrder" parameterType="com.swpu.sharebook.entity.Order" resultMap="order">
- select *from `order`,user,book where(userId=#{user.id} and orderStatus=#{orderStatus} and order.bId=book.bId and userId=user.id)
+SELECT
+	`order`.id,
+	orderTime,
+	orderStatus,
+	ORDER.bId,
+	ORDER.userId,
+	distrbutionId,
+	orderBool,
+	ORDER.bookAccount,
+	isPay,
+	returnTime,
+	sendStatus,
+	book.bId,
+	bName,
+	bookPbulish,
+	bookIntroduction,
+	bookPrice,
+	USER.id,
+	studentId,
+	wechatNumber,
+	dirmitoryNumber
+FROM
+	`order`,
+	book,
+	borringstatus,
+USER
+WHERE
+	(
+	`order`.userId=#{user.id} and orderStatus=#{orderStatus}
+	AND `order`.bId = book.bId
+	AND ORDER.userId = USER.id
+	AND ORDER.userId = borringstatus.userId
+	AND ORDER.bId = borringstatus.bId
+	)
  </select>
+	<!--
+	判断订单是否被支付，如果被支付就不能进行处理
+	-->
+	<select id="getIsPay" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select isPay  from `order`where(id=#{orderId})
+	</select>
+	<!--
+	判断订单是否被取消
+	-->
+
+	<select id="getOrderStatus" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select orderStatus  from `order`where(id=#{orderId})
+	</select>
+	<!--
+	修改用户评论信息
+	-->
+	<update id="updateBool" parameterType="java.lang.Object">
+		update `order` set orderBool=#{orderBool} where (id=#{id})
+	</update>
+	<!--
+	获取存粹的order
+	-->
+	<select id="getOrderByIdOnlyOrder" parameterType="java.lang.Integer" resultMap="onlyOrder">
+		SELECT
+	`order`.id,
+	orderTime,
+	orderStatus,
+	ORDER.bId,
+	ORDER.userId,
+	distrbutionId,
+	orderBool,
+	ORDER.bookAccount,
+	isPay,
+	book.bId,
+	bookPrice,
+	USER.id
+FROM
+	`order`,
+	book,
+USER
+WHERE
+	(
+	`order`.id=#{id}
+	AND `order`.bId = book.bId
+	AND ORDER.userId = USER.id
+	)
+	</select>
+<!--
+	修改支付方式
+-->
+	<update id="updatePay" parameterType="java.lang.Object" >
+		update `order` set isPay=#{isPay} where id=#{id}
+	</update>
 </mapper>

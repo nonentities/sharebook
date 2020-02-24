@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface UserOrderStatusMapper {
-	//添加状态信息
+    //添加状态信息
 public Integer addStatus(BorringStatus borringStatus);
 //通过逐渐生成list
 public List<BorringStatus> selectBorringStatus(BorringStatus borringStatus);

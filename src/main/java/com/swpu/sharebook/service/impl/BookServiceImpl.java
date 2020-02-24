@@ -101,10 +101,6 @@ public class BookServiceImpl implements BookService {
 	@Transactional
 	@Override
 	public ResponseResult auditBookSource(Integer sourceId) {
-		/**
-		 * 这里获取user会出现数据的脏读 目前有待解决，其他都实现完成
-		 */
-
 		Integer userId=UserUtil.getUserId();
 
 		Map<String, Integer> map = new HashMap<>();
@@ -121,13 +117,7 @@ public class BookServiceImpl implements BookService {
 		bookSource.setBoolPass(userId);
 		bookSource.setSourceTime(LocalDateTime.now());
 		bookSource.setId(sourceId);
-		// 必须写一个空的书籍在里面否则会爆出空指针异常
-		bookSource.setBook(new Book());
 		bookSourcesMapper.auditUpdateBookSource(bookSource);
-		// 将原来的用户积分+3；
-		// 判断是否被审核
-		// 是：将对应的书籍源表的boolpass改为当前审核人的id，将时间改为当前时间，将捐赠人的积分+3，，将审核人的积分+1,书籍+1
-		// System.out.println("bookSource2.getBid" + bookSource2.getbId());
 		 Book book = bookMapper.getBookById(bookSource2.getBook().getBId());
 		// 获取书籍的id，书籍数量+数量
 		 Integer bookAccount = book.getBookAccount() + bookSource2.getBookAccount();
@@ -178,7 +168,7 @@ public class BookServiceImpl implements BookService {
 		}
 		// 循环遍历出来，并操作
 		// 创建一个对象：Map
-		Map<BookSource, Book> mapBook = new HashMap<>();
+		/*Map<BookSource, Book> mapBook = new HashMap<>();
 		for (int i = 0; i < orderList.size(); i++) {
 			Book bookTemp = null;
 			// bookTemp.setbId(orderList.get(i).getbId());
@@ -188,8 +178,8 @@ public class BookServiceImpl implements BookService {
 			// }
 			// 将数据放入到map中
 			mapBook.put(orderList.get(i), bookTemp);
-		}
-		return ResponseResult.SUCCESS(mapBook);
+		}*/
+		return ResponseResult.SUCCESS(orderList);
 	}
 
 	@Override
@@ -248,5 +238,24 @@ public class BookServiceImpl implements BookService {
 		// 获取用户的配送员的信息
 		List<User> sendsUsers = userMapper.sendUsers();
 		return ResponseResult.SUCCESS(sendsUsers);
+	}
+
+	@Override
+	public ResponseResult updateBookPrice(Integer id, Integer price) {
+		if(Tools.isNull(id)){
+			return ResponseResult.ERROR(340,"书籍id不能为空");
+		}
+		if(Tools.isNull(price)){
+			return ResponseResult.ERROR(341,"书籍价格不能为空");
+		}
+		if(price>=1&&price<=5){
+			return ResponseResult.ERROR(342,"书籍价格必须介于1到5之间");
+		}
+		//更新用户的书籍
+		Map<String ,Object> map=new HashMap<>();
+		map.put("bId",id);
+		map.put("bookPrice",price);
+		bookMapper.updateBookPrice(map);
+		return ResponseResult.SUCCESSM("书籍价格修改成功");
 	}
 }

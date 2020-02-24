@@ -31,8 +31,7 @@ public interface OrderService {
 	 * @auditOrder
 	 * 从当前uid下找到对应的用户的id获取配送员的订单
 	 * 设计思路
-	 * @1用户的积分-2*account;
-	 * @2配送员积分+1*account:
+	 * 配送员的积分+2即可
 	 * @3订单时间修改为当前时间，订单状态修改为已经配送
 	 */
 	public ResponseResult auditOrder(Order order);
@@ -70,8 +69,13 @@ public interface OrderService {
 	public ResponseResult returnBook(Order order);
 	/**
 	 * 用户购买功能
-	 * @1修改用户isPay，修改用户订单时间，更新用户积分
+	 * 1判断用的购买方式
+	 * 1：预定：积分不变
+	 * 2：借阅：
+	 * 			1自取：用户积分减少account*bookPrice
+	 *  		2配送:：用户积分减少account*bookPrice;
+	 *  	重点是在于用户积分的问题上面处理
 	 */
-	public ResponseResult payOrder(Order order,boolean flag);
+	public ResponseResult payOrder(Integer id, boolean flag);
 
 }

@@ -30,5 +30,6 @@ public class Book implements Serializable {
     @Min(value = 1)
     @Max(value = 10)
     private Integer bookAccount;
-
+    //书籍价格
+    private Integer bookPrice;
 }

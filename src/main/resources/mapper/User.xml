@@ -105,4 +105,20 @@ ORDER BY
    #{userId} and roleId=role.r_id
    </foreach>
 </select>
+	<!--
+		鏌ョ湅閰嶉€佸憳绉垎闂
+	-->
+	<select id="getSendGrade" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select deliveManGrade from user where(id=#{id})
+	</select>
+	<!--
+		鏇存柊閰嶉€佸憳淇¤獕绉垎
+	-->
+	<update id="updateGrade" parameterType="java.lang.Integer">
+		update user set deliveManGrade=#{deliveManGrade} where(id=#{id});
+	</update>
+	<update id="updatePassword" parameterType="java.lang.Object">
+		update user set password=#{password} where(id=#{id})
+	</update>
+
 </mapper>

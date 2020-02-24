@@ -30,7 +30,6 @@ public class Roleauthority implements Serializable {
      */
     @TableField("authorityId")
     private Integer authorityId;
-
     /**
      * 创建时间
      */

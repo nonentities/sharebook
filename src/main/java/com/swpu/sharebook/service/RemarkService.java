@@ -12,6 +12,6 @@ public interface RemarkService {
      */
     public ResponseResult addToBookRemark(RemarkToBook remarkToBook);;
     public ResponseResult addToDeveliverRemark(RemarkToDeveliver remarkToDeveliver);
-    public ResponseResult selectBookRemark();
     public ResponseResult selectDeveliverRemark();
+    public ResponseResult selectRemarkToBook(Integer bId);
 }

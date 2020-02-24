@@ -45,8 +45,14 @@ public class OrderControl {
 		return orderService.getOrder();
 	}
 
+	/**
+	 * 取消订单，如果没有配送完成可以取消
+	 * @param order
+	 * @return
+	 */
 	@GetMapping("cancelOrder")
 	public ResponseResult cancelOrder(Order order) {
+
 		return orderService.cancelOrder(order);
 	}
 	@GetMapping("returnBook")
@@ -54,7 +60,7 @@ public class OrderControl {
 		return orderService.returnBook(order);
 	}
 	@PostMapping("payOrder")
-	public ResponseResult payOrder(Order order,boolean flag){
-		return orderService.payOrder(order,flag);
+	public ResponseResult payOrder(Integer id,boolean flag){
+		return orderService.payOrder(id,flag);
 	}
 }

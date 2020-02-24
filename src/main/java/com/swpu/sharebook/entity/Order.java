@@ -23,4 +23,6 @@ public class Order implements Serializable {
 	@Min(value = 10,message = "书籍数量必须大于一")
 	private Integer bookAccount;
 	private boolean isPay;
+	private Date returnDate;
+	private  boolean sendStatus;
 }

@@ -27,4 +27,7 @@ public interface UserMapper extends BaseMapper<User> {
     public Integer getIntegration(Integer id);
     public List<User> sendUsers();
 //    User selectById(int id);
+public Integer getSendGrade(Integer id);
+    public void updateGrade(Map<String,Integer> map);
+    public void updatePassword(Map<String,Object> map);
 }

@@ -1,5 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.swpu.sharebook.mapper.RemarkMapper">
+<insert id="addRemarkToBook" parameterType="com.swpu.sharebook.entity.RemarkToBook">
+    INSERT INTO remarktobook(orderId, userId, bId, remarkToBookContent) values(#{orderId},#{userId},#{bId},#{remarkToBookContent})
+</insert>
+    <resultMap id="remarkToBook" type="com.swpu.sharebook.entity.RemarkToBook">
+        <result column="id" property="orderId"/>
+        <result column="userId" property="userId"/>
+        <result column="bId" property="bId"/>
+    </resultMap>
+    <!--
+        通过订单id获取对应的
+    -->
+    <select id="getRemarkToBook" parameterType="java.lang.Integer" resultMap="remarkToBook">
+        SELECT id,bId,userId FROM `order`where(id=#{orderId})
+    </select>
+    <!--
+        通过订单id去评价对应的配送员
+        这里有一个but等待解决，就是用户不能对配送员进行重复评论
+    -->
 
+    <insert id="addRemarkToDeveliver" parameterType="com.swpu.sharebook.entity.RemarkToDeveliver">
+       insert into remarktodeveliver(orderid,userId,develiverManId,gradeClass) values (#{orderId},#{userId},#{develiverManId},#{gradeClass})
+    </insert>
+    <resultMap id="remarkToDeveliver" type="com.swpu.sharebook.entity.RemarkToDeveliver">
+        <result column="id" property="orderId"/>
+        <result column="userId" property="userId"/>
+        <result column="distrbutionId" property="develiverManId"/>
+    </resultMap>
+    <select id="getRemarkToDeveliver" parameterType="java.lang.Integer" resultMap="remarkToDeveliver">
+        SELECT id,distrbutionId,userId FROM `order`where(id=#{orderId})
+    </select>
+    <!--
+            对书籍评价信息结果的封装
+    -->
+    <resultMap id="remarkToBookCreateEntity" type="com.swpu.sharebook.entity.createentity.RemarkToBookCreateEntity">
+        <result column="userName" property="userName"/>
+        <result column="bName" property="bName"/>
+        <result column="remarkToBookContent" property="remarkToBookContent"/>
+
+    </resultMap>
+    <select id="getRemarkToBookCreateEntity" parameterType="java.lang.Integer" resultMap="remarkToBookCreateEntity">
+        SELECT
+	    userName,
+	    bName,
+	    remarkToBookContent from
+	    book,
+	    user,
+	    remarktobook
+	where (remarktobook.bId=#{bId} and remarktobook.bId=book.bId and remarktobook.userId=user.id)
+    </select>
+    <select id="getSendGrade" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select gradeClass from remarktodeveliver where(orderId=#{orderId})
+    </select>
 </mapper>

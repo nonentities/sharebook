@@ -15,6 +15,7 @@
 	 values(#{userId},#{bId},#{borrwingStatus},#{loanHour},#{sendStatus},#{returnTime})
 </insert>
 <select id="selectBorringStatus" parameterType="com.swpu.sharebook.entity.BorringStatus" resultMap="borringStatus">
+	/*select userId, bId,borrwingStatus,loanHour,returnTime,sendStatus from borringstatus*/
 	select *from borringstatus
 	<where>
 	 bId=#{bId} and userId=#{userId}

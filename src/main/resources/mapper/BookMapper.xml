@@ -150,4 +150,26 @@ select *from book where bId in
    #{bId}
    </foreach>
 </select>
+	<update id="updateBookPrice" parameterType="java.lang.Object">
+		update book set bookPrice=#{bookPrice} where bId=#{bId}
+	</update>
+	<!--
+    閫氳繃id鑾峰彇鐢ㄦ埛涔︾睄浠锋牸
+    -->
+	<select id="getBookPrice" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select bookPrice from book where (bId=#{bId})
+	</select>
+	<!--
+	鏇存柊涔︾睄搴撳瓨
+	-->
+	<update id="updateBookAccount" parameterType="java.lang.Integer">
+		update book set bookAccount=#{bookAccount} where(bId=#{bId})
+	</update>
+	<!--
+	鏇存柊鐢ㄦ埛涔︾睄淇℃伅
+	-->
+	<select id="getBookAccount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select bookAccount from book where(bId=#{bId})
+	</select>
+
 </mapper>

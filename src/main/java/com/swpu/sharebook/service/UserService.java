@@ -17,4 +17,17 @@ public interface UserService {
 	 * @return
 	 */
 	ResponseResult register(User user, String preVerifyCode, String configName);
+	/**
+	 * 更新用户信息
+	 * @1包含更新用户的积分
+	 */
+	public ResponseResult updateUser(User user);
+	/**
+	 * 更新用户密码
+	 */
+	public ResponseResult updatePassword(String password,String confrimPassword);
+	/**
+	 * 获取当前用户信息
+	 */
+	public ResponseResult getCurrentUser();
 }

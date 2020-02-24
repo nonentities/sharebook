@@ -145,5 +145,48 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 			return ResponseResult.ERROR(115, "注册失败出现未知错误");
 		}
 	}
-	
+	@Override
+	public ResponseResult updateUser(User user) {
+		//主要是处理密码的问题
+		//获取当前用户的id
+		user.setId(UserUtil.getUserId());
+		user.setIntegration(null);
+		//将角色置为空
+		user.setRole(null);
+		userMapper.update(user);
+		return ResponseResult.SUCCESS("修改成功",user);
+	}
+
+	@Override
+	public ResponseResult updatePassword(String password, String confrimPassword) {
+		//获取当前用户的id
+		//判断用户密码是否为空或者空格
+		if (Tools.isEmpty(password)) {
+
+			return ResponseResult.ERROR(130,"密码不能为空或者空格");
+		}
+		if (Tools.isEmpty(confrimPassword)) {
+
+			return ResponseResult.ERROR(131,"确认密码不能为空或者空格");
+
+		}
+		//对密码格式要求目前省略
+		if(!password.equals(confrimPassword)){
+			return ResponseResult.ERROR(132,"前后密码不一致");
+		}
+		Integer id=UserUtil.getUserId();
+		Map<String,Object> map=new HashMap<>();
+		map.put("id",id);
+		map.put("password",password);
+		userMapper.updatePassword(map);
+		return ResponseResult.SUCCESSM("密码修改成功");
+	}
+
+	@Override
+	public ResponseResult getCurrentUser() {
+		//获取当前用户的id
+		Integer id=UserUtil.getUserId();
+		User user=userMapper.getUserById(id);
+		return ResponseResult.SUCCESS(user);
+	}
 }

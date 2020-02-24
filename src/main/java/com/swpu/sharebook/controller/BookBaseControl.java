@@ -60,4 +60,8 @@ public ResponseResult getBookByKey(String key) {
 public ResponseResult getSendOrder() {
 	return bookService.getSendOrder();
 }
+@PostMapping("updateBookPrice")
+	public ResponseResult updateBookPrice(Integer id,Integer price){
+	return bookService.updateBookPrice(id,price);
+}
 }

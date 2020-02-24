@@ -110,5 +110,11 @@ public ResponseResult getBookByKey(String key);
 
 public ResponseResult getSendOrder();
 
-
+	/**
+	 * 更新书籍价格
+	 * @param id
+	 * @param price
+	 * @return
+	 */
+	public ResponseResult updateBookPrice(Integer id, Integer price);
 }
