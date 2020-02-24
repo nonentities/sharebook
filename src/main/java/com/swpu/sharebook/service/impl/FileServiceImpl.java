@@ -15,9 +15,10 @@ import java.io.File;
 @Service
 public class FileServiceImpl implements FileService {
 
-    @Value("${file.avatarpath}")
-    private String avatarPath;
+   /* @Value("${file.avatarpath}")
+    private String avatarPath;*/
 
+    private String avatarPath = "C:\\Users\\14581\\Desktop\\共享图书项目\\MMQbookShare\\src\\main\\resources\\file";
 
     @Autowired
     private UserMapper userMapper;
@@ -25,11 +26,18 @@ public class FileServiceImpl implements FileService {
     @Override
     public ResponseResult uploadAvatar(MultipartFile file) {
 
+
         // 获取文件名
         String fileName = file.getOriginalFilename();
 
+        String realFileName = System.currentTimeMillis() + fileName.substring(fileName.lastIndexOf("."));
+
         // 将当前时间毫秒数作为文件名
-        String filePath = avatarPath + System.currentTimeMillis() + fileName.substring(fileName.lastIndexOf("."));
+        String filePath = avatarPath + "\\" + realFileName;
+
+
+        String avatarUrl = "http://127.0.0.1:8080/file/"+ realFileName;
+
 
 
         try {
@@ -37,9 +45,9 @@ public class FileServiceImpl implements FileService {
             // 将文件写入对应位置
             file.transferTo(new File(filePath));
             // 修改用户数据
-            User user = userMapper.selectById(UserUtil.getUserId());
-            user.setHeadPortrait(filePath);
-            userMapper.update(user);
+//            User user = userMapper.selectById(UserUtil.getUserId());
+//            user.setHeadPortrait(filePath);
+//            userMapper.update(user);
         }catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("文件上传错误!");
@@ -49,6 +57,6 @@ public class FileServiceImpl implements FileService {
 
 
 
-        return ResponseResult.SUCCESS("文件上传成功",null);
+        return ResponseResult.SUCCESS("文件上传成功",avatarUrl);
     }
 }
