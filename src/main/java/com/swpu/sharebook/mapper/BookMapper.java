@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.swpu.sharebook.entity.Book;
+import com.swpu.sharebook.entity.createentity.BIdAndBookAccount;
 import com.swpu.sharebook.entity.createentity.PriceAndAccount;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -41,4 +42,8 @@ public interface BookMapper {
 	 * 更新书籍库存
 	 */
 	public void updateBookAccount(Map<String, Object> map);
+	/**
+	 * 批量更新书籍的数量
+	 */
+	public void updateBookBench(Map<Integer, BIdAndBookAccount> bIdAndBookAccountMap);
 }

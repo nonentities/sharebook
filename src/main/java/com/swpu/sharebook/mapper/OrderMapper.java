@@ -23,5 +23,9 @@ public Integer getIsPay(Integer orderId);
      * 更新用户支付方式
      */
     public void updatePay(Map<String, Object> map);
+    /**
+     * 批量更新订单数据
+     */
+    public void updateOrderBench(List<Order> orderBench);
 }
 

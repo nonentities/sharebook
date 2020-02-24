@@ -15,4 +15,5 @@ public List<BorringStatus> selectBorringStatus(BorringStatus borringStatus);
 //更新BorringStatus
 public void updateBorringStatus(BorringStatus borringStatus);
 public void delete(BorringStatus borringStatus);
+public void addStatusBench(List<BorringStatus> listBorringStatus);
 }
