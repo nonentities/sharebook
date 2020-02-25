@@ -77,5 +77,8 @@ public interface OrderService {
 	 *  	重点是在于用户积分的问题上面处理
 	 */
 	public ResponseResult payOrder(Integer id, boolean flag);
-
+/**
+ * 获取未被支付的订单
+ */
+public ResponseResult getDontPay();
 }

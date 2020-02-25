@@ -27,5 +27,9 @@ public Integer getIsPay(Integer orderId);
      * 批量更新订单数据
      */
     public void updateOrderBench(List<Order> orderBench);
+    /**
+     * 获取没有被支付的订单
+     */
+    public List<Order> getListOrderNotPay(Order order);
 }
 

@@ -63,4 +63,8 @@ public class OrderControl {
 	public ResponseResult payOrder(Integer id,boolean flag){
 		return orderService.payOrder(id,flag);
 	}
+	@GetMapping("getDontPay")
+	public ResponseResult getDontPay(){
+		return orderService.getDontPay();
+	}
 }

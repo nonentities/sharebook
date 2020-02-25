@@ -415,6 +415,20 @@ public class OrderServiceImpl implements OrderService {
 		userMapper.updateIntegration(mapInteger);
 		return ResponseResult.SUCCESSM("支付成功");
 	}
+
+	@Override
+	public ResponseResult getDontPay() {
+		User user = new User();
+		user.setId(UserUtil.getUserId());
+		// 通过用户userId获取用户订单
+		// 获取当前用户的所有订单
+		Order order = new Order();
+		order.setUser(user);
+		order.setPay(false);
+		List<Order> orderList = orderMapper.getListOrderNotPay(order);
+		return ResponseResult.SUCCESS(orderList);
+	}
+
 	public ResponseResult payBench(List<Integer> orderLists, List<Boolean> flagLists){
 		//获取用户的数据
 		if(Tools.isNull(flagLists)||flagLists.size()==0){
