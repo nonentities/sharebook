@@ -8,6 +8,7 @@ import java.io.Serializable;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.experimental.Accessors;
 
 /**
@@ -29,7 +30,6 @@ public class BorringStatus implements Serializable {
      */
     @TableId("bId")
     private Integer bId;
-
     /**
      * 用户id
      */
@@ -58,6 +58,4 @@ public class BorringStatus implements Serializable {
      */
     @TableField("sendStatus")
     private Boolean sendStatus;
-
-
 }

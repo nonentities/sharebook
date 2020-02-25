@@ -10,7 +10,6 @@ import com.swpu.sharebook.entity.BorringStatus;
 import com.swpu.sharebook.entity.Order;
 import com.swpu.sharebook.entity.User;
 import com.swpu.sharebook.entity.createentity.BIdAndBookAccount;
-import com.swpu.sharebook.entity.createentity.PriceAndAccount;
 import com.swpu.sharebook.mapper.BookMapper;
 import com.swpu.sharebook.mapper.OrderMapper;
 import com.swpu.sharebook.mapper.UserMapper;
@@ -540,6 +539,5 @@ public class OrderServiceImpl implements OrderService {
 		userOrderStatusMapper.addStatusBench(borringStatusList);
 		bookMapper.updateBookBench(mapTempBook);
 		return ResponseResult.SUCCESSM("支付成功");
-
 	}
 }

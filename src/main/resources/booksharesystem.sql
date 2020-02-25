@@ -11,7 +11,7 @@
  Target Server Version : 50528
  File Encoding         : 65001
 
- Date: 25/02/2020 10:45:24
+ Date: 25/02/2020 15:07:10
 */
 
 SET NAMES utf8mb4;
@@ -251,4 +251,27 @@ CREATE TABLE `user`  (
   `dirmitoryNumber` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `roleId` int(11) DEFAULT NULL,
   `integration` int(255) DEFAULT 20,
-  `salt` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DE
+  `salt` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `headPortrait` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `deliveManGrade` int(255) DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `roleId`(`roleId`) USING BTREE,
+  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `role` (`r_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES (1, 'mmq', '201731771141', '17746720936', 'manmeng', '555', 2, 42, NULL, NULL, 0);
+INSERT INTO `user` VALUES (2, 'mmq王钦', '201731771160', 'manmengqinggui', 'manmengqinggui', '3-324', 2, 34, NULL, NULL, 0);
+INSERT INTO `user` VALUES (3, 'mmq宋镜', '201731773259', '17746720986', 'manmengqingguimmq', '3-528', 2, 20, NULL, NULL, 17);
+INSERT INTO `user` VALUES (4, '满蒙清', '201731771259', '17746720936', 'manmengqingguimmq', '3-mmq', 2, 20, NULL, NULL, 0);
+INSERT INTO `user` VALUES (5, 'manmengqinggui', '201731771259', '17746720936', 'manmengqingguimmq', '3-mmq', 1, 20, NULL, NULL, 0);
+INSERT INTO `user` VALUES (6, 'manmengqinggui', '201731771259', '17746720936', 'manmengqingguimmq', '3-mmq', 1, 20, NULL, NULL, 0);
+INSERT INTO `user` VALUES (8, 'manmengqinggui', '201731771259', '17746720936', 'manmengqingguimmq', '3-mmq', 1, 20, NULL, NULL, 0);
+INSERT INTO `user` VALUES (9, 'manmengqinggui', '201731771259', '17746720936', 'manmengqingguimmq', '3-mmq', 1, 20, NULL, NULL, 0);
+INSERT INTO `user` VALUES (10, 'manmengqinggui', '201731771259', '17746720936', 'manmengqingguimmq', '3-mmq', 1, 20, NULL, NULL, 0);
+INSERT INTO `user` VALUES (11, 'manmengqinggui', '201731771259', '17746720936', 'manmengqingguimmqs', '3-mmq', 1, 20, NULL, NULL, 0);
+INSERT INTO `user` VALUES (12, 'manmengqinggui', '201731771259', '17746720936', 'manmengqingguimmq', '3-mmq', 1, 20, NULL, NULL, 0);
+
+SET FOREIGN_KEY_CHECKS = 1;

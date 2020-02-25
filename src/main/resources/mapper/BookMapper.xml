@@ -171,5 +171,7 @@ select *from book where bId in
 	<select id="getBookAccount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
 		select bookAccount from book where(bId=#{bId})
 	</select>
-
+<!--
+批量更新书籍的数量
+-->
 </mapper>

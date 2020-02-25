@@ -60,4 +60,14 @@ update borringstatus
  <delete id="delete" parameterType="com.swpu.sharebook.entity.BorringStatus">
  delete  from `borringstatus` where(bId=#{bId} and userId=#{userId} )
  </delete>
+	<!--批量增加用户订单状态
+	-->
+	<insert id="addStatusBench" >
+		insert into borringstatus (bId,userId,borrwintStatus,loanHour,sendStatus) values
+		<foreach collection="listBorringStatus" index="borringStatus" separator=",">
+			(
+					#{borringStatus.bId},#{borringStatus.userId},#{borringStatus.borrrwingStatus},#{borringStatus.loanHouur},#{borringStatus.sendStatus}
+			)
+		</foreach>
+	</insert>
 </mapper>
