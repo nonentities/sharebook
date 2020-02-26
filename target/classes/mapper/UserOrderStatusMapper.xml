@@ -61,12 +61,13 @@ update borringstatus
  delete  from `borringstatus` where(bId=#{bId} and userId=#{userId} )
  </delete>
 	<!--批量增加用户订单状态
+	注意index代表的是List中的索引，item才是对应的值
 	-->
 	<insert id="addStatusBench" >
-		insert into borringstatus (bId,userId,borrwintStatus,loanHour,sendStatus) values
-		<foreach collection="listBorringStatus" index="borringStatus" separator=",">
+		insert into borringstatus (bId,userId,borrwingStatus,loanHour,sendStatus) values
+		<foreach collection="listBorringStatus" index="index" item="borringStatus" separator=",">
 			(
-					#{borringStatus.bId},#{borringStatus.userId},#{borringStatus.borrrwingStatus},#{borringStatus.loanHouur},#{borringStatus.sendStatus}
+			#{borringStatus.bId},#{borringStatus.userId},#{borringStatus.borrwingStatus},#{borringStatus.loanHour},#{borringStatus.sendStatus}
 			)
 		</foreach>
 	</insert>
