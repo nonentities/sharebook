@@ -312,4 +312,13 @@ WHERE
 
 	)
 	</select>
+	<!--
+		批量更新用户订单信息
+		-->
+	<update id="updateOrderBench">
+		<foreach collection="orderLists" item="order">
+			UPDATE `order`
+			SET orderStatus = #{order.orderStatus},orderTime=#{order.orderTime},isPay=#{order.isPay} where (id=#{order.id});
+		</foreach>
+	</update>
 </mapper>

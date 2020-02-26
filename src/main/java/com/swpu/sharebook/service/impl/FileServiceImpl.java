@@ -18,7 +18,7 @@ public class FileServiceImpl implements FileService {
     @Value("${file.avatarpath}")
     private String avatarPath;
 
-    @Value("file.baseurl")
+    @Value("${file.baseurl}")
     private String fileBaseUrl;
 
 
@@ -49,7 +49,7 @@ public class FileServiceImpl implements FileService {
             // 修改用户数据
             User user = userMapper.selectById(UserUtil.getUserId());
             user.setHeadPortrait(filePath);
-            userMapper.update(user);
+            userMapper.updateById(user);
 
 
         }catch (Exception e) {
