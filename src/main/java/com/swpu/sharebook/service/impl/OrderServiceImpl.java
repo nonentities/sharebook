@@ -429,9 +429,9 @@ public class OrderServiceImpl implements OrderService {
 		return ResponseResult.SUCCESS(orderList);
 	}
 @Override
-	public ResponseResult payBench(List<Integer> orderLists){
+	public ResponseResult payBench(Integer [] orderLists){
 		//获取用户的数据
-		if(Tools.isNull(orderLists)||orderLists.size()==0){
+		if(Tools.isNull(orderLists)||orderLists.length==0){
 			return ResponseResult.ERROR(260,"您没有选中订单");
 		}
 		//创建一个Map来临时接收书籍的库存
@@ -443,9 +443,9 @@ public class OrderServiceImpl implements OrderService {
 		//获取当前用户积分
 		Integer gration=userMapper.getIntegration(UserUtil.getUserId());
 		//支付状态
-		for(int i=0;i<orderLists.size();i++){
+		for(int i=0;i<orderLists.length;i++){
 			//用order对了来接收单个的订单id
-			Integer  orderId=orderLists.get(i);
+			Integer  orderId=orderLists[i];
 			if(Tools.isNull(orderId)){
 				return ResponseResult.ERROR(261,"目前第"+(i+1)+"个i订单的id为空");
 			}
@@ -477,15 +477,10 @@ public class OrderServiceImpl implements OrderService {
 				bIdAndBookAccount.setBId(bId);
 				bIdAndBookAccount.setBookAccount(bookAccount);
 			}
-			/**
-			 * 书籍返回目前还有问题需要前端解决
-			 */
-			if(bIdAndBookAccount.getBookAccount()==0){
-				return ResponseResult.ERROR(264,"部分书籍已经借完了");
-			}
 			bIdAndBookAccount.setBookAccount(bIdAndBookAccount.getBookAccount()-account);
 			if(bIdAndBookAccount.getBookAccount()<0){
-				return ResponseResult.ERROR(265,"请核查订单，"+(i+1)+"个订单支付时出现了"+bId+"书籍库存不足");
+				String bName=bookMapper.getBNameById(bId);
+				return ResponseResult.ERROR(265,"请核查订单，"+(i+1)+"个订单支付时出现了"+bName+"书籍库存不足");
 			}
 			//更新map
 			mapTempBook.put(bId,bIdAndBookAccount);
@@ -499,7 +494,7 @@ public class OrderServiceImpl implements OrderService {
 			}
 			//书籍的价格
 			Integer price=order.getBook().getBookPrice();
-			gration=gration-(price *account);
+			gration=gration-(price * account);
 			if(gration<0){
 				return ResponseResult.ERROR(220,"您的余额不足");
 			}
@@ -508,7 +503,7 @@ public class OrderServiceImpl implements OrderService {
 			if(!distribute){
 				gration=gration-2;
 				if(gration<=0){
-					return ResponseResult.ERROR(221,"您没有足够金额支付运费了");
+					return ResponseResult.ERROR(221,"截至您提交的第"+(i+1)+"个订单会没有足够的金额支付运费");
 				}
 			}
 			BorringStatus borringStatus = new BorringStatus();

@@ -69,14 +69,7 @@ public class OrderControl {
 		return orderService.getDontPay();
 	}
 	@PostMapping("payBench")
-	public ResponseResult payOrderBench(){
-		List<Integer> list=new ArrayList<>();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(5);
-		list.add(6);
+	public ResponseResult payOrderBench(Integer[] list){
 		return orderService.payBench(list);
 	}
 }

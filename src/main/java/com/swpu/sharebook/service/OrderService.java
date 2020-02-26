@@ -86,5 +86,5 @@ public ResponseResult getDontPay();
 /***
  * 批量支付
  */
-public ResponseResult payBench(List<Integer> orderLists);
+public ResponseResult payBench(Integer[] orderLists);
 }

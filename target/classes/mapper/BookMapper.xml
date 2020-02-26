@@ -179,4 +179,10 @@ select *from book where bId in
 			update book set bookAccount =#{value.bookAccount} where(bId=#{value.bId});
 		</foreach>
 	</update>
+	<!--
+	getbookByName
+	-->
+	<select id="getBNameById" parameterType="java.lang.Integer" resultType="java.lang.String">
+		select bName from book where(bId=#{bId})
+	</select>
 </mapper>

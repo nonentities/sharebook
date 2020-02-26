@@ -5,7 +5,7 @@ spring:
     url: jdbc:mysql://120.78.214.227:3306/booksharesystem?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowMultiQueries=true
 
     username: root
-    password: manmeng
+    password: 123456
   redis:
     host: 120.78.214.227
     port: 6379
@@ -14,7 +14,7 @@ druid:
   driver-class: com.mysql.cj.jdbc.Driver
   url: jdbc:mysql://120.78.214.227:3306/booksharesystem?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowMultiQueries=true
   user: root
-  password: manmeng
+  password: 123456
   initial-size: 20
   min-idle: 20
   max-active: 200
