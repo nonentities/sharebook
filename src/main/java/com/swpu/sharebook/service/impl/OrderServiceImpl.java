@@ -1,10 +1,5 @@
 package com.swpu.sharebook.service.impl;
 
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.util.*;
-
-import javax.annotation.Resource;
 import com.swpu.sharebook.entity.Book;
 import com.swpu.sharebook.entity.BorringStatus;
 import com.swpu.sharebook.entity.Order;
@@ -13,13 +8,18 @@ import com.swpu.sharebook.entity.createentity.BIdAndBookAccount;
 import com.swpu.sharebook.mapper.BookMapper;
 import com.swpu.sharebook.mapper.OrderMapper;
 import com.swpu.sharebook.mapper.UserMapper;
+import com.swpu.sharebook.mapper.UserOrderStatusMapper;
 import com.swpu.sharebook.service.OrderService;
 import com.swpu.sharebook.shiro.util.UserUtil;
 import com.swpu.sharebook.util.Tools;
 import com.swpu.sharebook.util.returnvalue.ResponseResult;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.swpu.sharebook.mapper.UserOrderStatusMapper;
+
+import javax.annotation.Resource;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.*;
 
 
 @Service
@@ -78,9 +78,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 /*	*//**
 	 * 
-	 * @param integration
-	 * @param account
-	 * @param list
+	 * @param
+	 * @param
+	 * @param
 	 * @return
 	 *//*
 	private static Integer judgeGrades(Integer integration, Integer account, List<Order> list) {
@@ -117,7 +117,7 @@ public class OrderServiceImpl implements OrderService {
 		if (order == null) {
 			return ResponseResult.ERROR(213, "订单id不能为空的");
 		}
-		if(order.getDistrbutionId()!=UserUtil.getUserId()){
+		if(order.getDistrbutionId()!= UserUtil.getUserId()){
 			return ResponseResult.ERROR(220,"不是您的订单不能进行审核");
 		}
 		if(!order.isPay()){
@@ -157,7 +157,7 @@ public class OrderServiceImpl implements OrderService {
 		//配送成功后配送员积分+2
 		Integer grade=userMapper.getIntegration(UserUtil.getUserId())+2;
 		Map<String ,Integer> map=new HashMap<>();
-		map.put("id",UserUtil.getUserId());
+		map.put("id", UserUtil.getUserId());
 		map.put("integration",grade);
 		userMapper.updateIntegration(map);
 		return ResponseResult.SUCCESS("配送审核成功");
@@ -282,12 +282,12 @@ public class OrderServiceImpl implements OrderService {
 		 Date toDate=new Date();
 		 //书籍借阅日期
 		LocalDateTime yeDate = borringStatus.getLoanHour();
-		Integer flag=Tools.getDay(toDate,new Date(yeDate.toInstant(ZoneOffset.of("GMT+8")).toEpochMilli()) );
+		Integer flag= Tools.getDay(toDate,new Date(yeDate.toInstant(ZoneOffset.of("GMT+8")).toEpochMilli()) );
 		 //书籍的数量+account
 		 Book book=new Book();
 		 book.setBId(order.getBook().getBId());
 		 //书籍数量：
-		 Map<String, Object> map=Tools.getMap(order.getBook().getBId());
+		 Map<String, Object> map= Tools.getMap(order.getBook().getBId());
 		 Integer bookAccount=bookMapper.getBookReturnInt(map)+order.getBookAccount();
 		 book.setBookAccount(bookAccount);
 		 //更新书籍数量
@@ -314,7 +314,7 @@ public class OrderServiceImpl implements OrderService {
 		return ResponseResult.SUCCESSM("还书成功");
 	}
 	@Transactional
-	public ResponseResult payOrder(Integer id,boolean flag){
+	public ResponseResult payOrder(Integer id, boolean flag){
 		if(Tools.isNull(id)){
 			return ResponseResult.ERROR(216,"订单id不能为空");
 		}
@@ -350,7 +350,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		// 判断积分是否足够；
 		// 获取用户积分
-		Integer userId=UserUtil.getUserId();
+		Integer userId= UserUtil.getUserId();
 		//Integer gration=this.getIntergation(userId);
 		Integer gration=userMapper.getIntegration(userId);
 		//判断是否为负数
@@ -364,7 +364,7 @@ public class OrderServiceImpl implements OrderService {
 			return ResponseResult.ERROR(220,"您的余额不足以购买当前书籍");
 		}
 		//配送状态值
-		boolean distribute=Tools.isNull(order.getDistrbutionId());
+		boolean distribute= Tools.isNull(order.getDistrbutionId());
 		if(!distribute){
 			gration=gration-2;
 			if(gration<=0){
@@ -411,7 +411,7 @@ public class OrderServiceImpl implements OrderService {
 		//更新用户积分信息
 		Map<String ,Integer> mapInteger=new HashMap<>();
 		mapInteger.put("integration",gration);
-		mapInteger.put("id",UserUtil.getUserId());
+		mapInteger.put("id", UserUtil.getUserId());
 		userMapper.updateIntegration(mapInteger);
 		return ResponseResult.SUCCESSM("支付成功");
 	}
@@ -428,10 +428,10 @@ public class OrderServiceImpl implements OrderService {
 		List<Order> orderList = orderMapper.getListOrderNotPay(order);
 		return ResponseResult.SUCCESS(orderList);
 	}
-
-	public ResponseResult payBench(List<Integer> orderLists, List<Boolean> flagLists){
+@Override
+	public ResponseResult payBench(List<Integer> orderLists){
 		//获取用户的数据
-		if(Tools.isNull(flagLists)||flagLists.size()==0){
+		if(Tools.isNull(orderLists)||orderLists.size()==0){
 			return ResponseResult.ERROR(260,"您没有选中订单");
 		}
 		//创建一个Map来临时接收书籍的库存
@@ -447,14 +447,14 @@ public class OrderServiceImpl implements OrderService {
 			//用order对了来接收单个的订单id
 			Integer  orderId=orderLists.get(i);
 			if(Tools.isNull(orderId)){
-				return ResponseResult.ERROR(261,"目前第"+i+"个i订单的id为空");
+				return ResponseResult.ERROR(261,"目前第"+(i+1)+"个i订单的id为空");
 			}
 			Order order=orderMapper.getOrderByIdOnlyOrder(orderId);
 			if(order==null){
-				return ResponseResult.ERROR(262,"您目前第"+i+"个订单不存在");
+				return ResponseResult.ERROR(262,"您目前第"+(i+1)+"个订单不存在");
 			}
 			if(order.isPay()){
-				return ResponseResult.ERROR(263,"目前"+i+"订单已经被支付了，不需要再支付了哦");
+				return ResponseResult.ERROR(263,"目前"+(i+1)+"订单已经被支付了，不需要再支付了哦");
 			}
 			int account = order.getBookAccount();
 			// 书籍数量问题，与批量操作密切相关(重点)
@@ -485,13 +485,13 @@ public class OrderServiceImpl implements OrderService {
 			}
 			bIdAndBookAccount.setBookAccount(bIdAndBookAccount.getBookAccount()-account);
 			if(bIdAndBookAccount.getBookAccount()<0){
-				return ResponseResult.ERROR(265,"请核查订单，"+i+"个订单支付时出现了"+bId+"书籍库存不足");
+				return ResponseResult.ERROR(265,"请核查订单，"+(i+1)+"个订单支付时出现了"+bId+"书籍库存不足");
 			}
 			//更新map
 			mapTempBook.put(bId,bIdAndBookAccount);
 			// 判断积分是否足够；
 			// 获取用户积分
-			Integer userId=UserUtil.getUserId();
+			Integer userId= UserUtil.getUserId();
 			//Integer gration=this.getIntergation(userId);
 			//判断是否为负数
 			if(gration<1){
@@ -504,7 +504,7 @@ public class OrderServiceImpl implements OrderService {
 				return ResponseResult.ERROR(220,"您的余额不足");
 			}
 			//配送状态值
-			boolean distribute=Tools.isNull(order.getDistrbutionId());
+			boolean distribute= Tools.isNull(order.getDistrbutionId());
 			if(!distribute){
 				gration=gration-2;
 				if(gration<=0){
@@ -518,7 +518,7 @@ public class OrderServiceImpl implements OrderService {
 			// 先查看当前是否有该订单
 			List<BorringStatus> lists = userOrderStatusMapper.selectBorringStatus(borringStatus);
 			if (lists != null && lists.size() != 0) {
-				return ResponseResult.ERROR(216, "订单已经生成了，请不要重复提交哦");
+				return ResponseResult.ERROR(216, "第"+(i+1)+"订单已经生成了，请不要重复提交哦");
 			}
 			borringStatus.setLoanHour(LocalDateTime.now());
 			//订单状态为true
@@ -545,7 +545,7 @@ public class OrderServiceImpl implements OrderService {
 		//更新用户积分信息
 		Map<String ,Integer> mapInteger=new HashMap<>();
 		mapInteger.put("integration",gration);
-		mapInteger.put("id",UserUtil.getUserId());
+		mapInteger.put("id", UserUtil.getUserId());
 		userMapper.updateIntegration(mapInteger);
 		//更新订单信息
 		orderMapper.updateOrderBench(orderBench);

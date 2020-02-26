@@ -174,4 +174,9 @@ select *from book where bId in
 <!--
 批量更新书籍的数量
 -->
+	<update id="updateBookBench" parameterType="java.util.Map">
+		<foreach collection="bIdBookAccountList" item="value" index="key">
+			update book set bookAccount =#{value.bookAccount} where(bId=#{value.bId});
+		</foreach>
+	</update>
 </mapper>

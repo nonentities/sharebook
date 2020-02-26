@@ -1,13 +1,14 @@
 package com.swpu.sharebook.controller;
 
-import javax.annotation.Resource;
-import javax.validation.Valid;
-
 import com.swpu.sharebook.entity.Book;
 import com.swpu.sharebook.entity.Order;
 import com.swpu.sharebook.service.OrderService;
 import com.swpu.sharebook.util.returnvalue.ResponseResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/orderControl")
@@ -17,7 +18,7 @@ public class OrderControl {
 
 	// 借阅书籍
 	@GetMapping("addOrder")
-	public ResponseResult addOrder(@RequestParam("bId") Integer bId,@RequestParam("bookAccount") Integer bookAccount) {
+	public ResponseResult addOrder(@RequestParam("bId") Integer bId, @RequestParam("bookAccount") Integer bookAccount) {
 		Order order=new Order();
 		Book book=new Book();
 		book.setBId(bId);
@@ -60,11 +61,22 @@ public class OrderControl {
 		return orderService.returnBook(order);
 	}
 	@PostMapping("payOrder")
-	public ResponseResult payOrder(Integer id,boolean flag){
+	public ResponseResult payOrder(Integer id, boolean flag){
 		return orderService.payOrder(id,flag);
 	}
 	@GetMapping("getDontPay")
 	public ResponseResult getDontPay(){
 		return orderService.getDontPay();
+	}
+	@PostMapping("payBench")
+	public ResponseResult payOrderBench(){
+		List<Integer> list=new ArrayList<>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		list.add(5);
+		list.add(6);
+		return orderService.payBench(list);
 	}
 }

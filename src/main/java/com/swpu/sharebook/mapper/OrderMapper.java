@@ -1,10 +1,11 @@
 package com.swpu.sharebook.mapper;
 
-import java.util.List;
-import java.util.Map;
-
 import com.swpu.sharebook.entity.Order;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface OrderMapper {
@@ -26,7 +27,7 @@ public Integer getIsPay(Integer orderId);
     /**
      * 批量更新订单数据
      */
-    public void updateOrderBench(List<Order> orderBench);
+    public void updateOrderBench(@Param("orderLists") List<Order> orderBench);
     /**
      * 获取没有被支付的订单
      */

@@ -1,11 +1,13 @@
 package com.swpu.sharebook.mapper;
-import java.util.List;
-import java.util.Map;
 
 import com.swpu.sharebook.entity.Book;
 import com.swpu.sharebook.entity.createentity.BIdAndBookAccount;
 import com.swpu.sharebook.entity.createentity.PriceAndAccount;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface BookMapper {
@@ -45,5 +47,5 @@ public interface BookMapper {
 	/**
 	 * 批量更新书籍的数量
 	 */
-	public void updateBookBench(Map<Integer, BIdAndBookAccount> bIdAndBookAccountMap);
+	public void updateBookBench(@Param("bIdBookAccountList") Map<Integer, BIdAndBookAccount> bIdAndBookAccountMap);
 }

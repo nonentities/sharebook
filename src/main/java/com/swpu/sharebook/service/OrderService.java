@@ -4,6 +4,8 @@ package com.swpu.sharebook.service;
 import com.swpu.sharebook.entity.Order;
 import com.swpu.sharebook.util.returnvalue.ResponseResult;
 
+import java.util.List;
+
 public interface OrderService {
 /**
  * 添加订单；
@@ -81,4 +83,8 @@ public interface OrderService {
  * 获取未被支付的订单
  */
 public ResponseResult getDontPay();
+/***
+ * 批量支付
+ */
+public ResponseResult payBench(List<Integer> orderLists);
 }
