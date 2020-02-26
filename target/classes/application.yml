@@ -5,7 +5,7 @@ spring:
     url: jdbc:mysql://120.78.214.227:3306/booksharesystem?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowMultiQueries=true
 
     username: root
-    password: manmeng
+    password: 123456
   redis:
     host: 120.78.214.227
     port: 6379

@@ -103,6 +103,7 @@ public class ShiroConfig {
         filterChain.put("/usersControl/getVerifyCodeBySession", "anon");
         filterChain.put("/bookBaseControl/selectBook", "anon");
         filterChain.put("/bookBaseControl/getBookByKey", "anon");
+        filterChain.put("/bookBaseControl/getBookByKey", "anon");
         filterChain.put("/**", "jwtFilter");
 
 //        filterChain.put("/**", "anon");
