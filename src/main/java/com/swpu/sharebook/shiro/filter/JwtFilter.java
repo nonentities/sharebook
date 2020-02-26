@@ -36,6 +36,8 @@ public class JwtFilter extends AccessControlFilter {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
         HttpServletRequest req = (HttpServletRequest) request;
+
+        log.error(req.getRequestURI());
         String jwt = req.getHeader("jwt");
         if (StringUtils.isEmpty(jwt)) {
             log.debug("access failed,because jwt is null");
