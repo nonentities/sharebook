@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.swpu.sharebook.entity.Book;
 import com.swpu.sharebook.entity.BookSource;
 import com.swpu.sharebook.entity.User;
+import com.swpu.sharebook.entity.createentity.BookUserSource;
 import com.swpu.sharebook.mapper.BookMapper;
 import com.swpu.sharebook.mapper.BookSourcesMapper;
 import com.swpu.sharebook.mapper.UserMapper;
@@ -163,7 +164,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public ResponseResult getBookDontAndit(Integer bookBoolId) {
 		// 获取order对象
-		List<BookSource> orderList = bookSourcesMapper.getBookSource(bookBoolId);
+		List<BookUserSource> orderList = bookSourcesMapper.getBookSource(bookBoolId);
 		if (orderList == null || orderList.size() == 0) {
 			return ResponseResult.SUCCESSM("没有审核数据");
 		}

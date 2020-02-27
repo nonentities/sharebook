@@ -21,9 +21,58 @@
 			<result column="bookPrice" property="bookPrice"/>
 		</association>
 	</resultMap>
+	<!--
+		返回集合
+		@1返回用户的书籍
+	-->
+	<resultMap type="com.swpu.sharebook.entity.createentity.BookUserSource" id="bookUserSource">
+		<result column="id" property="id"/>
+		<result column="sourceTime" property="sourceTime"/>
+		<result column="userId" property="userId"/>
+		<!-- 		<result column="bId" property="bId"/> -->
+		<result column="boolPass" property="boolPass"/>
+		<result column="bookAccount" property="bookAccount"/>
+		<result column="userName" property="userName" />
+		<result column="studentId" property="studentId" />
+		<result column="wechatNumber" property="wechatNumber" />
+		<result column="dirmitoryNumber" property="dirmitoryNumber"/>
+		<result column="headPortrait" property="headPortrait"/>
+		<association property="book" javaType="com.swpu.sharebook.entity.Book" column="bId">
+			<id property="bId" column="bId"/>
+			<result column="bName" property="bName"/>
+			<result column="bookPbulish" property="bPublish"/>
+			<result column="bookIntroduction" property="introduction"/>
+			<result column="writer" property="writer"/>
+			<result column="bookOtherImportantPath" property="bookOtherImportantPath"/>
+			<result column="bookPrice" property="bookPrice"/>
+		</association>
+	</resultMap>
 	<!-- 查找所有未被审核的信息 -->
-	<select id="getBookSource" resultMap="bookSources" parameterType="java.lang.Integer">
-		select *from booksource ,book where(boolPass=#{boolPass} and booksource.bId=book.bId)
+	<select id = "getBookSource" resultMap = "bookUserSource" parameterType = "java.lang.Integer">
+select
+		booksource.id,
+		sourceTime,
+		userId,
+		boolPass,
+		booksource.bookAccount,
+		userName,
+		studentId,
+		wechatNumber,
+		dirmitoryNumber,
+		headPortrait,
+		booksource.bId,
+		bookPbulish,
+		bookIntroduction,
+		writer,
+		bookOtherImportantPath,
+		bookPrice
+		FROM
+		booksource,
+		book,
+		USER
+		WHERE
+		(
+		boolPass = #{boolPass} and booksource.bId=book.bId and booksource.userId=user.id)
 	</select>
 	<!-- 查看指定id的表 -->
 	<select id="getABookSource" parameterType="java.lang.Integer" resultMap="bookSources">
