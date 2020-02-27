@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/.idea/workspace.xml" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="068ae6b4-30ea-4738-a683-2ee4d6d12b20" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/entity/createentity/BookUserSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/swpu/sharebook/com/swpu/bookSource/bookSourceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/swpu/sharebook/com/swpu/userTest/testOrder/TestUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/booksharesystem.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/FileController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/BIdAndBookAccount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/BookUserSource.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/PriceAndAccount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/UpdateIntergation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/RemarkMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/FileService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/FileServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/RemarkMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/META-INF/shareBook.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/swpu/sharebook/com/swpu/bookSource/bookSourceTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/swpu/sharebook/com/swpu/userStatus/UserBookStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/swpu/sharebook/com/swpu/userTest/testOrder/TestUser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/OrderControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/OrderControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/OrderControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/OrderControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/OrderServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/OrderMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../Html/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -60,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/entity/createentity/BookUserSource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="228">
+              <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -500,7 +512,7 @@
       <workItem from="1582600113191" duration="8559000" />
       <workItem from="1582614671735" duration="4369000" />
       <workItem from="1582709142184" duration="775000" />
-      <workItem from="1582780800373" duration="17611000" />
+      <workItem from="1582780800373" duration="17838000" />
     </task>
     <task id="LOCAL-00001" summary="修改了代码做测试">
       <created>1581415371127</created>
@@ -691,7 +703,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582793336366</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="完成了批量支付">
+      <created>1582803836900</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1582803836900</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -727,7 +746,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17652000" />
+    <option name="totallyTimeSpent" value="17879000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -740,9 +759,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="46" width="1400" height="784" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25260806" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25260806" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -752,7 +770,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.37730062" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" weight="0.37730062" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.398773" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -764,7 +782,7 @@
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32668713" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.3297546" />
-      <window_info anchor="bottom" id="Version Control" order="14" weight="0.32668713" />
+      <window_info anchor="bottom" id="Version Control" order="14" visible="true" weight="0.32668713" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24962743" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -834,7 +852,8 @@
     <MESSAGE value="更新获取当前用户信息" />
     <MESSAGE value="更新了sendUser" />
     <MESSAGE value="配送员模块都完成了" />
-    <option name="LAST_COMMIT_MESSAGE" value="配送员模块都完成了" />
+    <MESSAGE value="完成了批量支付" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成了批量支付" />
   </component>
   <component name="WindowStateProjectService">
     <state x="557" y="215" key="CommitChangelistDialog2" timestamp="1582681050406">
@@ -1184,8 +1203,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/entity/createentity/BookUserSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="228">
+          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
