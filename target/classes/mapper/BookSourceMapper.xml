@@ -50,5 +50,4 @@
 	<select id="getUserBookSource" parameterType="java.lang.Integer" resultMap="bookSources">
 		select *from booksource,book where(userId=#{uId} and booksource.bId=book.bId)
 	</select>
-
 </mapper>
