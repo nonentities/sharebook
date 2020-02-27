@@ -103,4 +103,8 @@ public class UserControl {
         return userService.register(user, preVerifyCode, configName);
 
     }
+    @GetMapping("/getCurrentUser")
+    public ResponseResult getCurrentUser(){
+        return userService.getCurrentUser();
+    }
 }
