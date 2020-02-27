@@ -18,6 +18,7 @@
 <result column="bookIntroduction" property="introduction"/>
 <result column="writer" property="writer"/>
 <result column="bookOtherImportantPath" property="bookOtherImportantPath"/>
+			<result column="bookPrice" property="bookPrice"/>
 		</association>
 	</resultMap>
 	<!-- 查找所有未被审核的信息 -->
@@ -43,4 +44,11 @@
  </trim>
  where(id=#{id})
 	</update>
+	<!--
+		获取当前用户捐赠的所有书籍
+	-->
+	<select id="getUserBookSource" parameterType="java.lang.Integer" resultMap="bookSources">
+		select *from booksource,book where(userId=#{uId} and booksource.bId=book.bId)
+	</select>
+
 </mapper>

@@ -18,4 +18,8 @@ public List<BookSource> getBookSource(Integer boolPass);
 public BookSource getABookSource(Integer sourcesId);
 //更新对象
 public void auditUpdateBookSource(BookSource bookSource);
+/**
+ * 获取当前用户的的捐赠的所有书籍
+ */
+public List<BookSource> getUserBookSource(Integer uId);
 }

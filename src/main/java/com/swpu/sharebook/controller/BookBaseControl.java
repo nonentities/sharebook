@@ -45,8 +45,8 @@ public ResponseResult auditBookSource(Integer sourceId) {
 	return bookService.auditBookSource(sourceId);
 }
 @GetMapping("getSourceBook")
-public ResponseResult getSourceBook(Integer sourceId) {
-	return bookService.getSourceBook(sourceId);
+public ResponseResult getSourceBook() {
+	return bookService.getSourceBook();
 }
 @GetMapping("getSouirceBookByCurrent")
 public ResponseResult getSouirceBookByCurrent() {

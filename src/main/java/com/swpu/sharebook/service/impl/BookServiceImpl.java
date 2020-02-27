@@ -141,9 +141,10 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public ResponseResult getSourceBook(Integer sourceId) {
+	public ResponseResult getSourceBook() {
 		// TODO Auto-generated method stub
-		return ResponseResult.SUCCESS(bookSourcesMapper.getABookSource(sourceId));
+		Integer userId=UserUtil.getUserId();
+		return ResponseResult.SUCCESS(bookSourcesMapper.getUserBookSource(userId));
 	}
 
 	@Override
