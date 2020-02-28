@@ -61,8 +61,8 @@ public class OrderControl {
 		return orderService.returnBook(order);
 	}
 	@PostMapping("payOrder")
-	public ResponseResult payOrder(Integer id, boolean flag){
-		return orderService.payOrder(id,flag);
+	public ResponseResult payOrder(Integer id,Integer distrubutionId){
+		return orderService.payOrder(id,distrubutionId);
 	}
 	@GetMapping("getDontPay")
 	public ResponseResult getDontPay(){
