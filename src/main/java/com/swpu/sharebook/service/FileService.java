@@ -8,4 +8,5 @@ import java.io.IOException;
 public interface FileService {
 
     ResponseResult uploadAvatar(MultipartFile file) throws IOException;
+    ResponseResult uploadBookPicture(MultipartFile file) throws IOException;
 }
