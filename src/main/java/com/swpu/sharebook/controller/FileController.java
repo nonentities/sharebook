@@ -32,4 +32,13 @@ public class FileController {
     }
 
 
+    @PostMapping("/book")
+    public ResponseResult book(@RequestParam("file") MultipartFile file) throws IOException {
+        ResponseResult responseResult = fileService.uploadBookPicture(file);
+
+        return responseResult;
+    }
+
+
+
 }

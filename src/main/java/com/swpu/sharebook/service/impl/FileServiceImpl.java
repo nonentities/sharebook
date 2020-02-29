@@ -11,12 +11,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 
 @Service
 public class FileServiceImpl implements FileService {
 
-    @Value("${file.avatarpath}")
-    private String avatarPath;
+    @Value("${file.basepath}")
+    private String basePath;
 
     @Value("${file.baseurl}")
     private String fileBaseUrl;
@@ -35,7 +36,7 @@ public class FileServiceImpl implements FileService {
         String realFileName = System.currentTimeMillis() + fileName.substring(fileName.lastIndexOf("."));
 
         // 将当前时间毫秒数作为文件名
-        String filePath = avatarPath + realFileName;
+        String filePath = basePath + realFileName;
 
 
         // 网络访问路径
@@ -62,5 +63,37 @@ public class FileServiceImpl implements FileService {
 
 
         return ResponseResult.SUCCESS("文件上传成功",avatarUrl);
+    }
+
+    @Override
+    public ResponseResult uploadBookPicture(MultipartFile file) throws IOException {
+
+        // 获取文件名
+        String fileName = file.getOriginalFilename();
+
+        String realFileName = System.currentTimeMillis() + fileName.substring(fileName.lastIndexOf("."));
+
+        // 将当前时间毫秒数作为文件名
+        String filePath = basePath + realFileName;
+
+
+        // 网络访问路径
+        String bookUrl = fileBaseUrl+ realFileName;
+
+
+        try {
+
+            // 将文件写入对应位置
+            file.transferTo(new File(filePath));
+            // 修改用户数据
+
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("文件上传错误!");
+        }
+
+
+        return ResponseResult.SUCCESS("文件上传成功",bookUrl);
     }
 }
