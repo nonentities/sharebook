@@ -127,37 +127,35 @@ public class OrderServiceImpl implements OrderService {
 			return ResponseResult.ERROR(214, "您配送的订单被用户取消了");
 		}
 		// 通过订单id找到当前用户的配送详情
-		BorringStatus borringStatus = new BorringStatus();
-		// 将对应的值放到borringStatus;
-		borringStatus.setBId(order.getBook().getBId());
-		User user=null;
-		borringStatus.setUserId(order.getUser().getId());
-		// 将标志设置为空
-		// borringStatus.setBorrwingStatus(null);
-		// 查询数据库
-		List<BorringStatus> listBorringStatus = userOrderStatusMapper.selectBorringStatus(borringStatus);
-		if (listBorringStatus == null || listBorringStatus.size() == 0) {
+		List<BorringStatus> borringStatusList=userOrderStatusMapper.getSendOrderStatus(order.getDistrbutionId());
+		if (borringStatusList == null || borringStatusList.size() == 0) {
 			return ResponseResult.ERROR(218, "没有该用户书籍的订单");
 		}
-		borringStatus = listBorringStatus.get(0);
 	/*	if (!borringStatus.getBorrwingStatus()) {
 			return ResponseResult.ERROR(219, "该用户的书籍处于预定状态，不能进行配送审核");
 		}*/
-		if (!borringStatus.getSendStatus()) {
+/*		if (!borringStatus.getSendStatus()) {
 			return ResponseResult.ERROR(220, "配送审核完成，请不要重复操作");
 		}
-		// 将配送状态信息设置为false
-		borringStatus.setSendStatus(false);
+		// 将配送状态信息设置为false*/
+	//	borringStatus.setSendStatus(false);
 		// 将借阅时间更新
-		borringStatus.setLoanHour(LocalDateTime.now());
+		for(int i=0;i<borringStatusList.size();i++){
+			borringStatusList.get(i).setLoanHour(LocalDateTime.now());
+		}
 		// 更新用户书籍配送订单
-		userOrderStatusMapper.updateBorringStatus(borringStatus);
+		userOrderStatusMapper.updateBorringStatusBench(borringStatusList);
 		Integer account = order.getBookAccount();
 		//获取当前用户积分
 		//配送成功后配送员积分+2
 		Integer grade=userMapper.getIntegration(UserUtil.getUserId())+2;
 		Map<String ,Integer> map=new HashMap<>();
 		map.put("id", UserUtil.getUserId());
+		map.put("integration",grade);
+		userMapper.updateIntegration(map);
+		//减少借书人的积分
+		grade=userMapper.getIntegration(order.getUser().getId())-2;
+		map.put("id",order.getUser().getId());
 		map.put("integration",grade);
 		userMapper.updateIntegration(map);
 		return ResponseResult.SUCCESS("配送审核成功");
@@ -224,8 +222,7 @@ public class OrderServiceImpl implements OrderService {
 			//2将用户对应的积分返回
 			Map<String, Integer> mapGrade=new HashMap<>();
 			mapGrade.put("id",order.getUser().getId());
-			//Integer grade=order.getUser().getIntegration()+(order.getBookAccount()*order.getBook().getBookPrice())+2;
-			Integer grade=userMapper.getIntegration(order.getUser().getId())+(order.getBook().getBookPrice()*order.getBookAccount()+2);
+			Integer grade=userMapper.getIntegration(order.getUser().getId())+(order.getBook().getBookPrice()*order.getBookAccount());
 			mapGrade.put("integration",grade);
 			userMapper.updateIntegration(mapGrade);
 			//4将订单状态改为false
@@ -314,7 +311,7 @@ public class OrderServiceImpl implements OrderService {
 		return ResponseResult.SUCCESSM("还书成功");
 	}
 	@Transactional
-	public ResponseResult payOrder(Integer id, boolean flag){
+	public ResponseResult payOrder(Integer id, Integer distrubutionId){
 		if(Tools.isNull(id)){
 			return ResponseResult.ERROR(216,"订单id不能为空");
 		}
@@ -363,39 +360,24 @@ public class OrderServiceImpl implements OrderService {
 		if(gration<0){
 			return ResponseResult.ERROR(220,"您的余额不足以购买当前书籍");
 		}
-		//配送状态值
-		boolean distribute= Tools.isNull(order.getDistrbutionId());
-		if(!distribute){
-			gration=gration-2;
-			if(gration<=0){
-				return ResponseResult.ERROR(221,"您没有足够金额支付运费了");
-			}
-		}
 		BorringStatus borringStatus = new BorringStatus();
 		borringStatus.setBId(order.getBook().getBId());
 		borringStatus.setUserId(userId);
-		borringStatus.setBorrwingStatus(flag);
+		borringStatus.setBorrwingStatus(true);
 		// 先查看当前是否有该订单
 		List<BorringStatus> lists = userOrderStatusMapper.selectBorringStatus(borringStatus);
 		if (lists != null && lists.size() != 0) {
 			return ResponseResult.ERROR(216, "订单已经生成了，请不要重复提交哦");
 		}
 		borringStatus.setLoanHour(LocalDateTime.now());
-		//订单状态为true
-		// 配送部分为空的话
-		// 如果为空的话默认为1:
-
-		if (distribute) {
-			//积分小于0，什么都不能做
-			// 创建一个用户书籍状态表
-			// 默认为1即没有配送员配送
-			order.setDistrbutionId(1);
-			//获取书籍的价格，需要一个mapper
-			//将用户的积分更新
-			borringStatus.setSendStatus(false);
-		}else{
-			borringStatus.setSendStatus(true);
-		}
+//单个支付订单的话需要收取1积分的配送费
+        if (Tools.isNull()) {
+            borringStatus.setSendStatus(false);
+        }else{
+            borringStatus.setSendStatus(true);
+            order.setDistrbutionId(distrubutionId);
+            gration=gration-1;
+        }
 		order.setOrderStatus(true);
 		book.setBId(order.getBook().getBId());
 		// 更新数据即可
@@ -404,6 +386,7 @@ public class OrderServiceImpl implements OrderService {
 		order.setOrderTime(new Date());
 		//order.setUser(user);
 		order.setPay(true);
+
 		//更新订单信息
 		Integer flagOrder = orderMapper.updateOrder(order);
 		// 生成书籍用户订单信息
@@ -429,9 +412,9 @@ public class OrderServiceImpl implements OrderService {
 		return ResponseResult.SUCCESS(orderList);
 	}
 @Override
-	public ResponseResult payBench(List<Integer> orderLists){
+	public ResponseResult payBench(Integer [] orderLists,Integer distrubutionId){
 		//获取用户的数据
-		if(Tools.isNull(orderLists)||orderLists.size()==0){
+		if(Tools.isNull(orderLists)||orderLists.length==0){
 			return ResponseResult.ERROR(260,"您没有选中订单");
 		}
 		//创建一个Map来临时接收书籍的库存
@@ -443,18 +426,21 @@ public class OrderServiceImpl implements OrderService {
 		//获取当前用户积分
 		Integer gration=userMapper.getIntegration(UserUtil.getUserId());
 		//支付状态
-		for(int i=0;i<orderLists.size();i++){
+	//判断是否为配送
+	if(Tools.isNull(distrubutionId)||distrubutionId<=0){
+	    distrubutionId=-1;
+		for (int i = 0; i < orderLists.length; i++) {
 			//用order对了来接收单个的订单id
-			Integer  orderId=orderLists.get(i);
-			if(Tools.isNull(orderId)){
-				return ResponseResult.ERROR(261,"目前第"+(i+1)+"个i订单的id为空");
+			Integer orderId = orderLists[i];
+			if (Tools.isNull(orderId)) {
+				return ResponseResult.ERROR(261, "目前第" + (i + 1) + "个i订单的id为空");
 			}
-			Order order=orderMapper.getOrderByIdOnlyOrder(orderId);
-			if(order==null){
-				return ResponseResult.ERROR(262,"您目前第"+(i+1)+"个订单不存在");
+			Order order = orderMapper.getOrderByIdOnlyOrder(orderId);
+			if (order == null) {
+				return ResponseResult.ERROR(262, "您目前第" + (i + 1) + "个订单不存在");
 			}
-			if(order.isPay()){
-				return ResponseResult.ERROR(263,"目前"+(i+1)+"订单已经被支付了，不需要再支付了哦");
+			if (order.isPay()) {
+				return ResponseResult.ERROR(263, "目前" + (i + 1) + "订单已经被支付了，不需要再支付了哦");
 			}
 			int account = order.getBookAccount();
 			// 书籍数量问题，与批量操作密切相关(重点)
@@ -469,79 +455,130 @@ public class OrderServiceImpl implements OrderService {
 			 * 		如果不为0 则将数据重新放入到map中去
 			 * 	最后批量更新map即可
 			 */
-			Integer bId=order.getBook().getBId();
-			BIdAndBookAccount bIdAndBookAccount=mapTempBook.get(bId);
+			Integer bId = order.getBook().getBId();
+			BIdAndBookAccount bIdAndBookAccount = mapTempBook.get(bId);
 			if (Tools.isNull(bIdAndBookAccount)) {
-				bIdAndBookAccount=new BIdAndBookAccount();
-				Integer bookAccount=bookMapper.getBookAccount(bId);
+				bIdAndBookAccount = new BIdAndBookAccount();
+				Integer bookAccount = bookMapper.getBookAccount(bId);
 				bIdAndBookAccount.setBId(bId);
 				bIdAndBookAccount.setBookAccount(bookAccount);
 			}
-			/**
-			 * 书籍返回目前还有问题需要前端解决
-			 */
-			if(bIdAndBookAccount.getBookAccount()==0){
-				return ResponseResult.ERROR(264,"部分书籍已经借完了");
-			}
-			bIdAndBookAccount.setBookAccount(bIdAndBookAccount.getBookAccount()-account);
-			if(bIdAndBookAccount.getBookAccount()<0){
-				return ResponseResult.ERROR(265,"请核查订单，"+(i+1)+"个订单支付时出现了"+bId+"书籍库存不足");
+			bIdAndBookAccount.setBookAccount(bIdAndBookAccount.getBookAccount() - account);
+			if (bIdAndBookAccount.getBookAccount() < 0) {
+				String bName = bookMapper.getBNameById(bId);
+				return ResponseResult.ERROR(265, "请核查订单，" + (i + 1) + "个订单支付时出现了" + bName + "书籍库存不足");
 			}
 			//更新map
-			mapTempBook.put(bId,bIdAndBookAccount);
+			mapTempBook.put(bId, bIdAndBookAccount);
 			// 判断积分是否足够；
 			// 获取用户积分
-			Integer userId= UserUtil.getUserId();
-			//Integer gration=this.getIntergation(userId);
+			Integer userId = UserUtil.getUserId();
 			//判断是否为负数
-			if(gration<1){
-				return ResponseResult.ERROR(219,"您的余额已不足");
+			if (gration < 1) {
+				return ResponseResult.ERROR(219, "您的余额已不足");
 			}
 			//书籍的价格
-			Integer price=order.getBook().getBookPrice();
-			gration=gration-(price *account);
-			if(gration<0){
-				return ResponseResult.ERROR(220,"您的余额不足");
-			}
-			//配送状态值
-			boolean distribute= Tools.isNull(order.getDistrbutionId());
-			if(!distribute){
-				gration=gration-2;
-				if(gration<=0){
-					return ResponseResult.ERROR(221,"您没有足够金额支付运费了");
-				}
+			Integer price = order.getBook().getBookPrice();
+			gration = gration - (price * account);
+			if (gration < 0) {
+				return ResponseResult.ERROR(220, "您的余额不足");
 			}
 			BorringStatus borringStatus = new BorringStatus();
 			borringStatus.setBId(order.getBook().getBId());
 			borringStatus.setUserId(userId);
-			borringStatus.setBorrwingStatus(false);
+			borringStatus.setBorrwingStatus(true);
 			// 先查看当前是否有该订单
 			List<BorringStatus> lists = userOrderStatusMapper.selectBorringStatus(borringStatus);
 			if (lists != null && lists.size() != 0) {
-				return ResponseResult.ERROR(216, "第"+(i+1)+"订单已经生成了，请不要重复提交哦");
+				return ResponseResult.ERROR(216, "第" + (i + 1) + "订单已经生成了，请不要重复提交哦");
 			}
 			borringStatus.setLoanHour(LocalDateTime.now());
-			//订单状态为true
-			// 配送部分为空的话
-			// 如果为空的话默认为1:
-
-			if (distribute) {
-				//积分小于0，什么都不能做
-				// 创建一个用户书籍状态表
-				// 默认为1即没有配送员配送
-				order.setDistrbutionId(1);
-				//获取书籍的价格，需要一个mapper
-				//将用户的积分更新
 				borringStatus.setSendStatus(false);
-			}else{
-				borringStatus.setSendStatus(true);
+				order.setDistrbutionId(1);
+			order.setOrderStatus(true);
+			order.setOrderTime(new Date());
+			order.setPay(true);
+			order.setDistrbutionId(distrubutionId);
+			orderBench.add(order);
+			borringStatusList.add(borringStatus);
+		}
+	}
+	else{
+		gration=gration-2;
+		for (int i = 0; i < orderLists.length; i++) {
+			//用order对了来接收单个的订单id
+			Integer orderId = orderLists[i];
+			if (Tools.isNull(orderId)) {
+				return ResponseResult.ERROR(261, "目前第" + (i + 1) + "个i订单的id为空");
 			}
+			Order order = orderMapper.getOrderByIdOnlyOrder(orderId);
+			if (order == null) {
+				return ResponseResult.ERROR(262, "您目前第" + (i + 1) + "个订单不存在");
+			}
+			if (order.isPay()) {
+				return ResponseResult.ERROR(263, "目前" + (i + 1) + "订单已经被支付了，不需要再支付了哦");
+			}
+			int account = order.getBookAccount();
+			// 书籍数量问题，与批量操作密切相关(重点)
+			/**
+			 * @1从map中找是否有对应bId的书籍数量，
+			 * 判断：如果没有：则从数据库中获取
+			 * 		如果有：则从map中找并直接取出来
+			 * 		判断id是否为0：
+			 * 		如果为0 直接返回即可
+			 * 		如果不为0：书籍的书籍-订单中书籍的数量
+			 * 		判断最终结果是否为0
+			 * 		如果不为0 则将数据重新放入到map中去
+			 * 	最后批量更新map即可
+			 */
+			Integer bId = order.getBook().getBId();
+			BIdAndBookAccount bIdAndBookAccount = mapTempBook.get(bId);
+			if (Tools.isNull(bIdAndBookAccount)) {
+				bIdAndBookAccount = new BIdAndBookAccount();
+				Integer bookAccount = bookMapper.getBookAccount(bId);
+				bIdAndBookAccount.setBId(bId);
+				bIdAndBookAccount.setBookAccount(bookAccount);
+			}
+			bIdAndBookAccount.setBookAccount(bIdAndBookAccount.getBookAccount() - account);
+			if (bIdAndBookAccount.getBookAccount() < 0) {
+				String bName = bookMapper.getBNameById(bId);
+				return ResponseResult.ERROR(265, "请核查订单，" + (i + 1) + "个订单支付时出现了" + bName + "书籍库存不足");
+			}
+			//更新map
+			mapTempBook.put(bId, bIdAndBookAccount);
+			// 判断积分是否足够；
+			// 获取用户积分
+			Integer userId = UserUtil.getUserId();
+			//判断是否为负数
+			if (gration < 1) {
+				return ResponseResult.ERROR(219, "您的余额已不足");
+			}
+			//书籍的价格
+			Integer price = order.getBook().getBookPrice();
+			gration = gration - (price * account);
+			if (gration < 0) {
+				return ResponseResult.ERROR(220, "您的余额不足");
+			}
+			BorringStatus borringStatus = new BorringStatus();
+			borringStatus.setBId(order.getBook().getBId());
+			borringStatus.setUserId(userId);
+			borringStatus.setBorrwingStatus(true);
+			// 先查看当前是否有该订单
+			List<BorringStatus> lists = userOrderStatusMapper.selectBorringStatus(borringStatus);
+			if (lists != null && lists.size() != 0) {
+				return ResponseResult.ERROR(216, "第" + (i + 1) + "订单已经生成了，请不要重复提交哦");
+			}
+			borringStatus.setLoanHour(LocalDateTime.now());
+				order.setDistrbutionId(distrubutionId);
+				borringStatus.setSendStatus(true);
+
 			order.setOrderStatus(true);
 			order.setOrderTime(new Date());
 			order.setPay(true);
 			orderBench.add(order);
 			borringStatusList.add(borringStatus);
 		}
+	}
 		//更新用户积分信息
 		Map<String ,Integer> mapInteger=new HashMap<>();
 		mapInteger.put("integration",gration);

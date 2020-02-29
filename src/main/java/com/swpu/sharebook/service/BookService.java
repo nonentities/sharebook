@@ -74,7 +74,7 @@ public ResponseResult auditBookSource(Integer sourceId);
  * 包含被审核还是未被审核的都能看
  * @return
  */
-public ResponseResult getSourceBook(Integer sourceId);
+public ResponseResult getSourceBook();
 /**
  * 获取当前用户捐赠的书籍
  * @return

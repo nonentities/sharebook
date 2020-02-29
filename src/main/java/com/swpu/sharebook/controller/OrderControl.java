@@ -61,22 +61,15 @@ public class OrderControl {
 		return orderService.returnBook(order);
 	}
 	@PostMapping("payOrder")
-	public ResponseResult payOrder(Integer id, boolean flag){
-		return orderService.payOrder(id,flag);
+	public ResponseResult payOrder(Integer id,Integer distrubutionId){
+		return orderService.payOrder(id,distrubutionId);
 	}
 	@GetMapping("getDontPay")
 	public ResponseResult getDontPay(){
 		return orderService.getDontPay();
 	}
 	@PostMapping("payBench")
-	public ResponseResult payOrderBench(){
-		List<Integer> list=new ArrayList<>();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(5);
-		list.add(6);
-		return orderService.payBench(list);
+	public ResponseResult payOrderBench(Integer[] list,Integer distrubutionId){
+		return orderService.payBench(list,distrubutionId);
 	}
 }

@@ -22,7 +22,7 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 	@Resource
 	private UserMapper userMapper;
 
-	public static final Long EXPIRE_TIME = Duration.ofMinutes(10).toMillis();
+	public static final Long EXPIRE_TIME = Duration.ofMinutes(10000).toMillis();
 	@Override
 	public ResponseResult login(String userName, String password, String preVerifyCode) {
 

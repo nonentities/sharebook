@@ -78,7 +78,7 @@ public interface OrderService {
 	 *  		2配送:：用户积分减少account*bookPrice;
 	 *  	重点是在于用户积分的问题上面处理
 	 */
-	public ResponseResult payOrder(Integer id, boolean flag);
+	public ResponseResult payOrder(Integer id, Integer distrubutionId);
 /**
  * 获取未被支付的订单
  */
@@ -86,5 +86,5 @@ public ResponseResult getDontPay();
 /***
  * 批量支付
  */
-public ResponseResult payBench(List<Integer> orderLists);
+public ResponseResult payBench(Integer[] orderLists,Integer distrubutionId);
 }

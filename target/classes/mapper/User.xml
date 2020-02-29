@@ -20,6 +20,23 @@
 			<result column="roleName" property="roleName" />
 		</association>
 	</resultMap>
+	<resultMap type="com.swpu.sharebook.entity.User"
+			   id="sendUser">
+		<result column="id" property="id" />
+		<result column="userName" property="userName" />
+		<result column="studentId" property="studentId" />
+		<result column="wechatNumber" property="wechatNumber" />
+		<result column="dirmitoryNumber" property="dirmitoryNumber" />
+		<result column="integration" property="integration" />
+		<result column="headPortrait" property="headPortrait"/>
+		<result column="deliveManGrade" property="deliveManGrade"/>
+		<!-- 外键链接多表查询 使用assocation标签 -->
+		<association property="role" column="r_id "
+					 javaType="com.swpu.sharebook.entity.Role">
+			<id column="roleId" property="rId" />
+			<result column="roleName" property="roleName" />
+		</association>
+	</resultMap>
 	<sql id="select*">
 		select *from
 	</sql>
@@ -88,9 +105,9 @@
 		select integration from user where(id=#{id});
 	</select>
 	<!-- 获取配送员的所有用户值通过积分按照从大到小的顺序 -->
-	<select id="sendUsers" resultMap="UserResult">
+	<select id="sendUsers" resultMap="sendUser">
 	SELECT
-	* 
+	id,userName,studentId,wechatNumber,dirmitoryNumber,roleId,integration,headPortrait,deliveManGrade
 FROM
 user,role
 WHERE

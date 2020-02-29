@@ -47,5 +47,6 @@ public class User implements Serializable{
 	private String headPortrait;
 	@TableField("deliveManGrade")
 	private Integer deliveManGrade;
+
 }
 

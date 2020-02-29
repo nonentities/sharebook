@@ -71,4 +71,29 @@ update borringstatus
 			)
 		</foreach>
 	</insert>
+	<select id="getSendOrderStatus" parameterType="java.lang.Integer" resultMap="borringStatus">
+		 SELECT
+	bId,
+	userId,
+	sendStatus
+FROM
+	borringstatus
+WHERE
+userId
+	 in (
+SELECT
+userId
+FROM
+	`order`
+WHERE
+	( distrbutionId = #{distributeId})
+	and sendStatus=1
+	)
+	</select>
+	<update id="updateBorringStatusBench" parameterType="java.util.List">
+		<foreach collection="borringStatusList" item="borringStatus">
+			UPDATE borringstatus
+			SET loanHour = #{borringStatus.loanHour},sendStatus=0 where(bId=#{borringStatus.bId} and userId=#{borringStatus.userId});
+		</foreach>
+	</update>
 </mapper>

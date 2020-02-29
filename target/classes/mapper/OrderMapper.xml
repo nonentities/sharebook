@@ -318,7 +318,7 @@ WHERE
 	<update id="updateOrderBench">
 		<foreach collection="orderLists" item="order">
 			UPDATE `order`
-			SET orderStatus = #{order.orderStatus},orderTime=#{order.orderTime},isPay=#{order.isPay} where (id=#{order.id});
+			SET orderStatus = #{order.orderStatus},orderTime=#{order.orderTime},isPay=#{order.isPay},distrbutionId=#{order.distrbutionId} where (id=#{order.id});
 		</foreach>
 	</update>
 </mapper>

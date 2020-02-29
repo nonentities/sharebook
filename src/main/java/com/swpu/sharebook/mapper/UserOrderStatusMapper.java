@@ -17,4 +17,12 @@ public List<BorringStatus> selectBorringStatus(BorringStatus borringStatus);
 public void updateBorringStatus(BorringStatus borringStatus);
 public void delete(BorringStatus borringStatus);
 public void addStatusBench(@Param("listBorringStatus") List<BorringStatus> listBorringStatus);
+/**
+ * 获取当前配送的用户与订单中userId的订单信息
+ */
+public List<BorringStatus> getSendOrderStatus(Integer distributeId);
+/**
+ * 批量更新用户订单的状态
+ */
+public void updateBorringStatusBench(@Param(("borringStatusList")) List<BorringStatus> borringStatusList);
 }

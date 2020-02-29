@@ -48,4 +48,8 @@ public interface BookMapper {
 	 * 批量更新书籍的数量
 	 */
 	public void updateBookBench(@Param("bIdBookAccountList") Map<Integer, BIdAndBookAccount> bIdAndBookAccountMap);
+	/**
+	 * 通过书籍获取书籍的名字
+	 */
+	public String getBNameById(Integer bId);
 }
