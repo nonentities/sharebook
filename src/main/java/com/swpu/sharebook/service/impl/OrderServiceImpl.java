@@ -591,4 +591,23 @@ public class OrderServiceImpl implements OrderService {
 		bookMapper.updateBookBench(mapTempBook);
 		return ResponseResult.SUCCESSM("支付成功");
 	}
+
+	@Override
+	public ResponseResult deleteOrder(Integer id) {
+		if (Tools.isNull(id)) {
+			return ResponseResult.ERROR(250,"删除的id不能为空");
+		}
+		//判断用户是否已经将数据删除
+		Integer flag=orderMapper.getIsPay(id);
+		if(Tools.isNull(flag)){
+			return ResponseResult.ERROR(251,"订单已经删除了");
+		}
+		if (flag==1){
+			return ResponseResult.ERROR(252,"已经支付的订单不能删除");
+		}
+
+		//删除订单
+		orderMapper.deleteOrder(id);
+		return ResponseResult.SUCCESSM("删除成功");
+	}
 }

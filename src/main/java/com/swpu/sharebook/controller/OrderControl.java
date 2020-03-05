@@ -72,4 +72,8 @@ public class OrderControl {
 	public ResponseResult payOrderBench(Integer[] list,Integer distrubutionId){
 		return orderService.payBench(list,distrubutionId);
 	}
+	@GetMapping("deleteOrder")
+	public ResponseResult deleteOrder(Integer id){
+		return orderService.deleteOrder(id);
+	}
 }

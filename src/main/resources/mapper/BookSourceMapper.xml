@@ -61,6 +61,7 @@ select
 		dirmitoryNumber,
 		headPortrait,
 		booksource.bId,
+		bName,
 		bookPbulish,
 		bookIntroduction,
 		writer,
@@ -87,7 +88,7 @@ select
  <trim prefix="set" suffixOverrides=",">
   <if test="sourceTime!=null">sourceTime=#{sourceTime},</if>
   <if test="userId!=null and userId!='' ">userId=#{userId},</if>
-  <if test="(book.bId)!=null and (book.bId)!='' ">bId=#{book.bId},</if>
+  <if test="book!=null and (book.bId)!='' ">bId=#{book.bId},</if>
   <if test="boolPass!=null and boolPass!='' ">boolPass=#{boolPass},</if>
   <if test="bookAccount!=null ">bookAccount=#{bookAccouont},</if>
  </trim>

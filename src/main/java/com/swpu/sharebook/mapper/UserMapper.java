@@ -30,4 +30,8 @@ public interface UserMapper extends BaseMapper<User> {
 public Integer getSendGrade(Integer id);
     public void updateGrade(Map<String,Integer> map);
     public void updatePassword(Map<String,Object> map);
+    /**
+     * 删除订单
+     */
+    public void deleteOrder(Integer id);
 }

@@ -24,7 +24,8 @@ public class RemarkController {
 @Resource
 private RemarkService remarkService;
 @PostMapping("addToBookRemarkToBook")
-public ResponseResult addToBookRemark( RemarkToBook remarkToBook){
+public ResponseResult addToBookRemark(
+        RemarkToBook remarkToBook){
 
     return remarkService.addToBookRemark(remarkToBook);
 }

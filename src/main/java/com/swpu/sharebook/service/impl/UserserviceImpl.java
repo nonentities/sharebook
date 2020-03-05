@@ -151,8 +151,6 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		//获取当前用户的id
 		user.setId(UserUtil.getUserId());
 		user.setIntegration(null);
-		//将角色置为空
-		user.setRole(null);
 		userMapper.update(user);
 		return ResponseResult.SUCCESS("修改成功",user);
 	}

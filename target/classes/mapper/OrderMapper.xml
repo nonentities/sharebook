@@ -321,4 +321,9 @@ WHERE
 			SET orderStatus = #{order.orderStatus},orderTime=#{order.orderTime},isPay=#{order.isPay},distrbutionId=#{order.distrbutionId} where (id=#{order.id});
 		</foreach>
 	</update>
+	<!--删除订单
+	-->
+	<delete id="deleteOrder" parameterType="java.lang.Integer">
+		delete  from `order` where(id=#{id})
+	</delete>
 </mapper>

@@ -107,4 +107,16 @@ public class UserControl {
     public ResponseResult getCurrentUser(){
         return userService.getCurrentUser();
     }
+    @PostMapping("/updatePassword")
+    public ResponseResult updatePassword(@RequestParam("Password") String password,@RequestParam("confrimPassword") String confrimPassword){
+        return userService.updatePassword(password,confrimPassword);
+    }
+    @PostMapping("updateUser")
+    public ResponseResult updateUser(User user,BindingResult bindingResult){
+      /*  if(bindingResult.hasErrors()){
+
+            return Tools.saveEorrorMessage(bindingResult);
+        }*/
+        return userService.updateUser(user);
+    }
 }
