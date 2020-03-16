@@ -193,7 +193,8 @@ public class BookServiceImpl implements BookService {
 			List<Book> bookList = bookMapper.selectBook(book);
 			return ResponseResult.SUCCESS("查询结果为", bookList);
 		}
-		List<List<Book>> lists = new ArrayList<>();
+	//	List<List<Book>> lists = new ArrayList<>();
+		List<Book> nowList=null;
 		// 通过名字找到书籍
 		Book book = new Book();
 		// 创建一个List 保存到Lists中
@@ -201,7 +202,7 @@ public class BookServiceImpl implements BookService {
 		book.setBName(key);
 		List list = bookMapper.getBookByKey(book);
 		if (list != null) {
-			lists.add(list);
+			nowList=list;
 		}
 		// 将书名置空
 		book.setBName(null);
@@ -209,7 +210,7 @@ public class BookServiceImpl implements BookService {
 		book.setIntroduction(key);
 		list = bookMapper.getBookByKey(book);
 		if (list != null) {
-			lists.add(list);
+			nowList=destroyRepeat(list,nowList);
 		}
 		// 将书籍简介置空；
 		book.setIntroduction(null);
@@ -217,7 +218,7 @@ public class BookServiceImpl implements BookService {
 		book.setWriter(key);
 		list = bookMapper.getBookByKey(book);
 		if (list != null) {
-			lists.add(list);
+			nowList=destroyRepeat(list,nowList);
 		}
 		// 将作者置空
 		book.setWriter(null);
@@ -225,14 +226,14 @@ public class BookServiceImpl implements BookService {
 		book.setBPublish(key);
 		list = bookMapper.getBookByKey(book);
 		if (list != null) {
-			lists.add(list);
+			nowList=destroyRepeat(list,nowList);
 		}
 		// 最后一步不用置为空，因为不需要继续处理数据了
-		if (lists.size() == 0) {
+		if (nowList.size() == 0) {
 			return ResponseResult.ERROR(311, "没有您相要的书籍，请使用其他关键字搜索");
 		}
 		// 不为空将数据返回给客户端
-		return ResponseResult.SUCCESS(lists);
+		return ResponseResult.SUCCESS(nowList);
 	}
 
 	@Override
@@ -259,5 +260,27 @@ public class BookServiceImpl implements BookService {
 		map.put("bookPrice",price);
 		bookMapper.updateBookPrice(map);
 		return ResponseResult.SUCCESSM("书籍价格修改成功");
+	}
+	/**
+	书籍去重复的功能
+	 */
+	public List<Book> destroyRepeat(List<Book> previousList,List<Book> nowList){
+		//需要把现在list长度保存
+		int nowLenth=nowList.size();
+		for(int i=0;i<previousList.size();i++){
+			int j=0;
+			Book preBook=previousList.get(i);
+			for( j=0;j<nowLenth;i++){
+				Book nowBook=nowList.get(i);
+				if(preBook.getBId()==nowBook.getBId()){
+					break;
+				}
+			}
+			//判断如果达到了最后一个说明没有对应的数据，就应该加载到lis里面
+			if(j==(nowLenth-1)){
+				nowList.add(preBook);
+			}
+		}
+		return nowList;
 	}
 }

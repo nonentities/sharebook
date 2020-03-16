@@ -113,7 +113,7 @@ private RemarkMapper remarkMapper;
         //获取配送员的信誉积分
     Integer gradesClass=userMapper.getSendGrade(remarkToDeveliver.getDeveliverManId());
         //更新配送员的信誉积分
-        gradesClass=gradesClass+remarkToDeveliver.getGradeClass();
+        gradesClass=(gradesClass+remarkToDeveliver.getGradeClass())/2;
         //更新配送员的信誉积分
         Map<String,Integer> map=new HashMap<>();
         map.put("deliveManGrade",gradesClass);
