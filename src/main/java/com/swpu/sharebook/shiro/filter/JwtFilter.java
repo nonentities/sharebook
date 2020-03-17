@@ -22,14 +22,11 @@ import java.io.IOException;
  */
 @Slf4j
 public class JwtFilter extends AccessControlFilter {
-
-
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
         log.error("isAccessAllowed");
         return false;
     }
-
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         log.error("onAccessDenied");
@@ -55,7 +52,6 @@ public class JwtFilter extends AccessControlFilter {
         }
         return true;
     }
-
     private void onLoginFail(ServletResponse response, Exception e) throws IOException {
         String msg = e.getMessage();
         HttpServletResponse httpResponse = (HttpServletResponse) response;

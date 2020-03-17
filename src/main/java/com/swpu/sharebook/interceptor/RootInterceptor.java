@@ -42,7 +42,7 @@ public class RootInterceptor extends ThreadLocalConst implements HandlerIntercep
 		if(list==null) {
 			System.out.println("没有存入缓存或者已经过期");
 			//从数据库中获取
-			list=rootMapper.getAuthorityByRoleId(user.getRole().getRId());
+	//		list=rootMapper.getAuthorityByRoleId(user.getRole().getRId());
 			//存入缓存
 //			saveObjectByredis.saveObject(user.getStudentId(),list);
 		}
@@ -71,5 +71,5 @@ public class RootInterceptor extends ThreadLocalConst implements HandlerIntercep
 		// TODO Auto-generated method stub
 		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
 	}
-	
+
 }

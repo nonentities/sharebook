@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @TableName("user")
@@ -38,7 +39,7 @@ public class User implements Serializable{
 	@Min(value = 0)
 	private Integer integration;
 	@TableField(exist = false)
-	private Role role;
+	private List<Role> role;
 
 	@TableField("salt")
 	private String salt;

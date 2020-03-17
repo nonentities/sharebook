@@ -15,4 +15,21 @@
 <select id="getRoleListByUserId" parameterType="Integer" resultMap="BaseResultMap">
     select role.r_id,roleName from user_role,role where(u_id=#{uId} and user_role.r_id=role.r_id)
 </select>
+    <!--查看需要授权的用户信息
+    -->
+    <resultMap id="userNameAndRoleName" type="com.swpu.sharebook.entity.createentity.UserNameAndRoleName">
+       <result property="id" column="id"/>
+        <result property="uId" column="uId"/>
+        <result property="userName" column="userName"/>
+        <result property="roleName" column="roleName"/>
+    </resultMap>
+    <select id="UserNameAndRoleName" resultMap="userNameAndRoleName">
+        select userrole.id, uId,userName,roleName from user,userrole,role where( tId !=0 and user.id=uId and rId=r_id)
+    </select>
+    <update id="alertTid" parameterType="com.swpu.sharebook.entity.UserRole">
+        update userrole set tId=#{tId} where(id=#{id})
+    </update>
+    <select id="getRoleListByIdAndUserId" parameterType="com.swpu.sharebook.entity.UserRole" resultType="com.swpu.sharebook.entity.UserRole">
+        select *from userrole where(id=#{id} and uId=#{uId})
+    </select>
 </mapper>
