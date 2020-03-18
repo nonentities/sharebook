@@ -25,6 +25,6 @@ public class Role implements Serializable {
 
     @TableField("roleName")
     private String roleName;
-
+    private Integer id;
 
 }

@@ -22,5 +22,6 @@ public List<Role> getRoleListByUserId(Integer uId);
 public List<UserNameAndRoleName> getUserNameAndRoleName();
 public void addUserRole(UserRole userRole);
 public void alertTid(UserRole userRole);
-public UserRole getRoleListByIdAndUserId(UserRole userRole);
+public List<UserRole> getRoleListByIdAndUserId(UserRole userRole);
+public UserRole getUserRoleById(Integer id);
 }

@@ -16,7 +16,8 @@
 		<!-- 外键链接多表查询 使用assocation标签 -->
 		<collection property="role" column="r_id "
 			ofType="com.swpu.sharebook.entity.Role">
-			<id column="roleId" property="rId" />
+			<id column="r_id" property="rId" />
+			<result column="urId" property="id"/>
 			<result column="roleName" property="roleName" />
 		</collection>
 	</resultMap>
@@ -38,12 +39,13 @@
 		</collection>
 	</resultMap>
 	<sql id="select*">
-		select *from
+		select user.id as id ,userName,studentId, dirmitoryNumber,integration,headPortrait,deliveManGrade,
+		r_id,roleName,userrole.id as urId from
 	</sql>
 	<select id="getUserById" parameterType="java.lang.Integer"
 		resultMap="UserResult">
 		<include refid="select*"></include>
-		user,role where user.id=#{id} and roleId=role.r_id
+		user,role,userrole where (user.id=#{id} and user.id=uId and rId=r_id)
 	</select>
 	<insert id="regester">
 		INSERT INTO user ( userName, studentId, wechatNumber, password,
@@ -90,8 +92,8 @@
 	<!-- 通过用户名和密码查询用户 -->
 	<select id="getUserByNameAndPssword"
 		parameterType="java.util.Map" resultMap="UserResult">
-		select *from user,role where(userName=#{userName} and password=#{password}
-		and roleId=role.r_id)
+		<include refid="select*"></include> user,role ,userrole where(userName=#{userName} and password=#{password}
+		and user.id=uId and rId=r_id)
 	</select>
 	<!-- 第二种方式有问题 -->
 	<!-- <select id="getUserByNameAndPassword2"resultMap="UserResult" parameterType="java.lang.String"> 
@@ -109,19 +111,19 @@
 	<!-- 获取配送员的所有用户值通过积分按照从大到小的顺序 -->
 	<select id="sendUsers" resultMap="sendUser">
 	SELECT
-	id,userName,studentId,wechatNumber,dirmitoryNumber,roleId,integration,headPortrait,deliveManGrade
+	user.id,userName,studentId,wechatNumber,dirmitoryNumber,rId,integration,headPortrait,deliveManGrade
 FROM
-user,role
+user,role,userrole
 WHERE
-	roleId = 4 and roleId=role.r_id
+	rId = 4 and uId=user.id and rId=r_id
 ORDER BY
 	deliveManGrade DESC
 	</select>
 	
 <!-- 批量获取用户 -->
 <select id="getBenchUsers" resultMap="UserResult" parameterType="java.lang.Integer">
-	select *from user,role where user.id in  <foreach collection="list" item="userId" open="(" close=")" separator=",">
-   #{userId} and roleId=role.r_id
+	<include refid="select*"></include> user,role ,userrole where user.id in  <foreach collection="list" item="userId" open="(" close=")" separator=",">
+   #{userId}  and user.id=uId and rId=r_id
    </foreach>
 </select>
 	<select id="getSendGrade" parameterType="java.lang.Integer" resultType="java.lang.Integer">

@@ -23,7 +23,7 @@
         <result property="userName" column="userName"/>
         <result property="roleName" column="roleName"/>
     </resultMap>
-    <select id="UserNameAndRoleName" resultMap="userNameAndRoleName">
+    <select id="getUserNameAndRoleName" resultMap="userNameAndRoleName">
         select userrole.id, uId,userName,roleName from user,userrole,role where( tId !=0 and user.id=uId and rId=r_id)
     </select>
     <update id="alertTid" parameterType="com.swpu.sharebook.entity.UserRole">
@@ -31,5 +31,8 @@
     </update>
     <select id="getRoleListByIdAndUserId" parameterType="com.swpu.sharebook.entity.UserRole" resultType="com.swpu.sharebook.entity.UserRole">
         select *from userrole where(id=#{id} and uId=#{uId})
+    </select>
+    <select id="getUserRoleById" parameterType="java.lang.Integer" resultType="com.swpu.sharebook.entity.UserRole">
+        select *from userrole where(id=#{id})
     </select>
 </mapper>
