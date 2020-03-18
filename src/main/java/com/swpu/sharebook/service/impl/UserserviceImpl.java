@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.swpu.sharebook.entity.User;
+import com.swpu.sharebook.entity.UserRole;
+import com.swpu.sharebook.mapper.RoleMapper;
 import com.swpu.sharebook.mapper.UserMapper;
 import com.swpu.sharebook.service.UserBaseService;
 import com.swpu.sharebook.service.UserService;
@@ -15,13 +17,15 @@ import com.swpu.sharebook.shiro.util.UserUtil;
 import com.swpu.sharebook.util.Tools;
 import com.swpu.sharebook.util.returnvalue.ResponseResult;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserserviceImpl  extends UserBaseService implements UserService {
 
 	@Resource
 	private UserMapper userMapper;
-
+	@Resource
+	private RoleMapper roleMapper;
 	public static final Long EXPIRE_TIME = Duration.ofMinutes(10000).toMillis();
 	@Override
 	public ResponseResult login(String userName, String password, String preVerifyCode) {
@@ -78,6 +82,7 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 
 
 	@Override
+	@Transactional
 	public ResponseResult register(User user, String preVerifyCode,String configName) {
 		String userName=user.getUserName();
 		String password=user.getPassword();
@@ -133,17 +138,14 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		if(userFlag!=null) {
 			return ResponseResult.ERROR(116, "用户你已经注册过请不要重复注册");
 		}
-		int flag=userMapper.regester(user);
-		if(flag==1) {
-			//默认第一次用户为普通用户
-//			Role  role=new Role();
-//			role.setId(1);
-//			user.setRole(role);
+		int uId=userMapper.regester(user);
+		UserRole userRole=new UserRole();
+		userRole.setUId(uId);
+		//userRole.setTId(0);
+		//初始状态都是为1普通管理员
+		userRole.setRId(1);
+		roleMapper.addUserRole(userRole);
 			return ResponseResult.SUCCESS("注册成功");
-		}
-		else {
-			return ResponseResult.ERROR(115, "注册失败出现未知错误");
-		}
 	}
 	@Override
 	public ResponseResult updateUser(User user) {
