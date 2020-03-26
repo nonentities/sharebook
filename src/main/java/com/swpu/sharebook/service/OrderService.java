@@ -86,7 +86,7 @@ public ResponseResult getDontPay();
 /***
  * 批量支付
  */
-public ResponseResult payBench(Integer distrubutionId,Integer [] orderLists);
+public ResponseResult payBench(Integer[] orderLists,Integer distrubutionId);
 	public ResponseResult deleteOrder(Integer id);
 }
 

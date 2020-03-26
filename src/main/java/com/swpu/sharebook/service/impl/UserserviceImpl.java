@@ -89,7 +89,6 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		/*//用户为空
 		if(user==null) {
 			return ResponseResult.ERROR(107, "请输入正确的信息");
-			
 		}
 		//验证码为空；
 		if(preVerifyCode==null) {

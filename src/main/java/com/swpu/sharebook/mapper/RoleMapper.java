@@ -3,13 +3,14 @@ package com.swpu.sharebook.mapper;
 import com.swpu.sharebook.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.swpu.sharebook.entity.UserRole;
+import com.swpu.sharebook.entity.createentity.UserNameAndRoleName;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * <p>
- * Mapper 接口
+ *  Mapper 接口
  * </p>
  *
  * @author ${author}
@@ -17,14 +18,10 @@ import java.util.List;
  */
 @Mapper
 public interface RoleMapper extends BaseMapper<Role> {
-    List<Role> getRoleListByUserId(Integer uId);
-
-    // List<UserNameAndRoleName> getUserNameAndRoleName();
-    void addUserRole(UserRole userRole);
-
-    void alertTid(UserRole userRole);
-
-    List<UserRole> getRoleListByIdAndUserId(UserRole userRole);
-
-    UserRole getUserRoleById(Integer id);
+public List<Role> getRoleListByUserId(Integer uId);
+public List<UserNameAndRoleName> getUserNameAndRoleName();
+public void addUserRole(UserRole userRole);
+public void alertTid(UserRole userRole);
+public List<UserRole> getRoleListByIdAndUserId(UserRole userRole);
+public UserRole getUserRoleById(Integer id);
 }
