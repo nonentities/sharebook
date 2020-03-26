@@ -35,4 +35,7 @@
     <select id="getUserRoleById" parameterType="java.lang.Integer" resultType="com.swpu.sharebook.entity.UserRole">
         select *from userrole where(id=#{id})
     </select>
+    <insert id="addUserRole" parameterType="com.swpu.sharebook.entity.UserRole">
+        insert into userrole (rId,uId) values (#{rId},#{uId})
+    </insert>
 </mapper>
