@@ -105,6 +105,7 @@ public class UserControl {
     }
     @GetMapping("/getCurrentUser")
     public ResponseResult getCurrentUser(){
+
         return userService.getCurrentUser();
     }
     @PostMapping("/updatePassword")

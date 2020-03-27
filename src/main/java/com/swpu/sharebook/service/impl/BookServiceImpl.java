@@ -270,14 +270,14 @@ public class BookServiceImpl implements BookService {
 		for(int i=0;i<previousList.size();i++){
 			int j=0;
 			Book preBook=previousList.get(i);
-			for( j=0;j<nowLenth;i++){
-				Book nowBook=nowList.get(i);
+			for(j=0;j<nowLenth;j++){
+				Book nowBook=nowList.get(j);
 				if(preBook.getBId()==nowBook.getBId()){
 					break;
 				}
 			}
 			//判断如果达到了最后一个说明没有对应的数据，就应该加载到lis里面
-			if(j==(nowLenth-1)){
+			if(j==nowLenth){
 				nowList.add(preBook);
 			}
 		}
