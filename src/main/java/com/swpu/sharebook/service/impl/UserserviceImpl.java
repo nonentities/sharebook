@@ -155,7 +155,6 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		userMapper.update(user);
 		return ResponseResult.SUCCESS("修改成功",user);
 	}
-
 	@Override
 	public ResponseResult updatePassword(String password, String confrimPassword) {
 		//获取当前用户的id

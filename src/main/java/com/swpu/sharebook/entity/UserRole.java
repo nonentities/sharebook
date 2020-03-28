@@ -3,6 +3,8 @@ package com.swpu.sharebook.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 
 /**
@@ -25,5 +27,7 @@ public class UserRole implements Serializable {
 
     private Integer rId;
     private Integer tId;
+    private String userName;
+    private Date date;
 
 }

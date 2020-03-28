@@ -17,14 +17,16 @@
 </select>
     <!--查看需要授权的用户信息
     -->
-    <resultMap id="userNameAndRoleName" type="com.swpu.sharebook.entity.createentity.UserNameAndRoleName">
-       <result property="id" column="id"/>
-        <result property="uId" column="uId"/>
-        <result property="userName" column="userName"/>
-        <result property="roleName" column="roleName"/>
-    </resultMap>
-    <select id="getUserNameAndRoleName" resultMap="userNameAndRoleName">
-        select userrole.id, uId,userName,roleName from user,userrole,role where( tId !=0 and user.id=uId and rId=r_id)
+ <resultMap id="getAllDontAllow" type="com.swpu.sharebook.entity.UserRole">
+     <id column="id" property="id"/>
+     <result column="uId" property="uId"/>
+     <result column="rId" property="rId"/>
+     <result column="tId" property="tId"/>
+     <result column="userName" property="userName"/>
+     <result column="createDate" property="date"/>
+ </resultMap>
+    <select id="getUserNameAndRoleName" resultMap="getAllDontAllow">
+select userrole.id ,uId,rId,tId,userName,createDate from userrole,user where(tId !=0 and user.id=uId)
     </select>
     <update id="alertTid" parameterType="com.swpu.sharebook.entity.UserRole">
         update userrole set tId=#{tId} where(id=#{id})
