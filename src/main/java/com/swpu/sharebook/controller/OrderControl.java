@@ -68,16 +68,16 @@ public class OrderControl {
 	public ResponseResult getDontPay(){
 		return orderService.getDontPay();
 	}
-/*	@PostMapping("payBench")
+	@PostMapping("payBench")
 	public ResponseResult payOrderBench(Integer[] list,Integer distrubutionId){
 		return orderService.payBench(list,distrubutionId);
-	}*/
-	@PostMapping("payBench")
+	}
+	/*@PostMapping("payBench")
 	public ResponseResult payOrderBench(Object list){
          Integer[] orderIdStr=null;
         Integer distrubutionId=null;
 		return orderService.payBench(orderIdStr,distrubutionId);
-	}
+	}*/
 	@GetMapping("deleteOrder")
 	public ResponseResult deleteOrder(Integer id){
 		System.out.println("mmq");

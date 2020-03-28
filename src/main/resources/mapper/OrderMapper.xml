@@ -125,6 +125,9 @@ VALUES
  			<when test="distrbutionId !=null ">
  				and distrbutionId=#{distrbutionId}
  			</when>
+ 			<!--<when test="isPay !=null">
+				and isPay=#{isPay}
+			</when>-->
  		<!-- 
  			<when test="orderBool !=null  ">
  			 	and orderBool=#{orderBool}
@@ -136,6 +139,7 @@ VALUES
  			</choose>
 			AND `order`.bId = book.bId
 			AND ORDER.userId = USER.id
+			and order.isPay=1
 			AND ORDER.userId = borringstatus.userId
 			AND ORDER.bId = borringstatus.bId
  		</where>

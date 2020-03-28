@@ -192,7 +192,6 @@ public class OrderServiceImpl implements OrderService {
 			return ResponseResult.ERROR(249,"请输入需要删除的订单id");
 		}
 		// 將當前用戶的id插入到對應的order中
-		//List<Order> orders = orderMapper.getListAboutOrder(order);
 		order=orderMapper.getOrderById(order.getId());
 		if (Tools.isNull(order)) {
 			return ResponseResult.ERROR(243, "你沒有對應的訂單哦");
