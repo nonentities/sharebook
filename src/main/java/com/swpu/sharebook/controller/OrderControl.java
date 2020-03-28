@@ -80,6 +80,7 @@ public class OrderControl {
 	}
 	@GetMapping("deleteOrder")
 	public ResponseResult deleteOrder(Integer id){
+		System.out.println("mmq");
 		return orderService.deleteOrder(id);
 	}
 }
