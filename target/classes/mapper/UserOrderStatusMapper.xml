@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
 <mapper namespace="com.swpu.sharebook.mapper.UserOrderStatusMapper">
 <resultMap type="com.swpu.sharebook.entity.BorringStatus" id="borringStatus">
+	<id column="oId" property="oId"/>
 	<result column="userId" property="userId"/>
 	<result column="bId" property="bId"/>
 	<result column="borrwingStatus" property="borrwingStatus"/>
@@ -11,38 +12,12 @@
 </resultMap>
 <!-- 插入操作即用户需要将 -->
 <insert id="addStatus" parameterType="com.swpu.sharebook.entity.BorringStatus">
-	insert into borringstatus (userId,bId,borrwingStatus,loanHour,sendStatus,returnTime)
-	 values(#{userId},#{bId},#{borrwingStatus},#{loanHour},#{sendStatus},#{returnTime})
+	insert into borringstatus (oId,userId,bId,borrwingStatus,loanHour,sendStatus,returnTime)
+	 values(#{oId},#{userId},#{bId},#{borrwingStatus},#{loanHour},#{sendStatus},#{returnTime})
 </insert>
-<select id="selectBorringStatus" parameterType="com.swpu.sharebook.entity.BorringStatus" resultMap="borringStatus">
+<select id="selectBorringStatusById" parameterType="com.swpu.sharebook.entity.BorringStatus" resultMap="borringStatus">
 	/*select userId, bId,borrwingStatus,loanHour,returnTime,sendStatus from borringstatus*/
-	select *from borringstatus
-	<where>
-	 bId=#{bId} and userId=#{userId}
-	<choose>
-	<!-- 存在问题到时候有问题 -->
-		<!-- <when test="bId !=null">
-		  bId=#{bId} 
-		</when>
-		<when test="userId != null">
-		 and userId=#{userId}
-		</when> -->
-		<!-- <when test="borrwingStatus !=null">
-		and borrwingStatus=#{borrwingStatus}
-		</when> -->
-		<!-- <when test="sendStatus !=null">
-		and sendStatus=#{sendStatus}
-		</when> -->
-		<when test="loanHour !=null">
-		and loanHour=#{loanHour}
-		</when>
-		<when test="returnTime !=null">
-		and returnTime=#{returnTime}
-		</when>
-		<otherwise>
-		</otherwise>
-	</choose>
-	</where>
+	select *from borringstatus where(oId=#{oId})
 </select>
 <!-- 更新操作实现 -->
 <update id="updateBorringStatus" parameterType="com.swpu.sharebook.entity.BorringStatus">
@@ -53,25 +28,25 @@ update borringstatus
   <if test="loanHour !=null">loanHour=#{loanHour},</if>
   <if test="returnTime !=null">returnTime=#{returnTime},</if>
  </trim>
- where(bId=#{bId} and userId=#{userId})
+ where(oId=#{oId})
 </update>
 
  <!-- 删除订单 -->
  <delete id="delete" parameterType="com.swpu.sharebook.entity.BorringStatus">
- delete  from `borringstatus` where(bId=#{bId} and userId=#{userId} )
+ delete  from `borringstatus` where(oId=#{oId}) )
  </delete>
 	<!--批量增加用户订单状态
 	注意index代表的是List中的索引，item才是对应的值
 	-->
 	<insert id="addStatusBench" >
-		insert into borringstatus (bId,userId,borrwingStatus,loanHour,sendStatus) values
+		insert into borringstatus (oId,bId,userId,borrwingStatus,loanHour,sendStatus) values
 		<foreach collection="listBorringStatus" index="index" item="borringStatus" separator=",">
 			(
-			#{borringStatus.bId},#{borringStatus.userId},#{borringStatus.borrwingStatus},#{borringStatus.loanHour},#{borringStatus.sendStatus}
+			#{borringStatus.oId},#{borringStatus.bId},#{borringStatus.userId},#{borringStatus.borrwingStatus},#{borringStatus.loanHour},#{borringStatus.sendStatus}
 			)
 		</foreach>
 	</insert>
-	<select id="getSendOrderStatus" parameterType="java.lang.Integer" resultMap="borringStatus">
+	<!--<select id="getSendOrderStatus" parameterType="java.lang.Integer" resultMap="borringStatus">
 		 SELECT
 	bId,
 	userId,
@@ -95,5 +70,5 @@ WHERE
 			UPDATE borringstatus
 			SET loanHour = #{borringStatus.loanHour},sendStatus=0 where(bId=#{borringStatus.bId} and userId=#{borringStatus.userId});
 		</foreach>
-	</update>
+	</update>-->
 </mapper>
