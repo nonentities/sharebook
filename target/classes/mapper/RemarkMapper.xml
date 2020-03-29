@@ -29,7 +29,7 @@
         <result column="distrbutionId" property="develiverManId"/>
     </resultMap>
     <select id="getRemarkToDeveliver" parameterType="java.lang.Integer" resultMap="remarkToDeveliver">
-        SELECT id,distrbutionId,userId FROM `order`where(id=#{orderId})
+        SELECT id,distrbutionId,userId FROM `order`where(id=#{orderId} and distrbutionId !=-1)
     </select>
     <!--
             对书籍评价信息结果的封装

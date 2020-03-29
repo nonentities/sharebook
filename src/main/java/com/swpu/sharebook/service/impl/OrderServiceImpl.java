@@ -403,6 +403,7 @@ public class OrderServiceImpl implements OrderService {
 		return ResponseResult.SUCCESS(orderList);
 	}
 @Override
+@Transactional
 	public ResponseResult payBench(Integer [] orderLists,Integer distrubutionId){
 		//获取用户的数据
 		if(Tools.isNull(orderLists)||orderLists.length==0){
