@@ -310,7 +310,7 @@ USER
 WHERE
 	(
 	`order`.userId=#{user.id}
-	and isPay=#{isPay}
+	and isPay=0
 	AND `order`.bId = book.bId
 	AND ORDER.userId = USER.id
 
