@@ -82,6 +82,7 @@ private RemarkMapper remarkMapper;
         if(remarkToDeveliver.getGradeClass()<=0||remarkToDeveliver.getGradeClass()>5){
             return ResponseResult.ERROR(815,"星级不合法");
         }
+        //这里需要加入通过订单找对应的配送员id不能为-1的用户
         //操作数据库防止出现用户重复对配送员进行评论
         Integer  tmpeGrade=remarkMapper.getSendGrade(remarkToDeveliver.getOrderId());
         if(Tools.notNull(tmpeGrade)){
