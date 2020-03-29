@@ -60,10 +60,6 @@ public class OrderControl {
 	public ResponseResult returnBook(Order order) {
 		return orderService.returnBook(order);
 	}
-	@PostMapping("payOrder")
-	public ResponseResult payOrder(Integer id,Integer distrubutionId){
-		return orderService.payOrder(id,distrubutionId);
-	}
 	@GetMapping("getDontPay")
 	public ResponseResult getDontPay(){
 		return orderService.getDontPay();
@@ -72,15 +68,8 @@ public class OrderControl {
 	public ResponseResult payOrderBench(Integer[] list,Integer distrubutionId){
 		return orderService.payBench(list,distrubutionId);
 	}
-	/*@PostMapping("payBench")
-	public ResponseResult payOrderBench(Object list){
-         Integer[] orderIdStr=null;
-        Integer distrubutionId=null;
-		return orderService.payBench(orderIdStr,distrubutionId);
-	}*/
 	@GetMapping("deleteOrder")
 	public ResponseResult deleteOrder(Integer id){
-		System.out.println("mmq");
 		return orderService.deleteOrder(id);
 	}
 }

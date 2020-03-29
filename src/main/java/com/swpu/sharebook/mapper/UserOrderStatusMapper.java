@@ -12,7 +12,7 @@ public interface UserOrderStatusMapper {
     //添加状态信息
 public Integer addStatus(BorringStatus borringStatus);
 //通过逐渐生成list
-public List<BorringStatus> selectBorringStatus(BorringStatus borringStatus);
+public BorringStatus selectBorringStatusById(Integer oId);
 //更新BorringStatus
 public void updateBorringStatus(BorringStatus borringStatus);
 public void delete(BorringStatus borringStatus);
@@ -20,7 +20,6 @@ public void addStatusBench(@Param("listBorringStatus") List<BorringStatus> listB
 /**
  * 获取当前配送的用户与订单中userId的订单信息
  */
-public List<BorringStatus> getSendOrderStatus(Integer distributeId);
 /**
  * 批量更新用户订单的状态
  */

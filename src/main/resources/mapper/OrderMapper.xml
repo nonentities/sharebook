@@ -140,8 +140,7 @@ VALUES
 			AND `order`.bId = book.bId
 			AND ORDER.userId = USER.id
 			and order.isPay=1
-			AND ORDER.userId = borringstatus.userId
-			AND ORDER.bId = borringstatus.bId
+			and order.id=oId
  		</where>
  </select>
  <!-- 通过id查询订单 -->
@@ -177,8 +176,7 @@ WHERE
 	`order`.id = #{id}
 	AND `order`.bId = book.bId
 	AND ORDER.userId = USER.id
-	AND ORDER.userId = borringstatus.userId
-	AND ORDER.bId = borringstatus.bId
+	AND ORDER.id=oId
 	)
  </select>
  <!-- 更新数据库的中order信息的状态和时间 -->
@@ -227,8 +225,7 @@ WHERE
 	`order`.userId=#{user.id} and orderStatus=#{orderStatus}
 	AND `order`.bId = book.bId
 	AND ORDER.userId = USER.id
-	AND ORDER.userId = borringstatus.userId
-	AND ORDER.bId = borringstatus.bId
+	AND ORDER.id=oId
 	)
  </select>
 	<!--

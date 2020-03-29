@@ -34,11 +34,6 @@ public class UserBookStatus {
         userOrderStatusMapper.addStatusBench(list);
     }
     @Test
-    public void testSendOrderStatus(){
-        List<BorringStatus> llst=userOrderStatusMapper.getSendOrderStatus(1);
-        System.out.println(llst);
-    }
-    @Test
     public void testUpdateSend(){
         BorringStatus borringStatus=new BorringStatus();
         borringStatus.setLoanHour(LocalDateTime.now());
