@@ -114,31 +114,23 @@ public class OrderServiceImpl implements OrderService {
 		// 查询对应的订单
 		// 查询当前订单：*/
 		order = orderMapper.getOrderById(order.getId());
-		if (order == null) {
+		if (Tools.isNull(order)) {
 			return ResponseResult.ERROR(213, "订单id不能为空的");
 		}
-		if(order.getDistrbutionId()!= UserUtil.getUserId()){
-			return ResponseResult.ERROR(220,"不是您的订单不能进行审核");
+		if(order.getUser().getId()!= UserUtil.getUserId()){
+			return ResponseResult.ERROR(220,"不是您的订单不能进行确认");
 		}
 		if(!order.isPay()){
 			return ResponseResult.ERROR(221,"目前该订单没有支付的哦");
 		}
 		if (!order.isOrderStatus()) {
-			return ResponseResult.ERROR(214, "您配送的订单被用户取消了");
+			return ResponseResult.ERROR(214, "您的订单已经被你取消了");
 		}
 		// 通过订单id找到当前用户的配送详情
 		List<BorringStatus> borringStatusList=userOrderStatusMapper.getSendOrderStatus(order.getDistrbutionId());
 		if (borringStatusList == null || borringStatusList.size() == 0) {
 			return ResponseResult.ERROR(218, "没有该用户书籍的订单");
 		}
-	/*	if (!borringStatus.getBorrwingStatus()) {
-			return ResponseResult.ERROR(219, "该用户的书籍处于预定状态，不能进行配送审核");
-		}*/
-/*		if (!borringStatus.getSendStatus()) {
-			return ResponseResult.ERROR(220, "配送审核完成，请不要重复操作");
-		}
-		// 将配送状态信息设置为false*/
-	//	borringStatus.setSendStatus(false);
 		// 将借阅时间更新
 		for(int i=0;i<borringStatusList.size();i++){
 			borringStatusList.get(i).setLoanHour(LocalDateTime.now());
@@ -148,9 +140,9 @@ public class OrderServiceImpl implements OrderService {
 		Integer account = order.getBookAccount();
 		//获取当前用户积分
 		//配送成功后配送员积分+2
-		Integer grade=userMapper.getIntegration(UserUtil.getUserId())+2;
+		Integer grade=userMapper.getIntegration(order.getDistrbutionId())+2;
 		Map<String ,Integer> map=new HashMap<>();
-		map.put("id", UserUtil.getUserId());
+		map.put("id", order.getDistrbutionId());
 		map.put("integration",grade);
 		userMapper.updateIntegration(map);
 		//减少借书人的积分
@@ -158,7 +150,7 @@ public class OrderServiceImpl implements OrderService {
 		map.put("id",order.getUser().getId());
 		map.put("integration",grade);
 		userMapper.updateIntegration(map);
-		return ResponseResult.SUCCESS("配送审核成功");
+		return ResponseResult.SUCCESS("收货成功");
 	}
 	@Override
 	public ResponseResult selectAllOrder() {
