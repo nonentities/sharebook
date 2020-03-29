@@ -75,4 +75,8 @@ public class BookBaseControl {
     public ResponseResult updateBookPrice(Integer id, Integer price) {
         return bookService.updateBookPrice(id, price);
     }
+    @PostMapping("updateBook")
+    public ResponseResult updateBook(Book book){
+        return bookService.updateBook(book);
+    }
 }

@@ -50,8 +50,6 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public Book getBookBySourceId(Integer sourceId) {
-
-		System.out.println("mjdfjgj");
 		return null;
 	}
 
@@ -84,7 +82,11 @@ public class BookServiceImpl implements BookService {
 	}
 	@Override
 	public ResponseResult updateBook(Book book) {
-		return null;
+		if(book.getBId()<=0){
+			return ResponseResult.ERROR(320,"书籍的id不合法");
+		}
+		bookMapper.updateBook(book);
+		return ResponseResult.SUCCESSM("书籍修改成功");
 	}
 
 	@Override

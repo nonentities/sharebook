@@ -73,7 +73,9 @@ VALUES
   <if test="bPublish!=null and bPublish !='' ">bookPbulish=#{bPublish},</if>
   <if test="introduction!=null and introduction !='' ">bookIntroduction=#{introduction},</if>
   <if test="bookOtherImportantPath!=null and bookOtherImportantPath !='' ">bookOtherImportantPath=#{bookOtherImportantPath},</if>
-  <if test="bookAccount!=null and bookAccount!='' ">bookAccount=#{bookAccount}</if>
+  <if test="bookAccount!=null  ">bookAccount=#{bookAccount}</if>
+  <if test="writer !=null and writer !='' ">writer=#{writer}</if>
+  <if test="bookPrice !=null">bookPrice=#{bookPrice}</if>
  </trim>
  WHERE bId=#{bId} 
 <!--  update book set bookAccount=#{bookAccount} where(bId=#{bId}) -->
