@@ -1,7 +1,6 @@
 package com.swpu.sharebook.controller;
 
 import javax.annotation.Resource;
-import javax.annotation.Resources;
 import javax.validation.Valid;
 
 import com.swpu.sharebook.util.Tools;

@@ -33,7 +33,7 @@ update borringstatus
 
  <!-- 删除订单 -->
  <delete id="delete" parameterType="com.swpu.sharebook.entity.BorringStatus">
- delete  from `borringstatus` where(oId=#{oId}) 
+ delete  from `borringstatus` where(oId=#{oId})
  </delete>
 	<!--批量增加用户订单状态
 	注意index代表的是List中的索引，item才是对应的值

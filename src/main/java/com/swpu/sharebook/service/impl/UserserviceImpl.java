@@ -29,7 +29,14 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 	public static final Long EXPIRE_TIME = Duration.ofMinutes(10000).toMillis();
 	@Override
 	public ResponseResult login(String userName, String password, String preVerifyCode) {
-
+			HttpSession session=Tools.getSession();
+			String verifyCode=(String) session.getAttribute("verifyCode");
+ 		  if(verifyCode==null) {
+				return ResponseResult.ERROR(105,"验证码为空，请输入验证码");
+			}
+			if(!verifyCode.equals(preVerifyCode)) {
+				return ResponseResult.ERROR(106, "验证码输入错误，请重新输入");
+			}
 		User md5User = UserUtil.getMd5User(userName, password);
 		User dbUser = userMapper.selectOne(new QueryWrapper<User>()
 				.eq("userName", userName)
@@ -48,15 +55,7 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		//判断用户名密码是否为空
 		boolean flag= Tools.isNull(userName,password);
 		if(!flag) {
-			//验证验证码
-//			HttpSession session=Tools.getSession();
-//			String verifyCode=(String) session.getAttribute("verifyCode");
-//			if(verifyCode==null) {
-//				return ResponseResult.ERROR(105,"验证码为空，请输入验证码");
-//			}
-//			if(!verifyCode.equals(preVerifyCode)) {
-//				return ResponseResult.ERROR(106, "验证码输入错误，请重新输入");
-//			}
+
 			//查询数据库
 			User user = userMapper.getUserByNameAndPssword(Tools.getMap("userName",userName,"password",password));
 			//判断是否为空
