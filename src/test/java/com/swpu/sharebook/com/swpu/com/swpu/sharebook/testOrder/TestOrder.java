@@ -24,4 +24,12 @@ public class TestOrder {
         List<Order> orders=orderMapper.getListAboutOrder(order);
         System.out.println(orders);
     }
+    @Test
+    public void testRRR(){
+        Order order=new Order();
+        //order.setSendStatus(true);
+        order.setOrderBool(1);
+      //  order.setOrderStatus(true);
+        orderMapper.getOrderWaitRRR(order);
+    }
 }

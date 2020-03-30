@@ -48,4 +48,12 @@ public interface OrderMapper {
      * 删除订单
      */
     public void deleteOrder(Integer id);
+    /**
+     * 修改用户还书的状态
+     */
+    public void updateOrderRetrunStatus(Integer oId);
+    /**
+     * 获取订单各个状态RRR
+     */
+    public List<Order>getOrderWaitRRR(Order order);
 }

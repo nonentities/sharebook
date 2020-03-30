@@ -90,11 +90,11 @@ public class OrderServiceImpl implements OrderService {
 		if(order.getUser().getId()!= UserUtil.getUserId()){
 			return ResponseResult.ERROR(220,"不是您的订单不能进行确认");
 		}
-		if(!order.isPay()){
+		if(!order.getIsPay()){
 			return ResponseResult.ERROR(221,"目前该订单没有支付的哦");
 		}
-		if (!order.isOrderStatus()) {
-			return ResponseResult.ERROR(214, "您的订单已经被你取消了");
+		if (!order.getOrderStatus()) {
+			return ResponseResult.ERROR(214, "您的订单已经被你归还了");
 		}
 	//可以直接通过id获取订单状态
 		BorringStatus borringStatus=userOrderStatusMapper.selectBorringStatusById(order.getId());
@@ -158,14 +158,11 @@ public class OrderServiceImpl implements OrderService {
 		if (Tools.isNull(order)) {
 			return ResponseResult.ERROR(243, "你沒有對應的訂單哦");
 		}
-		// 判斷訂單是否被取消
-		if (!order.isOrderStatus()) {
-			return ResponseResult.ERROR(244, "訂單已經被取消了,請不要重複操作");
-		}
-		if(!order.isPay()){
+
+		if(!order.getIsPay()){
 			return  ResponseResult.ERROR(248,"订单还未支付，不能取消");
 		}
-		if(order.isSendStatus()){
+		if(order.getOrderStatus()){
 
 			//只有待配送的订单可以取消
 
@@ -181,9 +178,7 @@ public class OrderServiceImpl implements OrderService {
 			Integer grade=userMapper.getIntegration(order.getUser().getId())+(order.getBook().getBookPrice()*order.getBookAccount());
 			mapGrade.put("integration",grade);
 			userMapper.updateIntegration(mapGrade);
-			//4将订单状态改为false
-			 order.setOrderStatus(false);
-			order.setPay(false);
+			order.setIsPay(false);
 			 orderMapper.updateOrder(order);
 			 //5更新书籍库存
 			Integer bookAccount=bookMapper.getBookAccount(order.getBook().getBId())+order.getBookAccount();
@@ -207,8 +202,8 @@ public class OrderServiceImpl implements OrderService {
 			return ResponseResult.ERROR(252, "书籍id不能为小于0");
 		}
 		order=orderMapper.getOrderById(order.getId());
-		if(!order.isOrderStatus()) {
-			return ResponseResult.ERROR(251, "书籍订单已经被取消了");
+		if(!order.getOrderStatus()) {
+			return ResponseResult.ERROR(251, "书籍已经归还了");
 		}
 		User user=new User();
 		user.setId(UserUtil.getUserId());
@@ -223,9 +218,6 @@ public class OrderServiceImpl implements OrderService {
 		//不出意外不会出现空指针异常
 		 if(!borringStatus.getBorrwingStatus()) {
 			 return ResponseResult.ERROR(253, "没有收到书籍，不能归还书籍");
-		 }
-		 if(borringStatus.getReturnTime()!=null) {
-			 return ResponseResult.ERROR(255, "书籍已经被确认归还，请不要重复确认");
 		 }
 		 //今天的日期
 		 Date toDate=new Date();
@@ -260,6 +252,8 @@ public class OrderServiceImpl implements OrderService {
 			 //更新用户积分；
 			 userMapper.update(tempUser);
 		 }
+		 //修改用户的归还状态信息
+		orderMapper.updateOrderRetrunStatus(order.getId());
 		return ResponseResult.SUCCESSM("还书成功");
 	}
 	@Override
@@ -303,7 +297,7 @@ public class OrderServiceImpl implements OrderService {
 			if (order == null) {
 				return ResponseResult.ERROR(262, "您目前第" + (i + 1) + "个订单不存在");
 			}
-			if (order.isPay()) {
+			if (order.getIsPay()) {
 				return ResponseResult.ERROR(263, "目前" + (i + 1) + "订单已经被支付了，不需要再支付了哦");
 			}
 			int account = order.getBookAccount();
@@ -362,7 +356,7 @@ public class OrderServiceImpl implements OrderService {
 				order.setDistrbutionId(1);
 			order.setOrderStatus(true);
 			order.setOrderTime(new Date());
-			order.setPay(true);
+			order.setIsPay(true);
 			order.setDistrbutionId(distrubutionId);
 			orderBench.add(order);
 			borringStatusList.add(borringStatus);
@@ -380,7 +374,7 @@ public class OrderServiceImpl implements OrderService {
 			if (order == null) {
 				return ResponseResult.ERROR(262, "您目前第" + (i + 1) + "个订单不存在");
 			}
-			if (order.isPay()) {
+			if (order.getIsPay()) {
 				return ResponseResult.ERROR(263, "目前" + (i + 1) + "订单已经被支付了，不需要再支付了哦");
 			}
 			int account = order.getBookAccount();
@@ -440,7 +434,7 @@ public class OrderServiceImpl implements OrderService {
 
 			order.setOrderStatus(true);
 			order.setOrderTime(new Date());
-			order.setPay(true);
+			order.setIsPay(true);
 			orderBench.add(order);
 			borringStatusList.add(borringStatus);
 		}
@@ -474,5 +468,46 @@ public class OrderServiceImpl implements OrderService {
 		//删除订单
 		orderMapper.deleteOrder(id);
 		return ResponseResult.SUCCESSM("删除成功");
+	}
+
+	@Override
+	public ResponseResult waitToRemark() {
+		Order order=new Order();
+		//配送到手
+		order.setSendStatus(false);
+        //未评论
+		order.setOrderBool(1);
+		User user=new User();
+		user.setId(UserUtil.getUserId());
+		order.setUser(user);
+		List<Order> waitToRemark=orderMapper.getOrderWaitRRR(order);
+		return ResponseResult.SUCCESS(waitToRemark);
+	}
+	@Override
+	public ResponseResult waitToReturn() {
+		Order order=new Order();
+		//配送到手
+		order.setSendStatus(false);
+		//未归还
+		order.setOrderStatus(true);
+		User user=new User();
+		user.setId(UserUtil.getUserId());
+		order.setUser(user);
+		List<Order> waitToReeturn=orderMapper.getOrderWaitRRR(order);
+
+		return ResponseResult.SUCCESS(waitToReeturn);
+	}
+
+	@Override
+	public ResponseResult waitToReceive() {
+		Order order=new Order();
+		//配送中
+		order.setSendStatus(true);
+
+		User user=new User();
+		user.setId(UserUtil.getUserId());
+		order.setUser(user);
+		List<Order> waitToReceive=orderMapper.getOrderWaitRRR(order);
+		return ResponseResult.SUCCESS(waitToReceive);
 	}
 }

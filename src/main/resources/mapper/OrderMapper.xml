@@ -113,12 +113,6 @@ VALUES
  			<when test="orderTime !=null ">
  				 and orderTime=#{orderTime}
  			</when>
- 			<!--  <when test="orderStatus !=null ">
- 			     and orderStatus=#{orderStatus}
- 			</when>  -->
- 			<!-- <when test="book.bId !=null  ">
- 				and bId=#{book.bId}
- 			</when> -->
  			<when test="user!=null and user.id !=null ">
  				and order.userId=#{user.id}
  			</when>
@@ -143,6 +137,63 @@ VALUES
 			and order.id=oId
  		</where>
  </select>
+	<!--获取用户待归还，待评价，待收货的订单
+	-->
+	<select id="getOrderWaitRRR" parameterType="com.swpu.sharebook.entity.Order" resultMap="order">
+		SELECT
+		`order`.id,
+		orderTime,
+		orderStatus,
+		order.bId,
+		order.userId,
+		distrbutionId,
+		orderBool,
+		order.bookAccount,
+		isPay,
+		returnTime,
+		sendStatus,
+		book.bId,
+		bName,
+		bookPbulish,
+		bookIntroduction,
+		bookPrice,
+		user.id,
+		studentId,
+		wechatNumber,
+		dirmitoryNumber
+		FROM
+		`order`,
+		book,
+		borringstatus,
+		user
+		<where>
+			<choose>
+				<when test="user!=null and user.id !=null ">
+					and order.userId=#{user.id}
+				</when>
+				<!--
+				评价状态
+				-->
+                    <when test="orderBool !=null ">
+                         and orderBool=#{orderBool}
+                    </when>
+
+                <!--配送状态
+                -->
+
+			</choose>
+			<if test="sendStatus !=null">
+				and sendStatus=#{sendStatus}
+			</if>
+			<if test="orderStatus !=null">
+				and orderStatus =#{orderStatus}
+			</if>
+			AND `order`.bId = book.bId
+			AND order.userId = user.id
+			and order.isPay=1
+			and order.id=oId
+		</where>
+	</select>
  <!-- 通过id查询订单 -->
  <select id="getOrderById" parameterType="java.lang.Integer" resultMap="order">
 SELECT
@@ -162,7 +213,7 @@ SELECT
 	bookPbulish,
 	bookIntroduction,
 	bookPrice,
-	USER.id,
+	user.id,
 	studentId,
 	wechatNumber,
 	dirmitoryNumber
@@ -170,7 +221,7 @@ FROM
 	`order`,
 	book,
 	borringstatus,
-USER
+user
 WHERE
 	(
 	`order`.id = #{id}
@@ -211,7 +262,7 @@ SELECT
 	bookPbulish,
 	bookIntroduction,
 	bookPrice,
-	USER.id,
+	user.id,
 	studentId,
 	wechatNumber,
 	dirmitoryNumber
@@ -219,7 +270,7 @@ FROM
 	`order`,
 	book,
 	borringstatus,
-USER
+user
 WHERE
 	(
 	`order`.userId=#{user.id} and orderStatus=#{orderStatus}
@@ -263,11 +314,11 @@ WHERE
 	isPay,
 	book.bId,
 	bookPrice,
-	USER.id
+	user.id
 FROM
 	`order`,
 	book,
-USER
+user
 WHERE
 	(
 	`order`.id=#{id}
@@ -303,7 +354,7 @@ WHERE
 FROM
 	`order`,
 	book,
-USER
+user
 WHERE
 	(
 	`order`.userId=#{user.id}
@@ -327,4 +378,9 @@ WHERE
 	<delete id="deleteOrder" parameterType="java.lang.Integer">
 		delete  from `order` where(id=#{id})
 	</delete>
+	<!--更新用户归还的状态的信息
+	-->
+	<update id="updateOrderRetrunStatus" parameterType="java.lang.Integer">
+		update `order` set orderStatus =0 where(id=#{oId})
+	</update>
 </mapper>

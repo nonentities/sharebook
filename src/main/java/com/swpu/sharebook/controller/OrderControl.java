@@ -72,4 +72,16 @@ public class OrderControl {
 	public ResponseResult deleteOrder(Integer id){
 		return orderService.deleteOrder(id);
 	}
+	@GetMapping("watiToReceive")
+	public ResponseResult waitToReceive(){
+		return orderService.waitToReceive();
+	}
+	@GetMapping("waitToRemark")
+	public ResponseResult waitToRemark(){
+		return orderService.waitToRemark();
+	}
+	@GetMapping("waitToReturn")
+	public ResponseResult waitToReturn(){
+		return orderService.waitToReturn();
+	}
 }

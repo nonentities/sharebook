@@ -3,6 +3,7 @@ package com.swpu.sharebook.service;
 
 import com.swpu.sharebook.entity.Order;
 import com.swpu.sharebook.util.returnvalue.ResponseResult;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -86,6 +87,30 @@ public ResponseResult getDontPay();
  * 批量支付
  */
 public ResponseResult payBench(Integer[] orderLists,Integer distrubutionId);
+
+	/**
+	 * 删除订单
+	 * @param id
+	 * @return
+	 */
 	public ResponseResult deleteOrder(Integer id);
+
+	/**
+	 * 待评价的订单
+	 * @return
+	 */
+	public ResponseResult waitToRemark();
+
+	/**
+	 * 待归还
+	 * @return
+	 */
+	public ResponseResult waitToReturn();
+
+	/**
+	 * 待收货
+	 * @return
+	 */
+	public ResponseResult waitToReceive();
 }
 

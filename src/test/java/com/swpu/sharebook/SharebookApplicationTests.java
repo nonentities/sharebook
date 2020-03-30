@@ -28,7 +28,7 @@ private OrderMapper orderMapper;
         // 获取当前用户的所有订单
         Order order = new Order();
         order.setUser(user);
-        order.setPay(false);
+        order.setIsPay(false);
         List<Order> orderList = orderMapper.getListOrderNotPay(order);
         System.out.println(orderList);
     }
