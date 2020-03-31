@@ -1,8 +1,6 @@
 package com.swpu.sharebook.controller;
-
 import javax.annotation.Resource;
 import javax.validation.Valid;
-
 import com.swpu.sharebook.util.Tools;
 import com.swpu.sharebook.util.returnvalue.ResponseResult;
 import org.springframework.validation.BindingResult;

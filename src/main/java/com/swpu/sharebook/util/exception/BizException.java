@@ -23,5 +23,4 @@ public class BizException extends JmSoftException {
 	public static void throwException(ResponseResult responseResult) throws BizException {
 		throw new BizException(responseResult);
 	}
-
 }
