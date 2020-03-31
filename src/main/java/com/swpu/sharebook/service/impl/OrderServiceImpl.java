@@ -102,7 +102,7 @@ public class OrderServiceImpl implements OrderService {
 			return ResponseResult.ERROR(218, "没有该用户书籍的订单");
 		}
 		// 将借阅时间更新
-		borringStatus.setLoanHour(LocalDateTime.now());
+		borringStatus.setLoanHour(new Date());
 		// 更新书籍订单
 		//配送状态改为false
 		borringStatus.setSendStatus(false);
@@ -222,8 +222,8 @@ public class OrderServiceImpl implements OrderService {
 		 //今天的日期
 		 Date toDate=new Date();
 		 //书籍借阅日期
-		LocalDateTime yeDate = borringStatus.getLoanHour();
-		Integer flag= Tools.getDay(toDate,new Date(yeDate.toInstant(ZoneOffset.of("GMT+8")).toEpochMilli()) );
+		Date yeDate = borringStatus.getLoanHour();
+		Integer flag= Tools.getDay(toDate,yeDate);
 		 //书籍的数量+account
 		 Book book=new Book();
 		 book.setBId(order.getBook().getBId());
@@ -234,7 +234,7 @@ public class OrderServiceImpl implements OrderService {
 		 //更新书籍数量
 		 bookMapper.updateBook(book);
 		 //修改归还时间
-		 borringStatus.setReturnTime(LocalDateTime.now());
+		 borringStatus.setReturnTime(new Date());
 		 userOrderStatusMapper.updateBorringStatus(borringStatus);
 		 //判断用户的时间
 		 if(flag>30) {
@@ -351,7 +351,7 @@ public class OrderServiceImpl implements OrderService {
 			if (Tools.isNull(borringStatus)) {
 				return ResponseResult.ERROR(216, "第" + (i + 1) + "订单已经生成了，请不要重复提交哦");
 			}
-			borringStatus.setLoanHour(LocalDateTime.now());
+			borringStatus.setLoanHour(new Date());
 				borringStatus.setSendStatus(false);
 				order.setDistrbutionId(1);
 			order.setOrderStatus(true);
@@ -428,7 +428,7 @@ public class OrderServiceImpl implements OrderService {
 			if (Tools.isNull(borringStatus)) {
 				return ResponseResult.ERROR(216, "第" + (i + 1) + "订单已经生成了，请不要重复提交哦");
 			}
-			borringStatus.setLoanHour(LocalDateTime.now());
+			borringStatus.setLoanHour(new Date());
 				order.setDistrbutionId(distrubutionId);
 				borringStatus.setSendStatus(true);
 

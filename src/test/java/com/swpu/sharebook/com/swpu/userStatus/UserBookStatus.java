@@ -2,16 +2,15 @@ package com.swpu.sharebook.com.swpu.userStatus;
 
 import com.swpu.sharebook.entity.BorringStatus;
 import com.swpu.sharebook.mapper.UserOrderStatusMapper;
-import org.apache.commons.collections.ArrayStack;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
-import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class UserBookStatus {
             borringStatus.setUserId(i);
             borringStatus.setBId(i);
             borringStatus.setSendStatus(true);
-            borringStatus.setLoanHour(LocalDateTime.now());
+            borringStatus.setLoanHour(new java.util.Date());
             list.add(borringStatus);
         }
         userOrderStatusMapper.addStatusBench(list);
@@ -36,15 +35,15 @@ public class UserBookStatus {
     @Test
     public void testUpdateSend(){
         BorringStatus borringStatus=new BorringStatus();
-        borringStatus.setLoanHour(LocalDateTime.now());
+        borringStatus.setLoanHour(new java.util.Date());
         borringStatus.setBId(3);
         borringStatus.setUserId(1);
         BorringStatus borringStatus1=new BorringStatus();
-        borringStatus1.setLoanHour(LocalDateTime.now());
+        borringStatus1.setLoanHour(new Date());
         borringStatus1.setBId(6);
         borringStatus1.setUserId(1);
         BorringStatus borringStatus2=new BorringStatus();
-        borringStatus2.setLoanHour(LocalDateTime.now());
+        borringStatus2.setLoanHour(new java.util.Date());
         borringStatus2.setBId(7);
         borringStatus2.setUserId(1);
         List<BorringStatus>list=new ArrayList<>();

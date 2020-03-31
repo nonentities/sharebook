@@ -1,15 +1,12 @@
 package com.swpu.sharebook.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.experimental.Accessors;
 
 /**
  * <p>
@@ -45,13 +42,13 @@ public class BorringStatus implements Serializable {
      * 借阅时间
      */
     @TableField("loanHour")
-    private LocalDateTime loanHour;
+    private Date loanHour;
 
     /**
      * 归还时间
      */
     @TableField("returnTime")
-    private LocalDateTime returnTime;
+    private Date returnTime;
 
     /**
      * 配送状态
