@@ -481,7 +481,7 @@ public class OrderServiceImpl implements OrderService {
 		user.setId(UserUtil.getUserId());
 		order.setUser(user);
 		List<Order> waitToRemark=orderMapper.getOrderWaitRRR(order);
-		return ResponseResult.SUCCESS("unremark",waitToRemark);
+		return ResponseResult.SUCCESS("unreceived",waitToRemark);
 	}
 	@Override
 	public ResponseResult waitToReturn() {
@@ -508,6 +508,6 @@ public class OrderServiceImpl implements OrderService {
 		user.setId(UserUtil.getUserId());
 		order.setUser(user);
 		List<Order> waitToReceive=orderMapper.getOrderWaitRRR(order);
-		return ResponseResult.SUCCESS("unrestore",waitToReceive);
+		return ResponseResult.SUCCESS("unrestored",waitToReceive);
 	}
 }
