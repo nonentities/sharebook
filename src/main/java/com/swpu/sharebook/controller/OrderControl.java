@@ -72,7 +72,7 @@ public class OrderControl {
 	public ResponseResult deleteOrder(Integer id){
 		return orderService.deleteOrder(id);
 	}
-	@GetMapping("watiToReceive")
+	@GetMapping("waitToReceive")
 	public ResponseResult waitToReceive(){
 		return orderService.waitToReceive();
 	}
