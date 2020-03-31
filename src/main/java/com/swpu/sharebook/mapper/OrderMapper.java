@@ -56,4 +56,8 @@ public interface OrderMapper {
      * 获取订单各个状态RRR
      */
     public List<Order>getOrderWaitRRR(Order order);
+    /**
+     * 获取订单配送员id
+     */
+    public Integer getDistributeId(Integer oId);
 }

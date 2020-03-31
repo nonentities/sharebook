@@ -42,8 +42,8 @@ private RemarkMapper remarkMapper;
         //先从数据库中查找是否已经被评价过
         remarkToBook=remarkMapper.getRemarkToBook(remarkToBook.getOrderId());
         //没有被支付的订单是不能进行评论的
-        if(remarkToBook==null){
-            return ResponseResult.ERROR(802,"没有对应的订单需要评价");
+        if(Tools.notNull(remarkToBook)){
+            return ResponseResult.ERROR(802,"目前订单已经被评论，请不要重复评论哦");
         }
         //判断是否为本人的订单
         if(UserUtil.getUserId()!=remarkToBook.getUserId()){
@@ -52,18 +52,21 @@ private RemarkMapper remarkMapper;
        if(orderMapper.getIsPay(remarkToBook.getOrderId())==0){
            return ResponseResult.ERROR(804,"你还没有支付该订单不能评价的哦");
        }
-       if(orderMapper.getOrderStatus(remarkToBook.getOrderId())==0){
-           return ResponseResult.ERROR(803,"该订单已经被你取消了，就不要去评价了哦");
-       }
         remarkToBook.setRemarkToBookContent(content);
         /**
          * 通过数据库的订单id查找出用户的bId,userId
          */
         remarkMapper.addRemarkToBook(remarkToBook);
-        Map<String,Object> map=new HashMap<>();
-        map.put("id",remarkToBook.getOrderId());
-        map.put("orderBool",false);
-        orderMapper.updateBool(map);
+        //判断配送员是否被评论
+        Integer  tmpeGrade=remarkMapper.getSendGrade(remarkToBook.getOrderId());
+        //通过订单id获取配送员id
+        Integer distributeId=orderMapper.getDistributeId(remarkToBook.getOrderId());
+        if(Tools.notNull(tmpeGrade) || distributeId==-1){
+            Map<String,Object> map=new HashMap<>();
+            map.put("id",remarkToBook.getOrderId());
+            map.put("orderBool",false);
+            orderMapper.updateBool(map);
+        }
         return ResponseResult.SUCCESSM("书籍评论成功");
     }
     @Override
@@ -100,17 +103,20 @@ private RemarkMapper remarkMapper;
         if(orderMapper.getIsPay(remarkToDeveliver.getOrderId())==0){
             return ResponseResult.ERROR(817,"你还没有支付该订单不能评价的哦");
         }
-        if(orderMapper.getOrderStatus(remarkToDeveliver.getOrderId())==0){
-            return ResponseResult.ERROR(818,"该订单已经被你取消了，就不要去评价了哦");
-        }
-
        remarkToDeveliver.setGradeClass(grades);
        //不能对自己的配送的订单进行评价
        //获取当前用户的id
         if(UserUtil.getUserId()==remarkToDeveliver.getDeveliverManId()){
             return ResponseResult.ERROR(818,"您不能对自己的配送的订单进行评价的哦");
         }
-
+        //判断订单是否被评论
+       RemarkToBook remarkToBook=remarkMapper.getRemarkToBook(remarkToDeveliver.getOrderId());
+        if(Tools.notNull(remarkToBook)){
+            Map<String,Object> mapBool=new HashMap<>();
+            mapBool.put("id",remarkToDeveliver.getOrderId());
+            mapBool.put("orderBool",false);
+            orderMapper.updateBool(mapBool);
+        }
         //获取配送员的信誉积分
     Integer gradesClass=userMapper.getSendGrade(remarkToDeveliver.getDeveliverManId());
         //更新配送员的信誉积分
@@ -121,10 +127,6 @@ private RemarkMapper remarkMapper;
         map.put("id",remarkToDeveliver.getDeveliverManId());
         userMapper.updateGrade(map);
         remarkMapper.addRemarkToDeveliver(remarkToDeveliver);
-        Map<String,Object> mapBool=new HashMap<>();
-        mapBool.put("id",remarkToDeveliver.getOrderId());
-        mapBool.put("orderBool",false);
-        orderMapper.updateBool(mapBool);
         return ResponseResult.SUCCESSM("评论成功");
     }
     /**
