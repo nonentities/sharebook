@@ -92,10 +92,6 @@ private RemarkMapper remarkMapper;
             return ResponseResult.SUCCESS("您已经对订单进行过评价了，请不要对配送员重复评价",tmpeGrade);
         }
         Integer grades=remarkToDeveliver.getGradeClass();
-       remarkToDeveliver= remarkMapper.getRemarkToDeveliver(remarkToDeveliver.getOrderId());
-       if(Tools.isNull(remarkToDeveliver)) {
-           return ResponseResult.ERROR(816, "没有您选择的订单");
-       }
        //判断是否为本人的订单
         if(UserUtil.getUserId()!=remarkToDeveliver.getUserId()){
             return ResponseResult.ERROR(819,"不是你的订单请不要随便评论");
