@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.swpu.sharebook.entity.Book;
-import com.swpu.sharebook.entity.Order;
 import com.swpu.sharebook.service.BookService;
 
 @RestController

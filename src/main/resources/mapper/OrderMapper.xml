@@ -250,10 +250,10 @@ SELECT
 	orderTime,
 	orderStatus,
 	orrder.bId,
-	order.userId,
+	`order`.userId,
 	distrbutionId,
 	orderBool,
-	order.bookAccount,
+	`order`.bookAccount,
 	isPay,
 	returnTime,
 	sendStatus,
@@ -275,8 +275,8 @@ WHERE
 	(
 	`order`.userId=#{user.id} and orderStatus=#{orderStatus}
 	AND `order`.bId = book.bId
-	AND order.userId = user.id
-	AND order.id=oId
+	AND `order`userId = user.id
+	AND `order`.id=oId
 	)
  </select>
 	<!--
@@ -306,11 +306,11 @@ WHERE
 	`order`.id,
 	orderTime,
 	orderStatus,
-	order.bId,
-	order.userId,
+	`order`.bId,
+	`order`.userId,
 	distrbutionId,
 	orderBool,
-	order.bookAccount,
+	`order`.bookAccount,
 	isPay,
 	book.bId,
 	bookPrice,
@@ -323,7 +323,7 @@ WHERE
 	(
 	`order`.id=#{id}
 	AND `order`.bId = book.bId
-	AND order.userId = user.id
+	AND `order`.userId = user.id
 	)
 	</select>
 <!--
@@ -340,11 +340,11 @@ WHERE
 	`order`.id,
 	orderTime,
 	orderStatus,
-	order.bId,
-	order.userId,
+	`order`.bId,
+	`order`.userId,
 	distrbutionId,
 	orderBool,
-	order.bookAccount,
+	`order`.bookAccount,
 	isPay,
 	book.bId,
 	bName,
@@ -360,7 +360,7 @@ WHERE
 	`order`.userId=#{user.id}
 	and isPay=0
 	AND `order`.bId = book.bId
-	AND order.userId = user.id
+	AND `order`.userId = user.id
 
 	)
 	</select>
