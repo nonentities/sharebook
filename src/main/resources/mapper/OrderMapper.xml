@@ -82,11 +82,11 @@ VALUES
 	 `order`.id,
 	 orderTime,
 	 orderStatus,
-	 ORDER.bId,
-	 ORDER.userId,
+	 order.bId,
+	 order.userId,
 	 distrbutionId,
 	 orderBool,
-	 ORDER.bookAccount,
+	 order.bookAccount,
 	 isPay,
 	 returnTime,
 	 sendStatus,
@@ -95,7 +95,7 @@ VALUES
 	 bookPbulish,
 	 bookIntroduction,
 	 bookPrice,
-	 USER.id,
+	 user.id,
 	 studentId,
 	 wechatNumber,
 	 dirmitoryNumber
@@ -103,7 +103,7 @@ VALUES
 	 `order`,
 	 book,
 	 borringstatus,
-	 USER
+	 user
  		<where> 
  			<choose>
  			<when test="id !=null">
@@ -132,7 +132,7 @@ VALUES
  			</when>-->
  			</choose>
 			AND `order`.bId = book.bId
-			AND ORDER.userId = USER.id
+			AND order.userId = user.id
 			and order.isPay=1
 			and order.id=oId
  		</where>
@@ -200,11 +200,11 @@ SELECT
 	`order`.id,
 	orderTime,
 	orderStatus,
-	ORDER.bId,
-	ORDER.userId,
+	order.bId,
+	order.userId,
 	distrbutionId,
 	orderBool,
-	ORDER.bookAccount,
+	order.bookAccount,
 	isPay,
 	returnTime,
 	sendStatus,
@@ -226,8 +226,8 @@ WHERE
 	(
 	`order`.id = #{id}
 	AND `order`.bId = book.bId
-	AND ORDER.userId = USER.id
-	AND ORDER.id=oId
+	AND order.userId = user.id
+	AND order.id=oId
 	)
  </select>
  <!-- 更新数据库的中order信息的状态和时间 -->
@@ -249,11 +249,11 @@ SELECT
 	`order`.id,
 	orderTime,
 	orderStatus,
-	ORDER.bId,
-	ORDER.userId,
+	orrder.bId,
+	order.userId,
 	distrbutionId,
 	orderBool,
-	ORDER.bookAccount,
+	order.bookAccount,
 	isPay,
 	returnTime,
 	sendStatus,
@@ -275,8 +275,8 @@ WHERE
 	(
 	`order`.userId=#{user.id} and orderStatus=#{orderStatus}
 	AND `order`.bId = book.bId
-	AND ORDER.userId = USER.id
-	AND ORDER.id=oId
+	AND order.userId = user.id
+	AND order.id=oId
 	)
  </select>
 	<!--
@@ -306,11 +306,11 @@ WHERE
 	`order`.id,
 	orderTime,
 	orderStatus,
-	ORDER.bId,
-	ORDER.userId,
+	order.bId,
+	order.userId,
 	distrbutionId,
 	orderBool,
-	ORDER.bookAccount,
+	order.bookAccount,
 	isPay,
 	book.bId,
 	bookPrice,
@@ -323,7 +323,7 @@ WHERE
 	(
 	`order`.id=#{id}
 	AND `order`.bId = book.bId
-	AND ORDER.userId = USER.id
+	AND order.userId = user.id
 	)
 	</select>
 <!--
@@ -340,11 +340,11 @@ WHERE
 	`order`.id,
 	orderTime,
 	orderStatus,
-	ORDER.bId,
-	ORDER.userId,
+	order.bId,
+	order.userId,
 	distrbutionId,
 	orderBool,
-	ORDER.bookAccount,
+	order.bookAccount,
 	isPay,
 	book.bId,
 	bName,
@@ -360,7 +360,7 @@ WHERE
 	`order`.userId=#{user.id}
 	and isPay=0
 	AND `order`.bId = book.bId
-	AND ORDER.userId = USER.id
+	AND order.userId = user.id
 
 	)
 	</select>
