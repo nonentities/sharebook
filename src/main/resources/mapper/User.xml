@@ -39,7 +39,7 @@
 		</collection>
 	</resultMap>
 	<sql id="select*">
-		select user.id as id ,userName,studentId, dirmitoryNumber,integration,headPortrait,deliveManGrade,
+		select user.id as id ,userName,studentId, dirmitoryNumber,wechatNumber,integration,headPortrait,deliveManGrade,
 		r_id,roleName,userrole.id as urId from
 	</sql>
 	<select id="getUserById" parameterType="java.lang.Integer"
