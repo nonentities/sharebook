@@ -383,4 +383,7 @@ WHERE
 	<update id="updateOrderRetrunStatus" parameterType="java.lang.Integer">
 		update `order` set orderStatus =0 where(id=#{oId})
 	</update>
+	<select id="getDistributeId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+		select distrbutionId from `order` where(id=#{oId})
+	</select>
 </mapper>

@@ -7,4 +7,5 @@ public class RemarkToBookCreateEntity {
     private String userName;
     private String bName;
     private String  remarkToBookContent;
+    private String mmq;
 }
