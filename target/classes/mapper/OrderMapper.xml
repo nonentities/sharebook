@@ -174,14 +174,15 @@ VALUES
 				<!--
 				评价状态
 				-->
-                    <when test="orderBool !=null ">
-                         and orderBool=#{orderBool}
-                    </when>
+
 
                 <!--配送状态
                 -->
 
 			</choose>
+			<if test="orderBool !=null ">
+				and orderBool=#{orderBool}
+			</if>
 			<if test="sendStatus !=null">
 				and sendStatus=#{sendStatus}
 			</if>

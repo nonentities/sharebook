@@ -88,6 +88,10 @@ private RemarkMapper remarkMapper;
             return ResponseResult.ERROR(513,"星级不合法");
         }
         //这里需要加入通过订单找对应的配送员id不能为-1的用户
+        Integer distributeId=orderMapper.getDistributeId(remarkToDeveliver.getOrderId());
+        if(distributeId==-1){
+            return ResponseResult.ERROR(517,"您属于自取用户，没有配送员可以评论的哦");
+        }
         //操作数据库防止出现用户重复对配送员进行评论
         Integer  tmpeGrade=remarkMapper.getSendGrade(remarkToDeveliver.getOrderId());
         if(Tools.notNull(tmpeGrade)){
@@ -117,6 +121,7 @@ private RemarkMapper remarkMapper;
             orderMapper.updateBool(mapBool);
         }
         //获取配送员的信誉积分
+        //配送员首次评论会
     Integer gradesClass=userMapper.getSendGrade(remarkToDeveliver.getDeveliverManId());
         //更新配送员的信誉积分
         gradesClass=(gradesClass+remarkToDeveliver.getGradeClass())/2;
