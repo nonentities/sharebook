@@ -36,8 +36,8 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public ResponseResult getBookByName(String bookName) {
 		Book book = bookMapper.getBookByName(this.getMap("bName", bookName));
-		if (book == null) {
-			return ResponseResult.ERROR(300, "没有您要搜索的书籍");
+		if (Tools.isNull(book)) {
+			return ResponseResult.ERROR(201, "没有您要搜索的书籍");
 		}
 		return ResponseResult.SUCCESS(book);
 	}
@@ -59,7 +59,7 @@ public class BookServiceImpl implements BookService {
 		Integer bookAccount = book.getBookAccount();
 		// 判断是否有书籍
 		Book bookFlag = bookMapper.getBookByName(this.getMap("bName", book.getBName()));
-		if (bookFlag == null) {
+		if (Tools.isNull(bookFlag)) {
 			// 将书籍的数量置为0
 			book.setBookAccount(0);
 			bookMapper.addBook(book);
@@ -83,7 +83,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public ResponseResult updateBook(Book book) {
 		if(book.getBId()<=0){
-			return ResponseResult.ERROR(320,"书籍的id不合法");
+			return ResponseResult.ERROR(211,"书籍的id不合法");
 		}
 		bookMapper.updateBook(book);
 		return ResponseResult.SUCCESSM("书籍修改成功");
@@ -110,12 +110,12 @@ public class BookServiceImpl implements BookService {
 		// 查找当前id的书籍源头表
 		BookSource bookSource = new BookSource();
 		BookSource bookSource2 = bookSourcesMapper.getABookSource(sourceId);
-		if (bookSource2 == null) {
+		if ( Tools.isNull(bookSource2)) {
 			// 当前用户已经取消了当前书的捐赠
-			return ResponseResult.ERROR(303, "当前用户已经取消了当前书籍的捐赠");
+			return ResponseResult.ERROR(321, "当前用户已经取消了当前书籍的捐赠");
 		}
 		if (bookSource2.getBoolPass() != 0) {
-			return ResponseResult.ERROR(304, "你来晚了一步，已经被审核了");
+			return ResponseResult.ERROR(322, "你来晚了一步，已经被审核了");
 		}
 		bookSource.setBoolPass(userId);
 		bookSource.setSourceTime(LocalDateTime.now());
@@ -232,7 +232,7 @@ public class BookServiceImpl implements BookService {
 		}
 		// 最后一步不用置为空，因为不需要继续处理数据了
 		if (nowList.size() == 0) {
-			return ResponseResult.ERROR(311, "没有您相要的书籍，请使用其他关键字搜索");
+			return ResponseResult.ERROR(331, "没有您相要的书籍，请使用其他关键字搜索");
 		}
 		// 不为空将数据返回给客户端
 		return ResponseResult.SUCCESS(nowList);
@@ -248,13 +248,13 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public ResponseResult updateBookPrice(Integer id, Integer price) {
 		if(Tools.isNull(id)){
-			return ResponseResult.ERROR(340,"书籍id不能为空");
+			return ResponseResult.ERROR(341,"书籍id不能为空");
 		}
 		if(Tools.isNull(price)){
-			return ResponseResult.ERROR(341,"书籍价格不能为空");
+			return ResponseResult.ERROR(342,"书籍价格不能为空");
 		}
 		if(price>=1&&price<=5){
-			return ResponseResult.ERROR(342,"书籍价格必须介于1到5之间");
+			return ResponseResult.ERROR(343,"书籍价格必须介于1到5之间");
 		}
 		//更新用户的书籍
 		Map<String ,Object> map=new HashMap<>();

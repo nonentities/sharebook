@@ -30,12 +30,12 @@ private RemarkMapper remarkMapper;
     @Transactional
     public ResponseResult addToBookRemark(RemarkToBook remarkToBook) {
         if(Tools.isNull(remarkToBook.getOrderId())){
-            return ResponseResult.ERROR(800,"需要评价的订单不能为空或者订单不合法");
+            return ResponseResult.ERROR(501,"需要评价的订单不能为空或者订单不合法");
         }
         //判断订单号是否为一个整数,很容易出现数字转换异常，以后统一处理
        // remarkToBook.setOrderId();Integer.valueOf();
         if (Tools.isNull(remarkToBook.getRemarkToBookContent())) {
-            return ResponseResult.ERROR(801,"请输入需要评价的内容");
+            return ResponseResult.ERROR(502,"请输入需要评价的内容");
         }
         String content=remarkToBook.getRemarkToBookContent();
 
@@ -43,14 +43,14 @@ private RemarkMapper remarkMapper;
         remarkToBook=remarkMapper.getRemarkToBook(remarkToBook.getOrderId());
         //没有被支付的订单是不能进行评论的
         if(Tools.notNull(remarkToBook)){
-            return ResponseResult.ERROR(802,"目前订单已经被评论，请不要重复评论哦");
+            return ResponseResult.ERROR(503,"目前订单已经被评论，请不要重复评论哦");
         }
         //判断是否为本人的订单
         if(UserUtil.getUserId()!=remarkToBook.getUserId()){
-            return ResponseResult.ERROR(819,"不是你的订单请不要随便评论");
+            return ResponseResult.ERROR(504,"不是你的订单请不要随便评论");
         }
        if(orderMapper.getIsPay(remarkToBook.getOrderId())==0){
-           return ResponseResult.ERROR(804,"你还没有支付该订单不能评价的哦");
+           return ResponseResult.ERROR(506,"你还没有支付该订单不能评价的哦");
        }
         remarkToBook.setRemarkToBookContent(content);
         /**
@@ -76,14 +76,14 @@ private RemarkMapper remarkMapper;
          * 评论配送员
          */
         if (Tools.isNull(remarkToDeveliver.getOrderId())) {
-            return ResponseResult.ERROR(813,"请输入需要评价的id");
+            return ResponseResult.ERROR(511,"请输入需要评价的id");
         }
         if(Tools.isNull(remarkToDeveliver.getGradeClass())){
-            return ResponseResult.ERROR(814,"请选择星级");
+            return ResponseResult.ERROR(512,"请选择星级");
         }
         //传入的gradeClass,必须是数字类型，否则会抛出异常
         if(remarkToDeveliver.getGradeClass()<=0||remarkToDeveliver.getGradeClass()>5){
-            return ResponseResult.ERROR(815,"星级不合法");
+            return ResponseResult.ERROR(513,"星级不合法");
         }
         //这里需要加入通过订单找对应的配送员id不能为-1的用户
         //操作数据库防止出现用户重复对配送员进行评论
@@ -94,16 +94,16 @@ private RemarkMapper remarkMapper;
         Integer grades=remarkToDeveliver.getGradeClass();
        //判断是否为本人的订单
         if(UserUtil.getUserId()!=remarkToDeveliver.getUserId()){
-            return ResponseResult.ERROR(819,"不是你的订单请不要随便评论");
+            return ResponseResult.ERROR(514,"不是你的订单请不要随便评论");
         }
         if(orderMapper.getIsPay(remarkToDeveliver.getOrderId())==0){
-            return ResponseResult.ERROR(817,"你还没有支付该订单不能评价的哦");
+            return ResponseResult.ERROR(515,"你还没有支付该订单不能评价的哦");
         }
        remarkToDeveliver.setGradeClass(grades);
        //不能对自己的配送的订单进行评价
        //获取当前用户的id
         if(UserUtil.getUserId()==remarkToDeveliver.getDeveliverManId()){
-            return ResponseResult.ERROR(818,"您不能对自己的配送的订单进行评价的哦");
+            return ResponseResult.ERROR(516,"您不能对自己的配送的订单进行评价的哦");
         }
         //判断订单是否被评论
        RemarkToBook remarkToBook=remarkMapper.getRemarkToBook(remarkToDeveliver.getOrderId());
@@ -137,11 +137,11 @@ private RemarkMapper remarkMapper;
     @Override
     public ResponseResult selectRemarkToBook(Integer bId) {
         if(Tools.isNull(bId)){
-            return ResponseResult.ERROR(820,"查看详情时书籍id不能为空的哦");
+            return ResponseResult.ERROR(521,"查看详情时书籍id不能为空的哦");
         }
        List<RemarkToBookCreateEntity> bookRemarks= remarkMapper.getRemarkToBookCreateEntity(bId);
         if(Tools.isNull(bookRemarks)||bookRemarks.size()==0){
-            return  ResponseResult.ERROR(821,"目前该书籍还没有人评价过或者你的书籍没有你选择的书籍哦");
+            return  ResponseResult.ERROR(522,"目前该书籍还没有人评价过或者你的书籍没有你选择的书籍哦");
         }
         return ResponseResult.SUCCESS("这里包含了书籍的全部评价",bookRemarks);
     }

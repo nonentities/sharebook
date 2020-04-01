@@ -32,10 +32,10 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 			HttpSession session=Tools.getSession();
 			String verifyCode=(String) session.getAttribute("verifyCode");
  		  if(verifyCode==null) {
-				return ResponseResult.ERROR(105,"验证码为空，请输入验证码");
+				return ResponseResult.ERROR(101,"验证码为空，请输入验证码");
 			}
 			if(!verifyCode.equals(preVerifyCode)) {
-				return ResponseResult.ERROR(106, "验证码输入错误，请重新输入");
+				return ResponseResult.ERROR(102, "验证码输入错误，请重新输入");
 			}
 		User md5User = UserUtil.getMd5User(userName, password);
 		User dbUser = userMapper.selectOne(new QueryWrapper<User>()
@@ -47,7 +47,7 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 			String token = JWTUtil.generatorToken(String.valueOf(dbUser.getId()), EXPIRE_TIME);
 			return ResponseResult.SUCCESS("登陆成功返回了token数据",token);
 		}
-		return  ResponseResult.ERROR(102, "用户名或者密码错误找不到该用户");
+		return  ResponseResult.ERROR(103, "用户名或者密码错误找不到该用户");
 	}
 
 	@Override
@@ -59,8 +59,8 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 			//查询数据库
 			User user = userMapper.getUserByNameAndPssword(Tools.getMap("userName",userName,"password",password));
 			//判断是否为空
-			if(user==null) {
-				return ResponseResult.ERROR(102, "用户名或者密码错误找不到该用户");
+			if(Tools.isNull(user)) {
+				return ResponseResult.ERROR(111, "用户名或者密码错误找不到该用户");
 			}else {
 				//缓存用户
 				String token=cacheLoginUser(user);
@@ -69,7 +69,7 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		}
 		else {
 			//返回用户名或者密码为空
-			return ResponseResult.ERROR(101,"用户名或者密码为空");
+			return ResponseResult.ERROR(112,"用户名或者密码为空");
 		}
 	}
 
@@ -85,56 +85,26 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 	public ResponseResult register(User user, String preVerifyCode,String configName) {
 		String userName=user.getUserName();
 		String password=user.getPassword();
-		/*//用户为空
-		if(user==null) {
-			return ResponseResult.ERROR(107, "请输入正确的信息");
-		}
-		//验证码为空；
 		if(preVerifyCode==null) {
-			return ResponseResult.ERROR(108, "验证码不能为空");
+			return ResponseResult.ERROR(121, "验证码不能为空");
 		}
-		//用户名不能为空或者空格
-		String userName=user.getUserName();
-		if(Tools.isNull(userName)) {
-			return ResponseResult.ERROR(109, "用户名不能为空或者空格");
-		}
-		String password=user.getPassword();
-		if(Tools.isNull(password)) {
-			return ResponseResult.ERROR(110, "密码不能为空或者空格");
-		}
-		//微信号不能为空
-		if(Tools.isNull(user.getWechatNumber())) {
-			return ResponseResult.ERROR(111, "微信号不能是空或者空格");
-		}
-		//学号不能为空或者空格
-		if(Tools.isNull(user.getStudentId())) {
-			return ResponseResult.ERROR(112, "学号不能为空或者空格");
-		}
-		//寝室号不能为空
-		if(Tools.isNull(user.getDirmitoryNumber())) {
-			return ResponseResult.ERROR(113, "寝室号不能为空");
-		}*/
 
-		/**
-		 * 上面的我通过数据校验就完成了，不需要再进行处理了
-		 */
-		//验证码
 		HttpSession session=Tools.getSession();
 		String verifyCode=(String) session.getAttribute("verifyCode");
 		if(verifyCode==null) {
-			return ResponseResult.ERROR(105,"验证码为空，请输入验证码");
+			return ResponseResult.ERROR(122,"验证码为空，请输入验证码");
 		}
 		if(!verifyCode.equals(preVerifyCode)) {
-			return ResponseResult.ERROR(106, "验证码输入错误，请重新输入");
+			return ResponseResult.ERROR(123, "验证码输入错误，请重新输入");
 		}
 		//确认两次密码是否一致；
 		if(!password.equals(configName)) {
-			return ResponseResult.ERROR(114, "两次密码不一致，请确认密码");
+			return ResponseResult.ERROR(124, "两次密码不一致，请确认密码");
 		}
 		//判断数据库中是否有该用户
 		User userFlag=userMapper.getUserByNameAndPssword(Tools.getMap("userName",userName,"password",password));
-		if(userFlag!=null) {
-			return ResponseResult.ERROR(116, "用户你已经注册过请不要重复注册");
+		if(Tools.notNull(userFlag)) {
+			return ResponseResult.ERROR(125, "用户你已经注册过请不要重复注册");
 		}
 		int uId=userMapper.regester(user);
 		UserRole userRole=new UserRole();
@@ -160,16 +130,16 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		//判断用户密码是否为空或者空格
 		if (Tools.isEmpty(password)) {
 
-			return ResponseResult.ERROR(130,"密码不能为空或者空格");
+			return ResponseResult.ERROR(131,"密码不能为空或者空格");
 		}
 		if (Tools.isEmpty(confrimPassword)) {
 
-			return ResponseResult.ERROR(131,"确认密码不能为空或者空格");
+			return ResponseResult.ERROR(132,"确认密码不能为空或者空格");
 
 		}
 		//对密码格式要求目前省略
 		if(!password.equals(confrimPassword)){
-			return ResponseResult.ERROR(132,"前后密码不一致");
+			return ResponseResult.ERROR(133,"前后密码不一致");
 		}
 		Integer id=UserUtil.getUserId();
 		Map<String,Object> map=new HashMap<>();

@@ -12,9 +12,11 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/roleImproveController")
+//下面的三个方法只能是超级管理员才能执行
 public class RoleImproveController {
     @Resource
     RoleService roleService;
+
     @GetMapping("/getDontAudientRole")
     public ResponseResult getDontAudientRole(){
         return roleService.getDontAudientRole();

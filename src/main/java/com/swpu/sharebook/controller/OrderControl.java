@@ -7,8 +7,6 @@ import com.swpu.sharebook.util.returnvalue.ResponseResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/orderControl")
@@ -36,6 +34,7 @@ public class OrderControl {
 	 * 
 	 * @selectAllOrder
 	 */
+	//只有配送员可以执行该方法
 	@GetMapping("selectAllOrder")
 	public ResponseResult selectAllOrder() {
 		return orderService.selectAllOrder();

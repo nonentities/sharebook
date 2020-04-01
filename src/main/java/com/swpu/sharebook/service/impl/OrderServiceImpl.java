@@ -17,8 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.*;
 
 
@@ -38,10 +36,10 @@ public class OrderServiceImpl implements OrderService {
 	@Transactional
 	public ResponseResult addOrder(Order order) {
 		if (Tools.isNull(order.getBook().getBId())) {
-			return ResponseResult.ERROR(201, "书籍不能为空");
+			return ResponseResult.ERROR(401, "书籍不能为空");
 		}
 		if (order.getBookAccount() == null || order.getBookAccount() == 0) {
-			return ResponseResult.ERROR(204, "请输入你需要选择的书籍数量");
+			return ResponseResult.ERROR(402, "请输入你需要选择的书籍数量");
 		}
 		if (Tools.isNull(order.getOrderBool())) {
 			order.setOrderBool(1);
@@ -64,10 +62,10 @@ public class OrderServiceImpl implements OrderService {
 		Integer bookAccount = bookMapper.getBookReturnInt(map);
 		// 判断书籍是否足够
 		if (Tools.isNull((bookAccount))) {
-			return ResponseResult.ERROR(203, "没有你选定的书籍");
+			return ResponseResult.ERROR(403, "没有你选定的书籍");
 		}
 		if (bookAccount == 0) {
-			return ResponseResult.ERROR(214, "书籍已经被借完啦");
+			return ResponseResult.ERROR(405, "书籍已经被借完啦");
 		}
 		//创建一个user对象
 		User user=new User();
@@ -85,21 +83,21 @@ public class OrderServiceImpl implements OrderService {
 		// 查询当前订单：*/
 		order = orderMapper.getOrderById(order.getId());
 		if (Tools.isNull(order)) {
-			return ResponseResult.ERROR(213, "订单id不能为空的");
+			return ResponseResult.ERROR(411, "订单id不能为空的");
 		}
 		if(order.getUser().getId()!= UserUtil.getUserId()){
-			return ResponseResult.ERROR(220,"不是您的订单不能进行确认");
+			return ResponseResult.ERROR(412,"不是您的订单不能进行确认");
 		}
 		if(!order.getIsPay()){
-			return ResponseResult.ERROR(221,"目前该订单没有支付的哦");
+			return ResponseResult.ERROR(413,"目前该订单没有支付的哦");
 		}
 		if (!order.getOrderStatus()) {
-			return ResponseResult.ERROR(214, "您的订单已经被你归还了");
+			return ResponseResult.ERROR(414, "您的订单已经被你归还了");
 		}
 	//可以直接通过id获取订单状态
 		BorringStatus borringStatus=userOrderStatusMapper.selectBorringStatusById(order.getId());
 		if (Tools.isNull(borringStatus)) {
-			return ResponseResult.ERROR(218, "没有该用户书籍的订单");
+			return ResponseResult.ERROR(415, "没有该用户书籍的订单");
 		}
 		// 将借阅时间更新
 		borringStatus.setLoanHour(new Date());
@@ -129,7 +127,7 @@ public class OrderServiceImpl implements OrderService {
 		order.setDistrbutionId(UserUtil.getUserId());
 		List<Order> orderList = orderMapper.getListAboutOrder(order);
 		if (orderList == null || orderList.size() == 0) {
-			return ResponseResult.ERROR(208, "你好，目前没有需要你配送的订单哦");
+			return ResponseResult.ERROR(421, "你好，目前没有需要你配送的订单哦");
 		}
 		// 操作成功把列表返回就行
 		return ResponseResult.SUCCESS(orderList);
@@ -151,16 +149,16 @@ public class OrderServiceImpl implements OrderService {
 	public ResponseResult cancelOrder(Order order) {
 		if (Tools.isNull(order.getId())) {
 
-			return ResponseResult.ERROR(249,"请输入需要删除的订单id");
+			return ResponseResult.ERROR(431,"请输入需要删除的订单id");
 		}
 		// 將當前用戶的id插入到對應的order中
 		order=orderMapper.getOrderById(order.getId());
 		if (Tools.isNull(order)) {
-			return ResponseResult.ERROR(243, "你沒有對應的訂單哦");
+			return ResponseResult.ERROR(432, "你沒有對應的訂單哦");
 		}
 
 		if(!order.getIsPay()){
-			return  ResponseResult.ERROR(248,"订单还未支付，不能取消");
+			return  ResponseResult.ERROR(433,"订单还未支付，不能取消");
 		}
 		if(order.getOrderStatus()){
 
@@ -187,23 +185,23 @@ public class OrderServiceImpl implements OrderService {
 			bookMapper.updateBookAccount(map);
 			return ResponseResult.SUCCESSM("成功取消订单");
 		}
-		return ResponseResult.ERROR(245,"书籍已经在您的手上了，不能取消订单了");
+		return ResponseResult.ERROR(434,"书籍已经在您的手上了，不能取消订单了");
 	}
 	@Override
 	@Transactional
 	public ResponseResult returnBook(Order order) {
 		if(Tools.isNull(order)) {
-			return ResponseResult.ERROR(250, "归还书籍失败");
+			return ResponseResult.ERROR(441, "归还书籍失败");
 		}
 		if(Tools.isNull(order.getId())) {
-			return ResponseResult.ERROR(256, "订单id不能为空");
+			return ResponseResult.ERROR(442, "订单id不能为空");
 		}
 		if(order.getId()<=0){
-			return ResponseResult.ERROR(252, "书籍id不能为小于0");
+			return ResponseResult.ERROR(443, "书籍id不能为小于0");
 		}
 		order=orderMapper.getOrderById(order.getId());
 		if(!order.getOrderStatus()) {
-			return ResponseResult.ERROR(251, "书籍已经归还了");
+			return ResponseResult.ERROR(444, "书籍已经归还了");
 		}
 		User user=new User();
 		user.setId(UserUtil.getUserId());
@@ -217,7 +215,7 @@ public class OrderServiceImpl implements OrderService {
 		borringStatus= userOrderStatusMapper.selectBorringStatusById(order.getId());
 		//不出意外不会出现空指针异常
 		 if(!borringStatus.getBorrwingStatus()) {
-			 return ResponseResult.ERROR(253, "没有收到书籍，不能归还书籍");
+			 return ResponseResult.ERROR(445, "没有收到书籍，不能归还书籍");
 		 }
 		 //今天的日期
 		 Date toDate=new Date();
@@ -273,7 +271,7 @@ public class OrderServiceImpl implements OrderService {
 	public ResponseResult payBench(Integer [] orderLists,Integer distrubutionId){
 		//获取用户的数据
 		if(Tools.isNull(orderLists)||orderLists.length==0){
-			return ResponseResult.ERROR(260,"您没有选中订单");
+			return ResponseResult.ERROR(451,"您没有选中订单");
 		}
 		//创建一个Map来临时接收书籍的库存
 		Map<Integer, BIdAndBookAccount> mapTempBook=new HashMap<>();
@@ -291,14 +289,14 @@ public class OrderServiceImpl implements OrderService {
 			//用order对了来接收单个的订单id
 			Integer orderId = orderLists[i];
 			if (Tools.isNull(orderId)) {
-				return ResponseResult.ERROR(261, "目前第" + (i + 1) + "个i订单的id为空");
+				return ResponseResult.ERROR(452, "目前第" + (i + 1) + "个i订单的id为空");
 			}
 			Order order = orderMapper.getOrderByIdOnlyOrder(orderId);
 			if (order == null) {
-				return ResponseResult.ERROR(262, "您目前第" + (i + 1) + "个订单不存在");
+				return ResponseResult.ERROR(453, "您目前第" + (i + 1) + "个订单不存在");
 			}
 			if (order.getIsPay()) {
-				return ResponseResult.ERROR(263, "目前" + (i + 1) + "订单已经被支付了，不需要再支付了哦");
+				return ResponseResult.ERROR(454, "目前" + (i + 1) + "订单已经被支付了，不需要再支付了哦");
 			}
 			int account = order.getBookAccount();
 			// 书籍数量问题，与批量操作密切相关(重点)
@@ -324,7 +322,7 @@ public class OrderServiceImpl implements OrderService {
 			bIdAndBookAccount.setBookAccount(bIdAndBookAccount.getBookAccount() - account);
 			if (bIdAndBookAccount.getBookAccount() < 0) {
 				String bName = bookMapper.getBNameById(bId);
-				return ResponseResult.ERROR(265, "请核查订单，" + (i + 1) + "个订单支付时出现了" + bName + "书籍库存不足");
+				return ResponseResult.ERROR(455, "请核查订单，" + (i + 1) + "个订单支付时出现了" + bName + "书籍库存不足");
 			}
 			//更新map
 			mapTempBook.put(bId, bIdAndBookAccount);
@@ -333,13 +331,13 @@ public class OrderServiceImpl implements OrderService {
 			Integer userId = UserUtil.getUserId();
 			//判断是否为负数
 			if (gration < 1) {
-				return ResponseResult.ERROR(219, "您的余额已不足");
+				return ResponseResult.ERROR(456, "您的余额已不足");
 			}
 			//书籍的价格
 			Integer price = order.getBook().getBookPrice();
 			gration = gration - (price * account);
 			if (gration < 0) {
-				return ResponseResult.ERROR(220, "您的余额不足");
+				return ResponseResult.ERROR(457, "您的余额不足");
 			}
 			BorringStatus borringStatus = new BorringStatus();
 			borringStatus.setOId(orderId);
@@ -349,7 +347,7 @@ public class OrderServiceImpl implements OrderService {
 			// 先查看当前是否有该订单
 			BorringStatus borringStatus1= userOrderStatusMapper.selectBorringStatusById(orderId);
 			if (Tools.isNull(borringStatus)) {
-				return ResponseResult.ERROR(216, "第" + (i + 1) + "订单已经生成了，请不要重复提交哦");
+				return ResponseResult.ERROR(458, "第" + (i + 1) + "订单已经生成了，请不要重复提交哦");
 			}
 			borringStatus.setLoanHour(new Date());
 				borringStatus.setSendStatus(false);
@@ -368,14 +366,14 @@ public class OrderServiceImpl implements OrderService {
 			//用order对了来接收单个的订单id
 			Integer orderId = orderLists[i];
 			if (Tools.isNull(orderId)) {
-				return ResponseResult.ERROR(261, "目前第" + (i + 1) + "个i订单的id为空");
+				return ResponseResult.ERROR(461, "目前第" + (i + 1) + "个i订单的id为空");
 			}
 			Order order = orderMapper.getOrderByIdOnlyOrder(orderId);
 			if (order == null) {
-				return ResponseResult.ERROR(262, "您目前第" + (i + 1) + "个订单不存在");
+				return ResponseResult.ERROR(462, "您目前第" + (i + 1) + "个订单不存在");
 			}
 			if (order.getIsPay()) {
-				return ResponseResult.ERROR(263, "目前" + (i + 1) + "订单已经被支付了，不需要再支付了哦");
+				return ResponseResult.ERROR(463, "目前" + (i + 1) + "订单已经被支付了，不需要再支付了哦");
 			}
 			int account = order.getBookAccount();
 			// 书籍数量问题，与批量操作密切相关(重点)
@@ -401,7 +399,7 @@ public class OrderServiceImpl implements OrderService {
 			bIdAndBookAccount.setBookAccount(bIdAndBookAccount.getBookAccount() - account);
 			if (bIdAndBookAccount.getBookAccount() < 0) {
 				String bName = bookMapper.getBNameById(bId);
-				return ResponseResult.ERROR(265, "请核查订单，" + (i + 1) + "个订单支付时出现了" + bName + "书籍库存不足");
+				return ResponseResult.ERROR(464, "请核查订单，" + (i + 1) + "个订单支付时出现了" + bName + "书籍库存不足");
 			}
 			//更新map
 			mapTempBook.put(bId, bIdAndBookAccount);
@@ -410,13 +408,13 @@ public class OrderServiceImpl implements OrderService {
 			Integer userId = UserUtil.getUserId();
 			//判断是否为负数
 			if (gration < 1) {
-				return ResponseResult.ERROR(219, "您的余额已不足");
+				return ResponseResult.ERROR(465, "您的余额已不足");
 			}
 			//书籍的价格
 			Integer price = order.getBook().getBookPrice();
 			gration = gration - (price * account);
 			if (gration < 0) {
-				return ResponseResult.ERROR(220, "您的余额不足");
+				return ResponseResult.ERROR(466, "您的余额不足");
 			}
 			BorringStatus borringStatus = new BorringStatus();
 			borringStatus.setOId(orderId);
@@ -426,7 +424,7 @@ public class OrderServiceImpl implements OrderService {
 			// 先查看当前是否有该订单
 			BorringStatus borringStatus1 = userOrderStatusMapper.selectBorringStatusById(orderId);
 			if (Tools.isNull(borringStatus)) {
-				return ResponseResult.ERROR(216, "第" + (i + 1) + "订单已经生成了，请不要重复提交哦");
+				return ResponseResult.ERROR(467, "第" + (i + 1) + "订单已经生成了，请不要重复提交哦");
 			}
 			borringStatus.setLoanHour(new Date());
 				order.setDistrbutionId(distrubutionId);
@@ -454,15 +452,15 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public ResponseResult deleteOrder(Integer id) {
 		if (Tools.isNull(id)) {
-			return ResponseResult.ERROR(250,"删除的id不能为空");
+			return ResponseResult.ERROR(471,"删除的id不能为空");
 		}
 		//判断用户是否已经将数据删除
 		Integer flag=orderMapper.getIsPay(id);
 		if(Tools.isNull(flag)){
-			return ResponseResult.ERROR(251,"订单已经删除了");
+			return ResponseResult.ERROR(472,"订单已经删除了");
 		}
 		if (flag==1){
-			return ResponseResult.ERROR(252,"已经支付的订单不能删除");
+			return ResponseResult.ERROR(473,"已经支付的订单不能删除");
 		}
 
 		//删除订单

@@ -59,6 +59,7 @@ public class UserControl {
      * @return 1session实现了验证码
      * @throws IOException
      */
+    //需要过滤掉，直接放行该方法，因为该方法在没用登陆的时候就需要发送请求获取验证码
     @GetMapping("/getVerifyCodeBySession")
     public OutputStream getVerifyCode() throws IOException {
         //获取验证码:
