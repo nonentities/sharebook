@@ -46,6 +46,7 @@ private RemarkMapper remarkMapper;
             return ResponseResult.ERROR(503,"目前订单已经被评论，请不要重复评论哦");
         }
         //判断是否为本人的订单
+        //先设置remarkToBook 的userId
         if(UserUtil.getUserId()!=remarkToBook.getUserId()){
             return ResponseResult.ERROR(504,"不是你的订单请不要随便评论");
         }
