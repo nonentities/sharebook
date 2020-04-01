@@ -47,6 +47,7 @@ private RemarkMapper remarkMapper;
         }
         //判断是否为本人的订单
         //先设置remarkToBook 的userId
+        remarkToBook.setUserId(orderMapper.getUserId(remarkToBook.getOrderId()));
         if(UserUtil.getUserId()!=remarkToBook.getUserId()){
             return ResponseResult.ERROR(504,"不是你的订单请不要随便评论");
         }
@@ -94,6 +95,7 @@ private RemarkMapper remarkMapper;
         }
         Integer grades=remarkToDeveliver.getGradeClass();
        //判断是否为本人的订单
+        remarkToDeveliver.setUserId(orderMapper.getUserId(remarkToDeveliver.getOrderId()));
         if(UserUtil.getUserId()!=remarkToDeveliver.getUserId()){
             return ResponseResult.ERROR(514,"不是你的订单请不要随便评论");
         }

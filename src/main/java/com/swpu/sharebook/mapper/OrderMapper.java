@@ -60,4 +60,8 @@ public interface OrderMapper {
      * 获取订单配送员id
      */
     public Integer getDistributeId(Integer oId);
+    /**
+     * 获取用户的id
+     */
+    public Integer getUserId(Integer oId);
 }

@@ -386,4 +386,7 @@ WHERE
 	<select id="getDistributeId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
 		select distrbutionId from `order` where(id=#{oId})
 	</select>
+	<select id="getUserId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+		select userId from `order` where(id=#{oId})
+	</select>
 </mapper>
