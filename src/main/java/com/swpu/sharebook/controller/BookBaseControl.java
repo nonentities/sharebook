@@ -3,6 +3,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import com.swpu.sharebook.util.Tools;
 import com.swpu.sharebook.util.returnvalue.ResponseResult;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +29,7 @@ public class BookBaseControl {
         return bookService.addBook(book);
     }
 //仅仅管理员和超级用户拥有该方法的执行权限
+    @RequiresRoles({"超级管理员","一般管理员"})
     @GetMapping("getBookDontAudit")
     public ResponseResult getBookDontAudit(Integer bookBoolId) {
         return bookService.getBookDontAndit(bookBoolId);
@@ -41,6 +43,7 @@ public class BookBaseControl {
         return bookService.addBook(book);
     }
     //仅仅管理员和超级用户拥有该方法的执行权限
+    @RequiresRoles({"超级管理员","一般管理员"})
     @GetMapping("auditBookSource")
     public ResponseResult auditBookSource(Integer sourceId) {
         return bookService.auditBookSource(sourceId);
@@ -61,6 +64,7 @@ public class BookBaseControl {
         return bookService.getBookByKey(key);
     }
 //获取配送的订单 仅仅配送员可以执行该方法
+@RequiresRoles({"配送员"})
     @GetMapping("getSendOrder")
     public ResponseResult getSendOrder() {
         return bookService.getSendOrder();

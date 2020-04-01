@@ -27,7 +27,7 @@ public final class ResponseResult implements Serializable{
 	/**结果状态*/
 	@ApiModelProperty(value="是否成功\n {true:成功,false:失败}",required=true)
 	private Boolean status;
-	
+	private Boolean flag;
 	/**响应时间*/
 	@ApiModelProperty(value="响应时间")
 	private long timestamp = System.currentTimeMillis();
@@ -50,6 +50,11 @@ public final class ResponseResult implements Serializable{
 	 */
 	public static final ResponseResult SUCCESS(String message,Object data){
 		ResponseResult tools = new ResponseResult(message, ResultDic.SUCCESS.getCode(), data, 
+				ResultDic.SUCCESS.getStatus());
+		return tools;
+	}
+	public static final ResponseResult SUCCESS(boolean flag,Object data){
+		ResponseResult tools = new ResponseResult(flag, ResultDic.SUCCESS.getCode(), data,
 				ResultDic.SUCCESS.getStatus());
 		return tools;
 	}
@@ -153,6 +158,13 @@ public final class ResponseResult implements Serializable{
 	public ResponseResult(String msg, Integer code, Object data, Boolean status) {
 		super();
 		this.msg = msg;
+		this.code = code;
+		this.data = data;
+		this.status = status;
+	}
+	public ResponseResult(boolean flag, Integer code, Object data, Boolean status) {
+		super();
+		this.flag = flag;
 		this.code = code;
 		this.data = data;
 		this.status = status;

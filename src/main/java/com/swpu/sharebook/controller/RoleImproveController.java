@@ -3,6 +3,7 @@ package com.swpu.sharebook.controller;
 import com.swpu.sharebook.entity.UserRole;
 import com.swpu.sharebook.service.RoleService;
 import com.swpu.sharebook.util.returnvalue.ResponseResult;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/roleImproveController")
+@RequiresRoles({"超级管理员"})
 //下面的三个方法只能是超级管理员才能执行
 public class RoleImproveController {
     @Resource

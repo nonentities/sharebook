@@ -4,6 +4,7 @@ import com.swpu.sharebook.entity.Book;
 import com.swpu.sharebook.entity.Order;
 import com.swpu.sharebook.service.OrderService;
 import com.swpu.sharebook.util.returnvalue.ResponseResult;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -35,6 +36,7 @@ public class OrderControl {
 	 * @selectAllOrder
 	 */
 	//只有配送员可以执行该方法
+	@RequiresRoles({"配送员"})
 	@GetMapping("selectAllOrder")
 	public ResponseResult selectAllOrder() {
 		return orderService.selectAllOrder();

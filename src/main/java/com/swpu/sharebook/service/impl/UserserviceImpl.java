@@ -154,6 +154,10 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		//获取当前用户的id
 		Integer id=UserUtil.getUserId();
 		User user=userMapper.getUserById(id);
-		return ResponseResult.SUCCESS(user);
+		//String message=null;
+		if(Tools.isNull()){
+			return ResponseResult.SUCCESS(false,null);
+		}
+		return ResponseResult.SUCCESS(true,user);
 	}
 }
