@@ -10,9 +10,6 @@
   <component name="ChangeListManager">
     <list default="true" id="068ae6b4-30ea-4738-a683-2ee4d6d12b20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/OrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/RemarkToBookCreateEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/RemarkToBookCreateEntity.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../Html/" />
@@ -114,8 +111,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="62" column="26" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="26" />
+            <state relative-caret-position="360">
+              <caret line="115" column="43" lean-forward="true" selection-start-line="115" selection-start-column="43" selection-end-line="115" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -588,14 +585,7 @@
       <workItem from="1585648457307" duration="5431000" />
       <workItem from="1585661061199" duration="4369000" />
       <workItem from="1585699754920" duration="7697000" />
-      <workItem from="1585730190595" duration="4328000" />
-    </task>
-    <task id="LOCAL-00020" summary="做了批量更新操作">
-      <created>1582616492547</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1582616492547</updated>
+      <workItem from="1585730190595" duration="4607000" />
     </task>
     <task id="LOCAL-00021" summary="做了批量更新操作">
       <created>1582616586314</created>
@@ -933,7 +923,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585734073505</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="评论区域应该没有问题了">
+      <created>1585734777926</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1585734777926</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -969,7 +966,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205719000" />
+    <option name="totallyTimeSpent" value="205998000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -982,7 +979,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2955764" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1063,7 +1059,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="合成成功" />
     <MESSAGE value="完成批量支付" />
     <MESSAGE value="更新获取当前用户信息" />
     <MESSAGE value="更新了sendUser" />
@@ -1088,7 +1083,8 @@
     <MESSAGE value="权限分配基本没有问题，需要宋镜去执行写一些注解来实现角色控制" />
     <MESSAGE value="权限分配基本没有问题" />
     <MESSAGE value="审核书籍" />
-    <option name="LAST_COMMIT_MESSAGE" value="审核书籍" />
+    <MESSAGE value="评论区域应该没有问题了" />
+    <option name="LAST_COMMIT_MESSAGE" value="评论区域应该没有问题了" />
   </component>
   <component name="WindowStateProjectService">
     <state x="557" y="215" key="CommitChangelistDialog2" />
@@ -1206,12 +1202,6 @@
           <line>45</line>
           <properties />
           <option name="timeStamp" value="152" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java</url>
-          <line>98</line>
-          <properties />
-          <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java</url>
@@ -1600,8 +1590,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="62" column="26" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="26" />
+        <state relative-caret-position="360">
+          <caret line="115" column="43" lean-forward="true" selection-start-line="115" selection-start-column="43" selection-end-line="115" selection-end-column="43" />
         </state>
       </provider>
     </entry>

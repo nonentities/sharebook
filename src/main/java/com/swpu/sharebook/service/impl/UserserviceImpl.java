@@ -155,7 +155,7 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		Integer id=UserUtil.getUserId();
 		User user=userMapper.getUserById(id);
 		//String message=null;
-		if(Tools.isNull()){
+		if(Tools.isNull(user)){
 			return ResponseResult.SUCCESS(false,null);
 		}
 		return ResponseResult.SUCCESS(true,user);
