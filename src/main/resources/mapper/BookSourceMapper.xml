@@ -70,7 +70,7 @@ select
 		FROM
 		booksource,
 		book,
-		USER
+		user
 		WHERE
 		(
 		boolPass = #{boolPass} and booksource.bId=book.bId and booksource.userId=user.id)
