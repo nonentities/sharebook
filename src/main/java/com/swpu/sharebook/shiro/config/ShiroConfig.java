@@ -1,6 +1,5 @@
 package com.swpu.sharebook.shiro.config;
 
-import com.swpu.sharebook.redis.config.RedisCacheConfig;
 import com.swpu.sharebook.shiro.cache.ShiroCacheManager;
 import com.swpu.sharebook.shiro.filter.JwtFilter;
 import com.swpu.sharebook.shiro.realm.JwtRealm;

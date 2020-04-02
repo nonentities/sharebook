@@ -5,10 +5,6 @@ spring:
     url: jdbc:mysql://39.98.36.206:3306/bookShareSystem?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowMultiQueries=true
     username: root
     password: manmeng
-  redis:
-    host: 120.78.214.227
-    port: 6379
-    password: manmeng
 druid:
   driver-class: com.mysql.cj.jdbc.Driver
   url: jdbc:mysql://39.98.36.206:3306/bookShareSystem?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowMultiQueries=true
