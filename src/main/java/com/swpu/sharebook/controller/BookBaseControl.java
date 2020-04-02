@@ -64,17 +64,18 @@ public class BookBaseControl {
         return bookService.getBookByKey(key);
     }
 //获取配送的订单 仅仅配送员可以执行该方法
-@RequiresRoles({"配送员"})
     @GetMapping("getSendOrder")
     public ResponseResult getSendOrder() {
         return bookService.getSendOrder();
     }
 //只有超级超级管理员能够执行该方法
+
     @PostMapping("updateBookPrice")
     public ResponseResult updateBookPrice(Integer id, Integer price) {
         return bookService.updateBookPrice(id, price);
     }
     //只有超级管理员能够执行该方法
+    @RequiresRoles({"超级管理员"})
     @PostMapping("updateBook")
     public ResponseResult updateBook(Book book){
         return bookService.updateBook(book);
