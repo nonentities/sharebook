@@ -4,6 +4,7 @@ import com.swpu.sharebook.shiro.cache.ShiroCacheManager;
 import com.swpu.sharebook.shiro.filter.JwtFilter;
 import com.swpu.sharebook.shiro.realm.JwtRealm;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.apache.shiro.mgt.*;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
@@ -112,8 +113,8 @@ public class ShiroConfig {
         return shiroFilter;
     }
     @Bean
-    public ShiroCacheManager shiroCacheManager() {
-        return new ShiroCacheManager(redisCacheManager);
+    public org.apache.shiro.cache.CacheManager shiroCacheManager() {
+        return new MemoryConstrainedCacheManager();
     }
 
     @Bean
