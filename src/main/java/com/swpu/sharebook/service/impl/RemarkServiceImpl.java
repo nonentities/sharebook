@@ -42,8 +42,12 @@ private RemarkMapper remarkMapper;
         //先从数据库中查找是否已经被评价过
         remarkToBook=remarkMapper.getRemarkToBook(remarkToBook.getOrderId());
         //没有被支付的订单是不能进行评论的
-        if(Tools.notNull(remarkToBook)){
-            return ResponseResult.ERROR(503,"目前订单已经被评论，请不要重复评论哦");
+        if(Tools.isNull(remarkToBook)){
+            return ResponseResult.ERROR(503,"没有对应的订单需要评价");
+        }
+        Integer tempOrderId=remarkMapper.getOrderId(remarkToBook.getOrderId());
+        if (Tools.notNull(tempOrderId)) {
+            return ResponseResult.ERROR(507,"你已经通过该订单对书籍做过评论了");
         }
         //判断是否为本人的订单
         //先设置remarkToBook 的userId

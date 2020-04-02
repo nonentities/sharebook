@@ -14,4 +14,5 @@ public interface RemarkMapper {
     public Integer addRemarkToDeveliver(RemarkToDeveliver remarkToDeveliver);
     public List<RemarkToBookCreateEntity> getRemarkToBookCreateEntity(Integer bId);
     public Integer getSendGrade(Integer orderId);
+    public Integer getOrderId(Integer orderId);
 }

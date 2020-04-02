@@ -53,4 +53,8 @@
     <select id="getSendGrade" parameterType="java.lang.Integer" resultType="java.lang.Integer">
         select gradeClass from remarktodeveliver where(orderId=#{orderId})
     </select>
+    <select id="getOrderId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select orderId from remarktobook where(orderId=#{orderId})
+    </select>
+
 </mapper>

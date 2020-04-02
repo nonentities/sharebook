@@ -15,10 +15,8 @@ public interface BookMapper {
 	//下面的以后应该用Map来接收
 	 List<Book> getBookByWriterName(Map<String, String> map);
 	 Integer getBookByNameReturnInt(Map<String, String> map);
-//	 List<Book> getBookBySourceId(Integer sourceId);
 	 Integer addBook(Book book);
 	 Integer updateBook(Book updateBook);
-//	 Integer deleteBook(Book updateBook);
 	 Book getBookById(Integer bId);
 	 List<Book> selectBook(Book book);
 	/**
