@@ -99,7 +99,6 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 	}
 	@Override
 	public ResponseResult updateUser(User user) {
-		//主要是处理密码的问题
 		//获取当前用户的id
 		user.setId(UserUtil.getUserId());
 		user.setIntegration(null);

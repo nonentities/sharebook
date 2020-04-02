@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="068ae6b4-30ea-4738-a683-2ee4d6d12b20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/BookMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/RemarkMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/RemarkMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RemarkMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RemarkMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/RemarkMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/RemarkMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/RemarkServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/RemarkServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/RemarkMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/RemarkMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../Html/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,19 +35,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/RemarkController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/BookServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="116" selection-start-line="116" selection-end-line="116" />
+            <state relative-caret-position="279">
+              <caret line="112" column="41" lean-forward="true" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -59,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BookMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="167" column="49" selection-start-line="167" selection-start-column="38" selection-end-line="167" selection-end-column="49" />
+            <state relative-caret-position="189">
+              <caret line="168" column="13" lean-forward="true" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -68,7 +55,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
+            <state relative-caret-position="364">
               <caret line="99" column="10" lean-forward="true" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
             </state>
           </provider>
@@ -77,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/BookMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-120">
-              <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+            <state relative-caret-position="-90">
+              <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -92,11 +79,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="95" selection-start-line="95" selection-end-line="95" />
+            <state relative-caret-position="171">
+              <caret line="32" column="52" lean-forward="true" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/FileServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="103" selection-start-line="103" selection-end-line="103" />
             </state>
           </provider>
         </entry>
@@ -106,15 +111,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
               <caret line="16" column="45" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/entity/RemarkToBook.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -140,7 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>distrubutionId</find>
       <find>auditUpdateBookSource</find>
       <find>updateU</find>
       <find>updateUser</find>
@@ -170,6 +165,7 @@
       <find>addBook</find>
       <find>updateBook</find>
       <find>updateBookAccount</find>
+      <find>remarkToDeveliver.setDeveliverManId(distributeId);</find>
     </findStrings>
     <dirStrings>
       <dir>F:\mmqGHtmlAndTxt\shareBook</dir>
@@ -228,7 +224,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/shiro/config/ShiroConfig.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/UserBaseService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/RoleMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/BookBaseControl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/BookMapper.xml" />
@@ -236,6 +231,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/BookMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/RemarkMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/RemarkMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java" />
       </list>
     </option>
@@ -320,26 +316,6 @@
               <item name="sharebook" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -581,21 +557,7 @@
       <workItem from="1585661061199" duration="4369000" />
       <workItem from="1585699754920" duration="7697000" />
       <workItem from="1585730190595" duration="14010000" />
-      <workItem from="1585790768084" duration="13131000" />
-    </task>
-    <task id="LOCAL-00027" summary="配送员模块都完成了">
-      <created>1582793336366</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1582793336366</updated>
-    </task>
-    <task id="LOCAL-00028" summary="完成了批量支付">
-      <created>1582803836900</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1582803836900</updated>
+      <workItem from="1585790768084" duration="16919000" />
     </task>
     <task id="LOCAL-00029" summary="完成了批量支付">
       <created>1582804027535</created>
@@ -926,7 +888,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585800455979</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="评论配送员还有点问题">
+      <created>1585803947552</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1585803947552</updated>
+    </task>
+    <task id="LOCAL-00077" summary="评论区没有问题了">
+      <created>1585805310215</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1585805310215</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -962,7 +938,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228532000" />
+    <option name="totallyTimeSpent" value="232320000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -975,7 +951,43 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2989276" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49731904" weight="0.26628897" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.41359773" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.3297546" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3286119" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50268096" side_tool="true" weight="0.5906516" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49731904" weight="0.32577905" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.3286119" />
+      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49798927" weight="0.29886687" />
+      <window_info anchor="bottom" id="Database Changes" order="14" weight="0.3286119" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.13101605" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.09383378" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" weight="0.32935917" />
+    </layout>
+    <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2989276" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
@@ -987,7 +999,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49731904" weight="0.26628897" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.33994335" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.296034" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -1009,7 +1021,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" weight="0.32935917" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -1055,8 +1067,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="配送以及其他重要信息都已经完成，需要后期优化测试" />
-    <MESSAGE value="配送星级问题还没有处理，书籍的重复问题没有处理，目前不着急做" />
     <MESSAGE value="书籍配送和书籍重复问题已经解决" />
     <MESSAGE value="权限分配的相关功能已经完成，需要做测试" />
     <MESSAGE value="权限功能全部处理，测试没有问题" />
@@ -1080,7 +1090,9 @@
     <MESSAGE value="评论区配送员部分已经改好了" />
     <MESSAGE value="redis update" />
     <MESSAGE value="捐赠书籍，审核书籍没有问题了" />
-    <option name="LAST_COMMIT_MESSAGE" value="捐赠书籍，审核书籍没有问题了" />
+    <MESSAGE value="评论配送员还有点问题" />
+    <MESSAGE value="评论区没有问题了" />
+    <option name="LAST_COMMIT_MESSAGE" value="评论区没有问题了" />
   </component>
   <component name="WindowStateProjectService">
     <state x="557" y="215" key="CommitChangelistDialog2" />
@@ -1201,12 +1213,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/BookServiceImpl.java</url>
-          <line>116</line>
-          <properties />
-          <option name="timeStamp" value="245" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/BookServiceImpl.java</url>
           <line>126</line>
           <properties />
           <option name="timeStamp" value="246" />
@@ -1219,21 +1225,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java</url>
-          <line>55</line>
+          <line>56</line>
           <properties />
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java</url>
-          <line>44</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java</url>
+          <line>102</line>
           <properties />
-          <option name="timeStamp" value="257" />
+          <option name="timeStamp" value="277" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java</url>
-          <line>42</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java</url>
+          <line>103</line>
           <properties />
-          <option name="timeStamp" value="258" />
+          <option name="timeStamp" value="278" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1268,13 +1274,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/FileServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1416,13 +1415,6 @@
     <entry file="https://gitee.com/mmqg/shareBook.git/">
       <provider selected="true" editor-type-id="httpFileEditor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserRoleMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1539,34 +1531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BookMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="167" column="49" selection-start-line="167" selection-start-column="38" selection-end-line="167" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="99" column="10" lean-forward="true" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/BookMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/interceptor/ExceptionHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/entity/RemarkToBook.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1588,17 +1552,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        <state relative-caret-position="364">
+          <caret line="99" column="10" lean-forward="true" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BookMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="168" column="13" lean-forward="true" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/BookServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="116" selection-start-line="116" selection-end-line="116" />
+        <state relative-caret-position="279">
+          <caret line="112" column="41" lean-forward="true" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/FileServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/interceptor/ExceptionHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/BookMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90">
+          <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RemarkServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="32" column="52" lean-forward="true" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
         </state>
       </provider>
     </entry>

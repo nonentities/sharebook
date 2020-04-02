@@ -29,6 +29,7 @@ private RemarkMapper remarkMapper;
     private OrderMapper orderMapper;
     @Transactional
     public ResponseResult addToBookRemark(RemarkToBook remarkToBook) {
+        Boolean flag=true;
         if(Tools.isNull(remarkToBook.getOrderId())){
             return ResponseResult.ERROR(501,"需要评价的订单不能为空或者订单不合法");
         }
@@ -73,7 +74,7 @@ private RemarkMapper remarkMapper;
             map.put("orderBool",false);
             orderMapper.updateBool(map);
         }
-        return ResponseResult.SUCCESSM("书籍评论成功");
+        return ResponseResult.SUCCESS(flag,"评论成功");
     }
     @Override
     @Transactional
@@ -81,6 +82,7 @@ private RemarkMapper remarkMapper;
         /**
          * 评论配送员
          */
+        Boolean flag=true;
         if (Tools.isNull(remarkToDeveliver.getOrderId())) {
             return ResponseResult.ERROR(511,"请输入需要评价的id");
         }
@@ -119,11 +121,13 @@ private RemarkMapper remarkMapper;
             return ResponseResult.ERROR(516,"您不能对自己的配送的订单进行评价的哦");
         }
         //判断订单是否被评论
+
        Integer tempRemarkToBook=remarkMapper.getOrderId(remarkToDeveliver.getOrderId());
         if(Tools.notNull(tempRemarkToBook)){
             Map<String,Object> mapBool=new HashMap<>();
             mapBool.put("id",remarkToDeveliver.getOrderId());
             mapBool.put("orderBool",false);
+            flag=false;
             orderMapper.updateBool(mapBool);
         }
         //获取配送员的信誉积分
@@ -137,7 +141,7 @@ private RemarkMapper remarkMapper;
         map.put("id",remarkToDeveliver.getDeveliverManId());
         userMapper.updateGrade(map);
         remarkMapper.addRemarkToDeveliver(remarkToDeveliver);
-        return ResponseResult.SUCCESSM("评论成功");
+        return ResponseResult.SUCCESS(flag,"评论成功");
     }
     /**
      * 目前不急着写
