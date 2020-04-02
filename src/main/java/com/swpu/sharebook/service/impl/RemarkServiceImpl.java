@@ -72,6 +72,7 @@ private RemarkMapper remarkMapper;
             Map<String,Object> map=new HashMap<>();
             map.put("id",remarkToBook.getOrderId());
             map.put("orderBool",false);
+            flag=false;
             orderMapper.updateBool(map);
         }
         return ResponseResult.SUCCESS(flag,"评论成功");
