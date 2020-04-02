@@ -108,16 +108,25 @@ public class OrderServiceImpl implements OrderService {
 		Integer account = order.getBookAccount();
 		//获取当前用户积分
 		//配送成功后配送员积分+2
-		Integer grade=userMapper.getIntegration(order.getDistrbutionId())+2;
-		Map<String ,Integer> map=new HashMap<>();
-		map.put("id", order.getDistrbutionId());
-		map.put("integration",grade);
-		userMapper.updateIntegration(map);
-		//减少借书人的积分
-		grade=userMapper.getIntegration(order.getUser().getId())-2;
-		map.put("id",order.getUser().getId());
-		map.put("integration",grade);
-		userMapper.updateIntegration(map);
+		/**
+		 * 这里需要做一个处理，需要判断
+		 */
+		//@1获取当前标志
+		String stringFlag=orderMapper.getOrderFlagString(order.getId());
+		List<String> flagStrings=orderMapper.getFlagString(stringFlag);
+		if(flagStrings.size()==1){
+			Integer grade=userMapper.getIntegration(order.getDistrbutionId())+2;
+			Map<String ,Integer> map=new HashMap<>();
+			map.put("id", order.getDistrbutionId());
+			map.put("integration",grade);
+			userMapper.updateIntegration(map);//减少借书人的积分
+			grade=userMapper.getIntegration(order.getUser().getId())-2;
+			map.put("id",order.getUser().getId());
+			map.put("integration",grade);
+			userMapper.updateIntegration(map);
+		}
+		//每次都归为0
+		orderMapper.updateFlag(order.getId());
 		return ResponseResult.SUCCESS("收货成功");
 	}
 	@Override
@@ -176,8 +185,7 @@ public class OrderServiceImpl implements OrderService {
 			Integer grade=userMapper.getIntegration(order.getUser().getId())+(order.getBook().getBookPrice()*order.getBookAccount());
 			mapGrade.put("integration",grade);
 			userMapper.updateIntegration(mapGrade);
-			order.setIsPay(false);
-			 orderMapper.updateOrder(order);
+			orderMapper.deleteOrder(order.getId());
 			 //5更新书籍库存
 			Integer bookAccount=bookMapper.getBookAccount(order.getBook().getBId())+order.getBookAccount();
 			map.put("bookAccount",bookAccount);
@@ -273,6 +281,8 @@ public class OrderServiceImpl implements OrderService {
 		if(Tools.isNull(orderLists)||orderLists.length==0){
 			return ResponseResult.ERROR(451,"您没有选中订单");
 		}
+		//产生一个随机字符串
+	String random=Tools.getRandomString(12);
 		//创建一个Map来临时接收书籍的库存
 		Map<Integer, BIdAndBookAccount> mapTempBook=new HashMap<>();
 		//创建临时的list来接收order
@@ -433,6 +443,8 @@ public class OrderServiceImpl implements OrderService {
 			order.setOrderStatus(true);
 			order.setOrderTime(new Date());
 			order.setIsPay(true);
+			//将这个批量识别订单加进去
+			order.setOrderFlag(random);
 			orderBench.add(order);
 			borringStatusList.add(borringStatus);
 		}

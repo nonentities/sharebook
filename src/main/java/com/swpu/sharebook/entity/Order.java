@@ -23,4 +23,5 @@ public class Order implements Serializable {
 	private Boolean isPay;
 	private Date returnDate;
 	private  Boolean sendStatus;
+	private String orderFlag;
 }

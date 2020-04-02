@@ -64,4 +64,16 @@ public interface OrderMapper {
      * 获取用户的id
      */
     public Integer getUserId(Integer oId);
+    /**
+     * 获取订单集合标志
+     */
+    public String getOrderFlagString(Integer oId);
+    /**
+     * 获取订单集合的全部标志
+     */
+    public List<String> getFlagString(String orderFlag);
+    /**
+     * 每次归还以后将flagString归为0
+     */
+    public void updateFlag(Integer oId);
 }

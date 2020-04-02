@@ -371,7 +371,7 @@ WHERE
 	<update id="updateOrderBench">
 		<foreach collection="orderLists" item="order">
 			UPDATE `order`
-			SET orderStatus = #{order.orderStatus},orderTime=#{order.orderTime},isPay=#{order.isPay},distrbutionId=#{order.distrbutionId} where (id=#{order.id});
+			SET orderStatus = #{order.orderStatus},orderTime=#{order.orderTime},isPay=#{order.isPay},distrbutionId=#{order.distrbutionId},orderFlag=#{order.orderFlag} where (id=#{order.id});
 		</foreach>
 	</update>
 	<!--删除订单
@@ -390,4 +390,13 @@ WHERE
 	<select id="getUserId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
 		select userId from `order` where(id=#{oId})
 	</select>
+	<select id="getFlagString" resultType="java.lang.String" parameterType="java.lang.String">
+		select orderFlag from `order` where(orderFlag=#{orderFlag})
+	</select>
+	<select id="getOrderFlagString" parameterType="java.lang.Integer" resultType="java.lang.String">
+		select orderFlag from `order` where(id=#{oId})
+	</select>
+	<update id="updateFlag" parameterType="java.lang.Integer">
+		update `order` set orderFlag='0' where(id=#{oId})
+	</update>
 </mapper>
