@@ -26,7 +26,7 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 	private UserMapper userMapper;
 	@Resource
 	private RoleMapper roleMapper;
-	public static final Long EXPIRE_TIME = Duration.ofMinutes(10000).toMillis();
+	public static final Long EXPIRE_TIME = Duration.ofMinutes(90).toMillis();
 	@Override
 	public ResponseResult login(String userName, String password, String preVerifyCode) {
 			HttpSession session=Tools.getSession();
