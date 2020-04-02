@@ -3,6 +3,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import com.swpu.sharebook.util.Tools;
 import com.swpu.sharebook.util.returnvalue.ResponseResult;
+import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,13 +30,11 @@ public class BookBaseControl {
         return bookService.addBook(book);
     }
 //仅仅管理员和超级用户拥有该方法的执行权限
-    @RequiresRoles({"超级管理员","一般管理员"})
+    @RequiresRoles(value = {"超级管理员","一般管理员"},logical = Logical.OR)
     @GetMapping("getBookDontAudit")
     public ResponseResult getBookDontAudit(Integer bookBoolId) {
-
         return bookService.getBookDontAndit(bookBoolId);
     }
-
     @PostMapping("addBook")
     public ResponseResult addBook(@Valid Book book, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -44,7 +43,7 @@ public class BookBaseControl {
         return bookService.addBook(book);
     }
     //仅仅管理员和超级用户拥有该方法的执行权限
-    @RequiresRoles({"超级管理员","一般管理员"})
+    @RequiresRoles(value = {"超级管理员","一般管理员"},logical = Logical.OR)
     @GetMapping("auditBookSource")
     public ResponseResult auditBookSource(Integer sourceId) {
         return bookService.auditBookSource(sourceId);

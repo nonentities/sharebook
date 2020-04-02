@@ -124,8 +124,11 @@ public class BookServiceImpl implements BookService {
 		 Book book = bookMapper.getBookById(bookSource2.getBook().getBId());
 		// 获取书籍的id，书籍数量+数量
 		 Integer bookAccount = book.getBookAccount() + bookSource2.getBookAccount();
-		 book.setBookAccount(bookAccount);
-		 bookMapper.updateBook(book);
+		 //bookMapper.updateBook(book);
+		Map<String,Object> mapAccount=new HashMap<>();
+		mapAccount.put("bookAccount",bookAccount);
+		mapAccount.put("bId",book.getBId());
+		bookMapper.updateBookAccount(mapAccount);
 		// 审核人积分+1；
 		map.put("id",userId);
 		// 解决刚才问题的方案是重新获取数据库信息避免脏读
@@ -166,7 +169,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public ResponseResult getBookDontAndit(Integer bookBoolId) {
 		// 获取order对象
-		List<BookUserSource> orderList = bookSourcesMapper.getBookSource(bookBoolId);
+		List<BookUserSource> orderList = bookSourcesMapper.getBookSource(0);
 		if (orderList == null || orderList.size() == 0) {
 			return ResponseResult.SUCCESSM("没有审核数据");
 		}

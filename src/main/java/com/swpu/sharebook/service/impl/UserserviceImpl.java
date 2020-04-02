@@ -52,25 +52,7 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 
 	@Override
 	public ResponseResult userLoginService(String userName, String password, String preVerifyCode ) throws Exception {
-		//判断用户名密码是否为空
-		boolean flag= Tools.isNull(userName,password);
-		if(!flag) {
-
-			//查询数据库
-			User user = userMapper.getUserByNameAndPssword(Tools.getMap("userName",userName,"password",password));
-			//判断是否为空
-			if(Tools.isNull(user)) {
-				return ResponseResult.ERROR(111, "用户名或者密码错误找不到该用户");
-			}else {
-				//缓存用户
-				String token=cacheLoginUser(user);
-				return ResponseResult.SUCCESS("登陆成功返回了token数据", token);
-			}
-		}
-		else {
-			//返回用户名或者密码为空
-			return ResponseResult.ERROR(112,"用户名或者密码为空");
-		}
+		return null;
 	}
 
 	@Override
