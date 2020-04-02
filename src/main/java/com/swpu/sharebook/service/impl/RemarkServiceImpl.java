@@ -96,6 +96,8 @@ private RemarkMapper remarkMapper;
         if(distributeId==-1){
             return ResponseResult.ERROR(517,"您属于自取用户，没有配送员可以评论的哦");
         }
+        //将id设置到配送 评价对象中
+        remarkToDeveliver.setDeveliverManId(distributeId);
         //操作数据库防止出现用户重复对配送员进行评论
         Integer  tmpeGrade=remarkMapper.getSendGrade(remarkToDeveliver.getOrderId());
         if(Tools.notNull(tmpeGrade)){
@@ -117,8 +119,8 @@ private RemarkMapper remarkMapper;
             return ResponseResult.ERROR(516,"您不能对自己的配送的订单进行评价的哦");
         }
         //判断订单是否被评论
-       RemarkToBook remarkToBook=remarkMapper.getRemarkToBook(remarkToDeveliver.getOrderId());
-        if(Tools.notNull(remarkToBook)){
+       Integer tempRemarkToBook=remarkMapper.getOrderId(remarkToDeveliver.getOrderId());
+        if(Tools.notNull(tempRemarkToBook)){
             Map<String,Object> mapBool=new HashMap<>();
             mapBool.put("id",remarkToDeveliver.getOrderId());
             mapBool.put("orderBool",false);
