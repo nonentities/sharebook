@@ -95,7 +95,7 @@ public class RoleServiceImpl implements RoleService {
         }
         //
         if(!flag){
-            return  ResponseResult.ERROR(616,"对应的角id的色信息不属于您，不能去升级权限");
+            return  ResponseResult.ERROR(616,"请不要借助他人的账号随意申请角色");
         }
         //最后两部是
         if(temp<userRole.getTId()&&(temp+1)==userRole.getTId()) {

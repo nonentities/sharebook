@@ -95,10 +95,11 @@ VALUES
 <select id="selectBook" parameterType="com.swpu.sharebook.entity.Book" resultMap="book">
 	select *from book
 	<where>
+
 	<choose>
 		<when test="bName !='' and bName != null">
 		bName=#{bName}
-		</when>
+	</when>
 		<when test="bPublish !='' and bPublish != null ">
 		 and bookPbulish=#{bPublish}
 		</when>

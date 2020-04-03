@@ -366,6 +366,7 @@ public class OrderServiceImpl implements OrderService {
 			order.setOrderTime(new Date());
 			order.setIsPay(true);
 			order.setDistrbutionId(distrubutionId);
+			order.setOrderFlag("0");
 			orderBench.add(order);
 			borringStatusList.add(borringStatus);
 		}
