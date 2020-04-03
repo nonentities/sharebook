@@ -72,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
 		user.setId(UserUtil.getUserId());
 		order.setUser(user);
 		orderMapper.addOrder(order);
-		return ResponseResult.SUCCESSM("成功加入购物车");
+		return ResponseResult.SUCCESSM("成功加入书架");
 	}
 	// 獲取未被審核的用戶的所有訂單所需的價格
 	@Transactional

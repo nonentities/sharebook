@@ -45,9 +45,9 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		);
 		if(null != dbUser){
 			String token = JWTUtil.generatorToken(String.valueOf(dbUser.getId()), EXPIRE_TIME);
-			return ResponseResult.SUCCESS("登陆成功返回了token数据",token);
+			return ResponseResult.SUCCESS("登录成功",token);
 		}
-		return  ResponseResult.ERROR(103, "用户名或者密码错误找不到该用户");
+		return  ResponseResult.ERROR(103, "用户名或密码错误");
 	}
 
 	@Override
@@ -102,6 +102,12 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		//获取当前用户的id
 		user.setId(UserUtil.getUserId());
 		user.setIntegration(null);
+		//判断是否输入了手机号
+		if(Tools.notEmpty(user.getWechatNumber())){
+			if(!Tools.checkPhone(user.getWechatNumber())){
+				return ResponseResult.ERROR(141,"您输入的手机号格式有误");
+			}
+		}
 		userMapper.update(user);
 		return ResponseResult.SUCCESS("修改成功",user);
 	}
@@ -109,9 +115,9 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 	public ResponseResult updatePassword(String password, String confrimPassword) {
 		//获取当前用户的id
 		//判断用户密码是否为空或者空格
-		if (Tools.isEmpty(password)) {
-
-			return ResponseResult.ERROR(131,"密码不能为空或者空格");
+		Boolean flag=Tools.checkPassword(password);
+		if(!flag){
+			return ResponseResult.ERROR(134,"密码不能为空或者您输入的密码不合法");
 		}
 		if (Tools.isEmpty(confrimPassword)) {
 

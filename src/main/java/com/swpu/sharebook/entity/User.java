@@ -24,7 +24,7 @@ public class User implements Serializable{
 	@TableField("studentId")
 	//学号的正则表达式先不着急写
 	@NotBlank(message = "学号不能为空或者空串")
-	@Pattern(regexp = "^[2][0](([1][7-9])|([2][0-2]))[3][1][7][6-8][1-4][1-2][0-6][0-9]",message = "学号格式不合法")
+	//@Pattern(regexp = "^[2][0](([1][7-9])|([2][0-2]))[3][1][7][6-8][1-4][1-2][0-6][0-9]",message = "学号格式不合法")
 	private String studentId;
 	@TableField("wechatNumber")
 	@NotBlank(message = "手机号不能为空或者空串")

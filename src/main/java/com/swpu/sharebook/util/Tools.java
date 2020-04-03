@@ -618,6 +618,22 @@ public final class Tools {
 		return m.matches();
 	}
 
+	/**
+	 * 校验密码
+	 * @param entity
+	 * @return
+	 */
+	public static final Boolean checkPassword(String password){
+		if(Tools.isEmpty(password)){
+			return false;
+		}
+		String regExp = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[\\s\\S]{8,16}$";
+		Pattern p = Pattern.compile(regExp);
+		Matcher m = p.matcher(password);
+		return m.matches();
+	}
+
+
 	public static final String entityToJson(Serializable entity) {
 		Class<?> clazz = entity.getClass();
 		Method[] methods = clazz.getDeclaredMethods();

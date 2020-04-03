@@ -173,19 +173,6 @@ public class BookServiceImpl implements BookService {
 		if (orderList == null || orderList.size() == 0) {
 			return ResponseResult.SUCCESSM("没有审核数据");
 		}
-		// 循环遍历出来，并操作
-		// 创建一个对象：Map
-		/*Map<BookSource, Book> mapBook = new HashMap<>();
-		for (int i = 0; i < orderList.size(); i++) {
-			Book bookTemp = null;
-			// bookTemp.setbId(orderList.get(i).getbId());
-			// bookTemp=bookMapper.getBookById(orderList.get(i).getbId());
-			// if(bookTemp==null) {
-			// return 未知错误,这个一般不会出现
-			// }
-			// 将数据放入到map中
-			mapBook.put(orderList.get(i), bookTemp);
-		}*/
 		return ResponseResult.SUCCESS(orderList);
 	}
 
