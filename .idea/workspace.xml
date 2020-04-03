@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="068ae6b4-30ea-4738-a683-2ee4d6d12b20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BookMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BookMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/RoleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/BookMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/BookMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../Html/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -62,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BookMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="77" column="53" selection-start-line="77" selection-start-column="53" selection-end-line="77" selection-end-column="53" />
+            <state relative-caret-position="101">
+              <caret line="179" column="22" selection-start-line="179" selection-start-column="22" selection-end-line="179" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -297,47 +296,6 @@
             <path>
               <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
               <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="sharebook" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -580,14 +538,7 @@
       <workItem from="1585699754920" duration="7697000" />
       <workItem from="1585730190595" duration="14010000" />
       <workItem from="1585790768084" duration="38737000" />
-      <workItem from="1585874078220" duration="21350000" />
-    </task>
-    <task id="LOCAL-00040" summary="权限我已经改好了">
-      <created>1585379735517</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1585379735518</updated>
+      <workItem from="1585874078220" duration="22408000" />
     </task>
     <task id="LOCAL-00041" summary="权限我已经改好了">
       <created>1585380190090</created>
@@ -925,7 +876,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585904646857</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="修改书籍功能测试成功">
+      <created>1585905628436</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1585905628436</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -961,7 +919,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="275488000" />
+    <option name="totallyTimeSpent" value="276546000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -985,8 +943,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49731904" weight="0.5439094" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4305949" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49731904" visible="true" weight="0.55382437" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3512748" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -1001,7 +959,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.13069706" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.22319035" />
+      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.22319035" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" weight="0.25201073" />
@@ -1089,7 +1047,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="我修改了数据库的地址" />
     <MESSAGE value="订单分类已经完成" />
     <MESSAGE value="order" />
     <MESSAGE value="remark已经处理" />
@@ -1114,7 +1071,8 @@
     <MESSAGE value="项目的订单优化成功" />
     <MESSAGE value="项目的评论区没有发现问题" />
     <MESSAGE value="重新把功能进行了测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="重新把功能进行了测试" />
+    <MESSAGE value="修改书籍功能测试成功" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改书籍功能测试成功" />
   </component>
   <component name="WindowStateProjectService">
     <state x="557" y="215" key="CommitChangelistDialog2" />
@@ -1623,8 +1581,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BookMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="77" column="53" selection-start-line="77" selection-start-column="53" selection-end-line="77" selection-end-column="53" />
+        <state relative-caret-position="101">
+          <caret line="179" column="22" selection-start-line="179" selection-start-column="22" selection-end-line="179" selection-end-column="22" />
         </state>
       </provider>
     </entry>
