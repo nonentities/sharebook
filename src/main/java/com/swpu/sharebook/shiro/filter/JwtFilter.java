@@ -24,17 +24,15 @@ import java.io.IOException;
 public class JwtFilter extends AccessControlFilter {
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
-        log.error("isAccessAllowed");
         return false;
     }
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
-        log.error("onAccessDenied");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
         HttpServletRequest req = (HttpServletRequest) request;
 
-        log.error(req.getRequestURI());
+        log.debug("请求路径"+req.getRequestURI());
         String jwt = req.getHeader("jwt");
         if (StringUtils.isEmpty(jwt)) {
             log.debug("access failed,because jwt is null");
