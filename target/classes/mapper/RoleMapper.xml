@@ -32,7 +32,7 @@ select userrole.id ,uId,rId,tId,userName,createDate from userrole,user where(tId
         update userrole set tId=#{tId} where(id=#{id})
     </update>
     <select id="getRoleListByIdAndUserId" parameterType="com.swpu.sharebook.entity.UserRole" resultType="com.swpu.sharebook.entity.UserRole">
-        select *from userrole where(id=#{id} and uId=#{uId})
+        select *from userrole where( uId=#{uId})
     </select>
     <select id="getUserRoleById" parameterType="java.lang.Integer" resultType="com.swpu.sharebook.entity.UserRole">
         select *from userrole where(id=#{id})
