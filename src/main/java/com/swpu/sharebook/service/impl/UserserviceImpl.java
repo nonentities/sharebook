@@ -1,5 +1,6 @@
 package com.swpu.sharebook.service.impl;
 import java.time.Duration;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -93,7 +94,8 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		userRole.setUId(uId);
 		//userRole.setTId(0);
 		//初始状态都是为1普通管理员
-		userRole.setRId(1);
+		userRole.setTId(1);
+		userRole.setDate(new Date());
 		roleMapper.addUserRole(userRole);
 			return ResponseResult.SUCCESS("注册成功");
 	}
