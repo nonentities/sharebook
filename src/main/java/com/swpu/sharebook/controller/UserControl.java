@@ -46,11 +46,18 @@ public class UserControl {
         return ResponseResult.SUCCESS();
 
     }
+
+    /**
+     * // @RequestParam("preVerifyCode"
+     * @param userName
+     * @param password
+     * @return
+     */
     @PostMapping("/login")
-    public ResponseResult login(@RequestParam("username") String userName, @RequestParam("password") String password, @RequestParam("preVerifyCode") String preVerifyCode) throws Exception {
+    public ResponseResult login(@RequestParam("username") String userName, @RequestParam("password") String password)throws Exception{
 
 //	  	return userService.userLoginService(userName,password,preVerifyCode);
-        return userService.login(userName, password, preVerifyCode);
+        return userService.login(userName, password);
     }
 
     /**

@@ -26,12 +26,6 @@ public class RoleServiceImpl implements RoleService {
         if(Tools.isNull(id)){
             return ResponseResult.ERROR(601,"用户升级的角色不能为空");
         }
-      /*  if(Tools.isNull(userRole.getUId())){
-            return ResponseResult.ERROR(402,"用户id不能为空");
-        }
-        if(Tools.isNull(userRole.getId())){
-            return ResponseResult.ERROR(408,"修改的用户角色id不能为空");
-        }*/
       UserRole userRole=roleMapper.getUserRoleById(id);
         if (Tools.isNull(userRole)) {
             return ResponseResult.ERROR(602, "没有对应的用户申请授权");
@@ -71,12 +65,6 @@ public class RoleServiceImpl implements RoleService {
         Integer uId=UserUtil.getUserId();
         userRole.setUId(uId);
        List<UserRole> userRole1s= roleMapper.getRoleListByIdAndUserId(userRole);
-
-/*        if (Tools.isNull(userRole)) {
-            return ResponseResult.ERROR(407,"您目前没有任何角色");
-        }*/
-//需要设置一个标志里面是否包含了对应id的值
-        boolean flag=false;
         int temp=1;
         for(int i=0;i<userRole1s.size();i++){
             //求目前用户的最大值
@@ -89,13 +77,6 @@ public class RoleServiceImpl implements RoleService {
             if(userRole1s.get(i).getTId()==userRole.getTId()){
                 return ResponseResult.ERROR(615,"您已经申请过了，请等待管理员审核");
             }
-            if(userRole1s.get(i).getId()==userRole.getId()){
-                flag=true;
-            }
-        }
-        //
-        if(!flag){
-            return  ResponseResult.ERROR(616,"请不要借助他人的账号随意申请角色");
         }
         //最后两部是
         if(temp<userRole.getTId()&&(temp+1)==userRole.getTId()) {

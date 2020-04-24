@@ -25,14 +25,20 @@
      <result column="userName" property="userName"/>
      <result column="createDate" property="date"/>
  </resultMap>
+    <resultMap id="getUserRole" type="com.swpu.sharebook.entity.UserRole">
+        <id column="id" property="id"/>
+        <result column="uId" property="uId"/>
+        <result column="rId" property="rId"/>
+        <result column="tId" property="tId"/>
+    </resultMap>
     <select id="getUserNameAndRoleName" resultMap="getAllDontAllow">
 select userrole.id ,uId,rId,tId,userName,createDate from userrole,user where(tId !=0 and user.id=uId)
     </select>
     <update id="alertTid" parameterType="com.swpu.sharebook.entity.UserRole">
         update userrole set tId=#{tId} where(id=#{id})
     </update>
-    <select id="getRoleListByIdAndUserId" parameterType="com.swpu.sharebook.entity.UserRole" resultType="com.swpu.sharebook.entity.UserRole">
-        select *from userrole where( uId=#{uId})
+    <select id="getRoleListByIdAndUserId" parameterType="com.swpu.sharebook.entity.UserRole"  resultMap="getUserRole">
+        select * from userrole where( uId=#{uId})
     </select>
     <select id="getUserRoleById" parameterType="java.lang.Integer" resultType="com.swpu.sharebook.entity.UserRole">
         select *from userrole where(id=#{id})

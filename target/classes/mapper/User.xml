@@ -47,7 +47,7 @@
 		<include refid="select*"></include>
 		user,role,userrole where (user.id=#{id} and user.id=uId and rId=r_id)
 	</select>
-	<insert id="regester" keyProperty="id" useGeneratedKeys="true">
+	<insert id="regester" keyProperty="id" useGeneratedKeys="true" parameterType="com.swpu.sharebook.entity.User">
 		INSERT INTO user ( userName, studentId, wechatNumber, password,
 		dirmitoryNumber )
 		VALUES

@@ -22,22 +22,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserserviceImpl  extends UserBaseService implements UserService {
-
 	@Resource
 	private UserMapper userMapper;
 	@Resource
 	private RoleMapper roleMapper;
-	public static final Long EXPIRE_TIME = Duration.ofMinutes(90).toMillis();
+	public static final Long EXPIRE_TIME = Duration.ofMinutes(9000).toMillis();
 	@Override
-	public ResponseResult login(String userName, String password, String preVerifyCode) {
+	public ResponseResult login(String userName, String password) {
 			HttpSession session=Tools.getSession();
-			String verifyCode=(String) session.getAttribute("verifyCode");
- 		  if(verifyCode==null) {
+			//String verifyCode=(String) session.getAttribute("verifyCode");
+ 		/*  if(verifyCode==null) {
 				return ResponseResult.ERROR(101,"验证码为空，请输入验证码");
 			}
 			if(!verifyCode.equals(preVerifyCode)) {
 				return ResponseResult.ERROR(102, "验证码输入错误，请重新输入");
-			}
+			}*/
 		User md5User = UserUtil.getMd5User(userName, password);
 		User dbUser = userMapper.selectOne(new QueryWrapper<User>()
 				.eq("userName", userName)
@@ -74,12 +73,15 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 
 		HttpSession session=Tools.getSession();
 		String verifyCode=(String) session.getAttribute("verifyCode");
+
+
 		if(verifyCode==null) {
 			return ResponseResult.ERROR(122,"验证码为空，请输入验证码");
 		}
 		if(!verifyCode.equals(preVerifyCode)) {
 			return ResponseResult.ERROR(123, "验证码输入错误，请重新输入");
 		}
+
 		//确认两次密码是否一致；
 		if(!password.equals(configName)) {
 			return ResponseResult.ERROR(124, "两次密码不一致，请确认密码");
@@ -89,11 +91,9 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 		if(Tools.notNull(userFlag)) {
 			return ResponseResult.ERROR(125, "用户你已经注册过请不要重复注册");
 		}
-		int uId=userMapper.regester(user);
+		userMapper.regester(user);
 		UserRole userRole=new UserRole();
-		userRole.setUId(uId);
-		//userRole.setTId(0);
-		//初始状态都是为1普通管理员
+		userRole.setUId(user.getId());
 		userRole.setTId(1);
 		userRole.setDate(new Date());
 		roleMapper.addUserRole(userRole);
