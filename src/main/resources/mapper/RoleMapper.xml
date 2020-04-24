@@ -44,6 +44,6 @@ select userrole.id ,uId,rId,tId,userName,createDate from userrole,user where(tId
         select *from userrole where(id=#{id})
     </select>
     <insert id="addUserRole" parameterType="com.swpu.sharebook.entity.UserRole">
-        insert into userrole (rId,uId,createDate) values (#{tId},#{uId},#{date})
+        insert into userrole (rId,uId,createDate) values (#{rId},#{uId},#{date})
     </insert>
 </mapper>

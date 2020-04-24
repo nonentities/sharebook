@@ -28,10 +28,10 @@ public class User implements Serializable{
 	private String studentId;
 	@TableField("wechatNumber")
 	@NotBlank(message = "手机号不能为空或者空串")
-	@Pattern(regexp = "^(((13[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[3-8]{1})|(18[0-9]{1})|(19[0-9]{1})|(14[5-7]{1}))+\\d{8})$",message ="手机号格式不正确")
+//	@Pattern(regexp = "^(((13[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[3-8]{1})|(18[0-9]{1})|(19[0-9]{1})|(14[5-7]{1}))+\\d{8})$",message ="手机号格式不正确")
 	private String wechatNumber;
 	@NotBlank(message = "密码不能为空或者空串")
-	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[\\s\\S]{8,16}$",message = "至少8-16个字符，至少1个大写字母，1个小写字母和1个数字，其他可以是任意字符")
+//	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[\\s\\S]{8,16}$",message = "至少8-16个字符，至少1个大写字母，1个小写字母和1个数字，其他可以是任意字符")
 	private String password;
 	@TableField("dirmitoryNumber")
 	@NotBlank(message = "宿舍不能为空")

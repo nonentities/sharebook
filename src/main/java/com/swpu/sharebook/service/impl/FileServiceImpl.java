@@ -1,6 +1,7 @@
 package com.swpu.sharebook.service.impl;
 
 import com.swpu.sharebook.entity.User;
+import com.swpu.sharebook.mapper.BookMapper;
 import com.swpu.sharebook.mapper.UserMapper;
 import com.swpu.sharebook.service.FileService;
 import com.swpu.sharebook.shiro.util.UserUtil;
@@ -26,6 +27,7 @@ public class FileServiceImpl implements FileService {
     @Autowired
     private UserMapper userMapper;
 
+
     @Override
     public ResponseResult uploadAvatar(MultipartFile file) {
 
@@ -49,7 +51,7 @@ public class FileServiceImpl implements FileService {
             file.transferTo(new File(filePath));
             // 修改用户数据
             User user = userMapper.selectById(UserUtil.getUserId());
-            user.setHeadPortrait(filePath);
+            user.setHeadPortrait(avatarUrl);
             userMapper.updateById(user);
 
 
@@ -86,6 +88,7 @@ public class FileServiceImpl implements FileService {
             // 将文件写入对应位置
             file.transferTo(new File(filePath));
             // 修改用户数据
+
 
 
         }catch (Exception e) {
