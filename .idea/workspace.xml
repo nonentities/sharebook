@@ -3,91 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="068ae6b4-30ea-4738-a683-2ee4d6d12b20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/SharebookApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/config/DatasourceConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/BookBaseControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/FileController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/GlobleExceptionHandle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/GlobleExceptionHandleRosvler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/OrderControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/RemarkController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/RootControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/UserControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/ValatorException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Authority.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Book.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/BookSource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/BorringStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/College.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/RemarkToBook.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/RemarkToDeveliver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Roleauthority.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Special.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/UserRole.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/BIdAndBookAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/BookUserSource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/PriceAndAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/RemarkToBookCreateEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/RootAndAuthority.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/UpdateIntergation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/UserAndRole.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/ExceptionHandle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/IgnoreLoginValidate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/RootInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/ThreadLocalConst.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/UserInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/AuthorityMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/BookMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/BookSourcesMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/BorringstatusMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/CollegeMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/OrderMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/RemarkMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/RoleMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/RoleauthorityMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/RootMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/SpecialMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/UserMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/UserOrderStatusMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/UserRoleMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/BookService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/FileService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/OrderService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/RemarkService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserBaseService$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserBaseService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserOrderStatusService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/BookServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/FileServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/OrderServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/RemarkServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/UserserviceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/cache/ShiroCache.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/cache/ShiroCacheManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/filter/JwtFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/jwt/JWTUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/jwt/JwtToken.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/realm/JwtRealm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/util/MD5Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/util/UserUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/Tools.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/VerifyCodeUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/exception/BizException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/exception/ExceptionMydefine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/exception/JmSoftException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/exception/ParamException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/exception/UnException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/returnvalue/ResponseResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/returnvalue/ResultCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/returnvalue/ResultDic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/UserControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/UserControl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/UserserviceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/UserserviceImpl.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../Html/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -168,8 +86,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+            <state relative-caret-position="60">
+              <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -346,51 +264,6 @@
             <path>
               <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
               <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="sharebook" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="sharebook" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shareBook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="sharebook" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -640,14 +513,7 @@
       <workItem from="1587877518724" duration="917000" />
       <workItem from="1587890938776" duration="847000" />
       <workItem from="1587891789257" duration="929000" />
-      <workItem from="1587892764796" duration="945000" />
-    </task>
-    <task id="LOCAL-00045" summary="支付订单的过滤">
-      <created>1585448435800</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1585448435800</updated>
+      <workItem from="1587892764796" duration="1186000" />
     </task>
     <task id="LOCAL-00046" summary="支付订单的过滤">
       <created>1585449035502</created>
@@ -985,7 +851,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587702074850</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="刚才注释有问题">
+      <created>1587893949702</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1587893949703</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1021,7 +894,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="314255000" />
+    <option name="totallyTimeSpent" value="314496000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1034,7 +907,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3424933" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1047,7 +919,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49731904" weight="0.398017" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.26912183" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.26912183" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -1115,7 +987,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remark已经处理" />
     <MESSAGE value="用户微信号已经处理" />
     <MESSAGE value="权限分配基本没有问题，需要宋镜去执行写一些注解来实现角色控制" />
     <MESSAGE value="权限分配基本没有问题" />
@@ -1140,7 +1011,8 @@
     <MESSAGE value="修改书籍功能测试成功" />
     <MESSAGE value="注册功能已经改好" />
     <MESSAGE value="权限功能注册功能已经做了修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="权限功能注册功能已经做了修改" />
+    <MESSAGE value="刚才注释有问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="刚才注释有问题" />
   </component>
   <component name="WindowStateProjectService">
     <state x="557" y="215" key="CommitChangelistDialog2" />
@@ -1610,8 +1482,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+        <state relative-caret-position="60">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
         </state>
       </provider>
     </entry>
