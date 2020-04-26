@@ -5,18 +5,89 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RoleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/User.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/User.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/UserControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/UserControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/UserserviceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/UserserviceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/RoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/User.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/User.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/SharebookApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/config/DatasourceConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/BookBaseControl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/FileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/GlobleExceptionHandle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/GlobleExceptionHandleRosvler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/OrderControl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/RemarkController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/RootControl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/UserControl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/controller/ValatorException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Authority.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/BookSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/BorringStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/College.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/RemarkToBook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/RemarkToDeveliver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Roleauthority.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/Special.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/UserRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/BIdAndBookAccount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/BookUserSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/PriceAndAccount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/RemarkToBookCreateEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/RootAndAuthority.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/UpdateIntergation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/entity/createentity/UserAndRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/Config.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/ExceptionHandle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/IgnoreLoginValidate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/RootInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/ThreadLocalConst.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/interceptor/UserInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/AuthorityMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/BookMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/BookSourcesMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/BorringstatusMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/CollegeMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/OrderMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/RemarkMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/RoleMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/RoleauthorityMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/RootMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/SpecialMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/UserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/UserOrderStatusMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/mapper/UserRoleMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/BookService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/FileService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/OrderService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/RemarkService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserBaseService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserBaseService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserOrderStatusService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/BookServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/FileServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/OrderServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/RemarkServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/service/impl/UserserviceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/cache/ShiroCache.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/cache/ShiroCacheManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/filter/JwtFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/jwt/JWTUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/jwt/JwtToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/realm/JwtRealm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/util/MD5Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/shiro/util/UserUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/Tools.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/VerifyCodeUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/exception/BizException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/exception/ExceptionMydefine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/exception/JmSoftException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/exception/ParamException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/exception/UnException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/returnvalue/ResponseResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/returnvalue/ResultCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/swpu/sharebook/util/returnvalue/ResultDic.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../Html/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -51,19 +122,27 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java">
+        <entry file="https://gitee.com/mmqg/shareBook.git/">
+          <provider selected="true" editor-type-id="httpFileEditor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/SharebookApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="105" column="45" selection-start-line="105" selection-start-column="45" selection-end-line="105" selection-end-column="45" />
+            <state relative-caret-position="240">
+              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/entity/User.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="27" column="28" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="28" />
+            <state relative-caret-position="1230">
+              <caret line="58" column="32" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,8 +150,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+            <state relative-caret-position="180">
+              <caret line="7" column="24" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/BookService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="91" column="32" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -80,62 +168,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/User.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-94">
-              <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RoleServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2220">
-              <caret line="84" column="14" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/RoleMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RoleMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/entity/UserRole.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="150">
+              <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -152,8 +186,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>roleId</find>
-      <find>userNameAndRoleName</find>
       <find>getListAboutOrder</find>
       <find>getListOrderNotPay</find>
       <find>getRemarkToDeveliver</find>
@@ -170,7 +202,6 @@
       <find>redis</find>
       <find>addBookSources</find>
       <find>getRoleListByUserId</find>
-      <find>addBook</find>
       <find>updateBookAccount</find>
       <find>remarkToDeveliver.setDeveliverManId(distributeId);</find>
       <find>updateOrderBench</find>
@@ -180,8 +211,11 @@
       <find>未知错误</find>
       <find>addUserRole</find>
       <find>getRoleListByIdAndUserId</find>
-      <find>alertTid</find>
       <find>regester</find>
+      <find>addBook</find>
+      <find>alertTid</find>
+      <find>userLoginService</find>
+      <find>login</find>
     </findStrings>
     <dirStrings>
       <dir>F:\mmqGHtmlAndTxt\shareBook</dir>
@@ -245,12 +279,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/shiro/filter/JwtFilter.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/mapper/RoleMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/RoleMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RoleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/User.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RoleServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java" />
       </list>
     </option>
@@ -304,8 +338,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -344,15 +378,19 @@
               <item name="shareBook" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sharebook" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="shareBook" type="b2602c69:ProjectViewProjectNode" />
               <item name="shareBook" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sharebook" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -598,14 +636,11 @@
       <workItem from="1585991512436" duration="5090000" />
       <workItem from="1586143439324" duration="3485000" />
       <workItem from="1586242887163" duration="13870000" />
-      <workItem from="1587697663986" duration="4323000" />
-    </task>
-    <task id="LOCAL-00044" summary="支付订单的过滤">
-      <created>1585446729757</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1585446729757</updated>
+      <workItem from="1587697663986" duration="4602000" />
+      <workItem from="1587877518724" duration="917000" />
+      <workItem from="1587890938776" duration="847000" />
+      <workItem from="1587891789257" duration="929000" />
+      <workItem from="1587892764796" duration="945000" />
     </task>
     <task id="LOCAL-00045" summary="支付订单的过滤">
       <created>1585448435800</created>
@@ -943,7 +978,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586002867659</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="权限功能注册功能已经做了修改">
+      <created>1587702074849</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1587702074850</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -979,7 +1021,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310338000" />
+    <option name="totallyTimeSpent" value="314255000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -994,7 +1036,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32372653" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3424933" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1005,7 +1047,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49731904" weight="0.398017" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.26912183" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.26912183" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -1015,7 +1057,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50268096" side_tool="true" weight="0.5906516" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49731904" weight="0.32577905" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.3286119" />
-      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49798927" weight="0.3101983" />
+      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49798927" weight="0.30975956" />
       <window_info anchor="bottom" id="Database Changes" order="14" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.13069706" />
@@ -1073,7 +1115,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="order" />
     <MESSAGE value="remark已经处理" />
     <MESSAGE value="用户微信号已经处理" />
     <MESSAGE value="权限分配基本没有问题，需要宋镜去执行写一些注解来实现角色控制" />
@@ -1098,7 +1139,8 @@
     <MESSAGE value="重新把功能进行了测试" />
     <MESSAGE value="修改书籍功能测试成功" />
     <MESSAGE value="注册功能已经改好" />
-    <option name="LAST_COMMIT_MESSAGE" value="注册功能已经改好" />
+    <MESSAGE value="权限功能注册功能已经做了修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="权限功能注册功能已经做了修改" />
   </component>
   <component name="WindowStateProjectService">
     <state x="557" y="215" key="CommitChangelistDialog2" />
@@ -1211,12 +1253,6 @@
           <properties />
           <option name="timeStamp" value="255" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java</url>
-          <line>111</line>
-          <properties />
-          <option name="timeStamp" value="287" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -1225,20 +1261,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/shiro/cache/ShiroCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/shiro/cache/ShiroCacheManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/shiro/jwt/JwtToken.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1275,13 +1297,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1920">
           <caret line="165" selection-start-line="165" selection-end-line="165" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/BookService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="91" column="32" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1462,24 +1477,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RootMapper.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/SharebookApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/BookBaseControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-          <folding>
-            <element signature="e#1291#1292#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1517,45 +1514,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/entity/UserRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RoleMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="105" column="45" selection-start-line="105" selection-start-column="45" selection-end-line="105" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
+        <state relative-caret-position="480">
           <caret line="27" column="28" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/UserService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/User.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        <state relative-caret-position="1530">
+          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RoleServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/entity/UserRole.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2220">
-          <caret line="84" column="14" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
+        <state relative-caret-position="390">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1566,17 +1542,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/User.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RoleMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-94">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+        <state relative-caret-position="238">
+          <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/RoleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="78" column="13" lean-forward="true" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/BookBaseControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+          <folding>
+            <element signature="e#1291#1292#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="https://gitee.com/mmqg/shareBook.git/">
+      <provider selected="true" editor-type-id="httpFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/SharebookApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/controller/UserControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1230">
+          <caret line="58" column="32" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/BookService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="91" column="32" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swpu/sharebook/service/impl/UserserviceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+        <state relative-caret-position="150">
+          <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
         </state>
       </provider>
     </entry>

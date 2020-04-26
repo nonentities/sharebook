@@ -26,17 +26,17 @@ public class UserserviceImpl  extends UserBaseService implements UserService {
 	private UserMapper userMapper;
 	@Resource
 	private RoleMapper roleMapper;
-	public static final Long EXPIRE_TIME = Duration.ofMinutes(9000).toMillis();
+	public static final Long EXPIRE_TIME = Duration.ofMinutes(30).toMillis();
 	@Override
-	public ResponseResult login(String userName, String password) {
+	public ResponseResult login(String userName, String password, String preVerifyCode) {
 			HttpSession session=Tools.getSession();
-			//String verifyCode=(String) session.getAttribute("verifyCode");
- 		/*  if(verifyCode==null) {
+			String verifyCode=(String) session.getAttribute("verifyCode");
+ 		  if(verifyCode==null) {
 				return ResponseResult.ERROR(101,"验证码为空，请输入验证码");
 			}
 			if(!verifyCode.equals(preVerifyCode)) {
 				return ResponseResult.ERROR(102, "验证码输入错误，请重新输入");
-			}*/
+			}
 		User md5User = UserUtil.getMd5User(userName, password);
 		User dbUser = userMapper.selectOne(new QueryWrapper<User>()
 				.eq("userName", userName)
