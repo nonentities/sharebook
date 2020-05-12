@@ -66,6 +66,7 @@
 		<result column="writer" property="writer"/>
 		<result column="bookPrice" property="bookPrice"/>
 		<result column="bookOtherImportantPath" property="bookOtherImportantPath"/>
+			<result column="leftBook" property="bookAccount"/>
 		</association>
 	</resultMap>
 <!-- 插入订单的语句 -->
@@ -350,6 +351,9 @@ WHERE
 	book.bId,
 	bName,
 	bookPbulish,
+	writer,
+	bookOtherImportantPath,
+	book.bookAccount as leftBook,
 	bookIntroduction,
 	bookPrice
 FROM
