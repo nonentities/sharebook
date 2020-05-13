@@ -98,6 +98,7 @@ VALUES
 	 bookPrice,
 	 writer,
 	 user.id,
+	 userName,
 	 studentId,
 	 wechatNumber,
 	 dirmitoryNumber
