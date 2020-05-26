@@ -115,7 +115,7 @@
 FROM
 user,role,userrole
 WHERE
-	rId = 4 and uId=user.id and rId=r_id
+	rId = 2 and uId=user.id and rId=r_id
 ORDER BY
 	deliveManGrade DESC
 	</select>
